@@ -1,4 +1,4 @@
-////
+
 //  MovieDataStore.swift
 //  MovieProjectApp
 //
@@ -10,45 +10,68 @@ import Foundation
 
 class MovieDataStore
 {
-//    static let sharedInstance = MovieDataStore()
-//    private init() {}
-//    //creating a singleton for the MovieDataStore 
-// 
-//    var movies = [Movie]()
-//    //array to store all the movie objects from the json
-//    
-//    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi"]
-//    
-//    func getMoviesWithCompletion(completion: () -> ()) {
-//    
-//        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(arc4random_uniform(UInt32(movieSearchTerms.count)))]) { (arrayOfMovies) in
-//            for singleMovie in arrayOfMovies
-//            {
-//                
-//                let neededTitle = singleMovie["title"] as? String
-//                let neededYear = singleMovie["year"] as? String
-//                let neededImbdID = singleMovie["imdbID"] as? String
-//                let neededType = singleMovie["type"] as? String
-//                let neededPosterURL = singleMovie["posterURL"] as? String
-//                
-//                guard let
-//                    
-//                    unwrappedTitle = neededTitle,
-//                    unwrappedYear = neededType,
-//                    unwrappedImbdID = neededImbdID,
-//                    unwrappedType = neededType,
-//                    unwrappedPosterURL = neededPosterURL
-//                
-//                    else { print("AN ERROR OCCURRED HERE"); return }
-//                
-//                var movie = Movie.init(title: unwrappedTitle, year: singleMovie["year"], imdbID: singleMovie["imbdID"], type: singleMovie["type"], posterURL: singleMovie["posterURL"])
-//        
-//                movies.append(movie)
-//            }
-//            completion()
-//        }
-//    
-//}
-//
-//
+    
+    static let sharedInstance = MovieDataStore()
+    private init() {}
+    //singleton for the MovieDataBase
+    
+    var movies = [Movie]()
+    //array to store all the movie objects from the json
+    
+    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi"]
+    func getMoviesWithCompletion(Completion: () -> ())
+    {
+        let randomNumber = arc4random_uniform(UInt32(movieSearchTerms.count))
+        
+        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)]) { (arrayOfMovies) in
+            for singleMovie in arrayOfMovies
+            {
+                //all print statements are working and print as optionals - Predicted
+                let movieTitle = singleMovie["Title"] as? String
+                
+                let movieYear = singleMovie["Year"] as? String
+
+                let movieImbdID = singleMovie["imdbID"] as? String
+                
+                let movieType = singleMovie["Type"] as? String
+
+                let moviePosterURL = singleMovie["Poster"] as? String
+                
+                if let unwrappedMovieTitle = movieTitle
+                {
+                    if let unwrappedMovieYear = movieYear
+                    {
+                        if let unwrappedMovieImbdID = movieImbdID
+                        {
+                            if let unwrappedMovieType = movieType
+                            {
+                                if let unwrappedMoviePosterURL = moviePosterURL
+                                {
+                                    
+                                    let movie = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
+                                    
+                                    print("****************************************")
+                                    print("Movie Title: \(movie.title)")
+                                    print("Movie Year: \(movie.year)")
+                                    print("Movie ImdbID: \(movie.imdbID)")
+                                    print("Movie Type: \(movie.type)")
+                                    print("Movie PosterURL: \(movie.posterURL)")
+                                    print("****************************************")
+                                    
+                                    self.movies.append(movie)
+                                    print(movie)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            Completion()
+        }
+        
+    }
+    
+
+    
 }

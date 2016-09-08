@@ -18,6 +18,8 @@
 		1BF41D711D80C3710093A000 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41D6D1D80C3710093A000 /* LaunchScreen.storyboard */; };
 		1BF41D721D80C3710093A000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41D6F1D80C3710093A000 /* Main.storyboard */; };
 		1BF41D741D80C3800093A000 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41D731D80C3800093A000 /* Info.plist */; };
+		1BF41DC81D81F5B10093A000 /* FirstCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41DC71D81F5B10093A000 /* FirstCollectionViewController.swift */; };
+		1BF41DCA1D81FF5A0093A000 /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41DC91D81FF5A0093A000 /* FirstCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		1BF41D6E1D80C3710093A000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		1BF41D701D80C3710093A000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		1BF41D731D80C3800093A000 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		1BF41DC71D81F5B10093A000 /* FirstCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		1BF41DC91D81FF5A0093A000 /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				1BF41D571D80C2F10093A000 /* Assets.xcassets */,
 				1BF41D581D80C2F10093A000 /* Movie.swift */,
 				1BF41D591D80C2F10093A000 /* MovieDataStore.swift */,
+				1BF41DC71D81F5B10093A000 /* FirstCollectionViewController.swift */,
+				1BF41DC91D81FF5A0093A000 /* FirstCollectionViewCell.swift */,
 				1BF41D5A1D80C2F10093A000 /* OMDBAPIClient.swift */,
 				1BF41D5B1D80C2F10093A000 /* ViewController.swift */,
 				1BF41D6D1D80C3710093A000 /* LaunchScreen.storyboard */,
@@ -267,9 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF41DCA1D81FF5A0093A000 /* FirstCollectionViewCell.swift in Sources */,
 				1BF41D611D80C2F10093A000 /* ViewController.swift in Sources */,
 				1BF41D5E1D80C2F10093A000 /* Movie.swift in Sources */,
 				1BF41D5C1D80C2F10093A000 /* AppDelegate.swift in Sources */,
+				1BF41DC81D81F5B10093A000 /* FirstCollectionViewController.swift in Sources */,
 				1BF41D601D80C2F10093A000 /* OMDBAPIClient.swift in Sources */,
 				1BF41D5F1D80C2F10093A000 /* MovieDataStore.swift in Sources */,
 			);

@@ -10,17 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
   
-//    let store = MovieDataStore.sharedInstance
+    let store = MovieDataStore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//
+
 //        let randomNum = arc4random_uniform(UInt32(store.movieSearchTerms.count))
 //        
 //        OMDBAPIClient.getMovieResultsFromSearch(store.movieSearchTerms[Int(randomNum)]) {_ in
 //            print("it worked")
 //        }
+        store.getMoviesWithCompletion { 
+            print("this worked!")
+        }
+        
         
         
     }
