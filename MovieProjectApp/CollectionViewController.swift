@@ -8,23 +8,33 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
+    var imageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //view.backgroundColor = UIColor.redColor()
+        collectionView?.backgroundColor = UIColor.whiteColor()
       
         self.navigationItem.titleView = self.searchBar;
-        searchBar.delegate = self
-        
-       
-//        searchBar.placeholder = "BEGIN SEARCH"
+        self.searchBar.delegate = self
+        self.searchBar.placeholder = "BEGIN SEARCH"
     
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        store.getMoviesWithCompletion {
+//            print("this worked!")
+//            //print(self.store.movies.count)
+//        }
+        print(store.movies.count)
+        
+        collectionView?.reloadData()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -48,22 +58,36 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return self.store.movies.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
     
+        //cell.contentView.addSubview(imageView)
+        
         // Configure the cell
     
         return cell
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!) { (arrayOfDictonary) in
+            print(arrayOfDictonary)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    
 
     // MARK: UICollectionViewDelegate
 
@@ -97,3 +121,4 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     */
 
 }
+

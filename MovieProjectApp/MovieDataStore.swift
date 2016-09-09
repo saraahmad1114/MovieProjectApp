@@ -47,7 +47,6 @@ class MovieDataStore
                             {
                                 if let unwrappedMoviePosterURL = moviePosterURL
                                 {
-                                    
                                     let movie = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
                                     
                                     print("****************************************")
@@ -59,7 +58,7 @@ class MovieDataStore
                                     print("****************************************")
                                     
                                     self.movies.append(movie)
-                                    print(movie)
+                                    print(self.movies.count)
                                 }
                             }
                         }

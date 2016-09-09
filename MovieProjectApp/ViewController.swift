@@ -16,9 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        store.getMoviesWithCompletion {
-            print("this worked!")
-        }
+//        store.getMoviesWithCompletion {
+//            print("this worked!")
+//        }
     }
 
     override func didReceiveMemoryWarning() {

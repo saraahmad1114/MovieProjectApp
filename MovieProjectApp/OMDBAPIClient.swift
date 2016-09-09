@@ -53,7 +53,7 @@ class OMDBAPIClient
                 
                 guard let unwrappedSearchArrayOfDictionaries = searchArrayOfDictionaries else {print("Something went wrong"); return}
                 
-                //print(unwrappedSearchArrayOfDictionaries)
+                print(unwrappedSearchArrayOfDictionaries)
                 
                 for singleDictionary in unwrappedSearchArrayOfDictionaries
                 {
