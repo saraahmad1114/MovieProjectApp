@@ -14,12 +14,11 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
-    var imageView = UIImageView()
+    //var imageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.backgroundColor = UIColor.redColor()
         collectionView?.backgroundColor = UIColor.whiteColor()
       
         self.navigationItem.titleView = self.searchBar;
@@ -29,7 +28,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         // Register cell classes
 //        store.getMoviesWithCompletion {
 //            print("this worked!")
-//            //print(self.store.movies.count)
+//            print(self.store.movies.count)
 //        }
         print(store.movies.count)
         
@@ -72,20 +71,22 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
         //cell.contentView.addSubview(imageView)
         
-        // Configure the cell
+        //Configure the cell
     
         return cell
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!) { (arrayOfDictonary) in
-            print(arrayOfDictonary)
+        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!) { (arrayOfDictonaries) in
+            print(arrayOfDictonaries)
         }
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
+    
     
     
 
