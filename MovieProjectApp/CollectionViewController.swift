@@ -12,8 +12,10 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    //@IBOutlet weak var imageInCell: UIImageView!
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
+    var totalCountOfCells = 0
     //var imageView = UIImageView()
 
     override func viewDidLoad() {
@@ -25,15 +27,21 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH"
     
-        // Register cell classes
-//        store.getMoviesWithCompletion {
-//            print("this worked!")
-//            print(self.store.movies.count)
-//        }
-        print(store.movies.count)
+        //BOTH ARE RETURNING ZERO!
+//        print("**********************************TOTAL COUNT BEFORE")
+//        print(store.movies.count)
+//        print("**********************************TOTAL COUNT BEFORE")
         
-        collectionView?.reloadData()
+        store.getMoviesWithCompletion {
+            print("this worked!")
+            self.totalCountOfCells = self.store.movies.count
+            print(self.totalCountOfCells)
+        }
         
+        //BOTH ARE RETURNING ZERO!
+//        print("**********************************TOTAL COUNT AFTER")
+//        print(store.movies.count)
+//        print("**********************************TOTAL COUNT AFTER")
 
         // Do any additional setup after loading the view.
     }
@@ -63,19 +71,26 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.store.movies.count
+        //return self.store.movies.count is not working and its return ZERO!
+//        self.totalCountOfCells = 10
+        return self.totalCountOfCells
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
-    
-        //cell.contentView.addSubview(imageView)
         
-        //Configure the cell
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
+        
+        
+//        if let url = NSURL(string: store.movies[indexPath.row].posterURL) {
+//            if let data = NSData(contentsOfURL: url) {
+//               self.imageInCell.image = UIImage(data: data)
+//            }        
+//        }
+
         return cell
     }
     
+    //search button works! 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!) { (arrayOfDictonaries) in
             print(arrayOfDictonaries)
