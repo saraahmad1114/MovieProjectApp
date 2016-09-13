@@ -18,6 +18,7 @@
 		1BF41E5A1D830E5B0093A000 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E561D830E5B0093A000 /* ViewController.swift */; };
 		1BF41E5D1D830E980093A000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41E5B1D830E980093A000 /* Main.storyboard */; };
 		1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E5E1D8313520093A000 /* CollectionViewController.swift */; };
+		1BF41E611D871A450093A000 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E601D871A450093A000 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1BF41E561D830E5B0093A000 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1BF41E5C1D830E980093A000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BF41E5E1D8313520093A000 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1BF41E601D871A450093A000 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				1BF41E561D830E5B0093A000 /* ViewController.swift */,
 				1BF41E2C1D830E380093A000 /* Assets.xcassets */,
 				1BF41E5B1D830E980093A000 /* Main.storyboard */,
+				1BF41E601D871A450093A000 /* ImageCollectionViewCell.swift */,
 				1BF41E5E1D8313520093A000 /* CollectionViewController.swift */,
 				1BF41E2E1D830E380093A000 /* LaunchScreen.storyboard */,
 				1BF41E311D830E380093A000 /* Info.plist */,
@@ -271,6 +274,7 @@
 				1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */,
 				1BF41E5A1D830E5B0093A000 /* ViewController.swift in Sources */,
 				1BF41E571D830E5B0093A000 /* Movie.swift in Sources */,
+				1BF41E611D871A450093A000 /* ImageCollectionViewCell.swift in Sources */,
 				1BF41E591D830E5B0093A000 /* OMDBAPIClient.swift in Sources */,
 				1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */,
 				1BF41E581D830E5B0093A000 /* MovieDataStore.swift in Sources */,

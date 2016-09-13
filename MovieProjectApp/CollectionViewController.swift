@@ -12,38 +12,52 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
 
-    //@IBOutlet weak var imageInCell: UIImageView!
+    @IBOutlet weak var imageInsideCell: UIImageView!
+        
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
-    var totalCountOfCells = 0
-    //var imageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = UIColor.whiteColor()
-      
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
-        self.searchBar.placeholder = "BEGIN SEARCH"
-    
-        //BOTH ARE RETURNING ZERO!
-//        print("**********************************TOTAL COUNT BEFORE")
-//        print(store.movies.count)
-//        print("**********************************TOTAL COUNT BEFORE")
+        self.searchBar.placeholder = "BEGIN SEARCH HERE"
         
-        store.getMoviesWithCompletion {
-            print("this worked!")
-            self.totalCountOfCells = self.store.movies.count
-            print(self.totalCountOfCells)
+//        The Second API call works fine!
+//        OMDBAPIClient.getDescriptiveMovieResultsFromSearch("tt2488496") { (descriptiveDictionary) in
+//            print("***************************")
+//            print(descriptiveDictionary)
+//            print("***************************\n\n")
+//        }
+//        The Second Function from the DataStore works just fine!
+//        store.getDescriptiveMovieInformationWith { (descriptiveArray) in
+//            print("***************************")
+//            print(descriptiveArray)
+//            print("***************************")
+//        }
+//       The third API Call works fine!
+//        OMDBAPIClient.getMovieFullPlotWith("tt2488496") { (descriptiveDictionary) in
+//            print("***************************")
+//            print(descriptiveDictionary)
+//            print("***************************\n\n")
+//        }
+        
+        store.getDescriptiveMovieFullPlotWith { (descriptiveArray) in
+            print("***************************")
+            print(descriptiveArray)
+            print("***************************")
         }
         
-        //BOTH ARE RETURNING ZERO!
-//        print("**********************************TOTAL COUNT AFTER")
-//        print(store.movies.count)
-//        print("**********************************TOTAL COUNT AFTER")
-
-        // Do any additional setup after loading the view.
+        
+        store.getMoviesWithCompletion {_ in
+            NSOperationQueue.mainQueue().addOperationWithBlock({
+                print("This worked!")
+                self.collectionView?.reloadData()
+            })
+        }
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,22 +85,49 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        //return self.store.movies.count is not working and its return ZERO!
-//        self.totalCountOfCells = 10
-        return self.totalCountOfCells
+        return self.store.movies.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
+//        cell.backgroundColor = UIColor.redColor()
         
-//        if let url = NSURL(string: store.movies[indexPath.row].posterURL) {
-//            if let data = NSData(contentsOfURL: url) {
-//               self.imageInCell.image = UIImage(data: data)
-//            }        
+        //print("CELLLLLLL STUFFFFFF!!!")
+        
+//        NSOperationQueue.mainQueue().addOperationWithBlock({
+//            print("This worked!")
+//            self.collectionView?.reloadData()
+        //})
+        
+        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
+            if let data = NSData(contentsOfURL: url) {
+               //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
+                cell.imageInCell.image = UIImage(data: data)
+            }        
+        }
+        
+//          })
+        
+//        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
+//        
+//        var url = self.store.movies[indexPath.row].posterURL
+//        
+//        var urls = NSURL(string: url)
+//        
+//        guard let unwrappedURL = urls else {print("AN ERROR OCCURRED HERE")}
+//        
+//        var data = NSData(contentsOfURL: unwrappedURL)
+//        
+//        self.imageInsideCell.sd.setImageWithURL(data, completed: block)
+//        if let url = NSURL(string: self.store[indexPath.row].posterURL) {
+//            if let data = NSData(contentsOfURL: url){
+//                cell.imageInsideCell.contentMode = UIViewContentMode.ScaleAspectFit
+//                cell.imageInsideCell = UIImage(data: data)
+//            }
 //        }
-
+//
         return cell
     }
     
