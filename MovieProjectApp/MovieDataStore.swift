@@ -20,7 +20,6 @@ class MovieDataStore
     
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "batman", "star wars", "superman"]
     
-    
     //First API Call
     func getMoviesWithCompletion(Completion: (NSArray) -> ())
     {
@@ -127,19 +126,30 @@ class MovieDataStore
             let movieFullPlotimbdID = fullPlotMovieDictionary["imdbID"] as? String
             let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
-            if let unwrappedMovieTitle = movieFullPlotTitle {
-                if let unwrappedMovieimbdID = movieFullPlotimbdID {
-                    if let unwrappedMovieFullPlot = movieFullPlot {
+            if let unwrappedTitle = movieFullPlotTitle {
+                
+                print(unwrappedTitle)
+                
+                if let unwrappedimbdID = movieFullPlotimbdID {
+                    
+                    print(unwrappedimbdID)
+                    
+                    if let unwrappedFullPlot = movieFullPlot {
                         
-                        let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedMovieTitle , fullPlot: unwrappedMovieFullPlot, imdbID: unwrappedMovieimbdID)
+                        print(unwrappedFullPlot)
                         
-                         self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
+                        let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedTitle, fullPlot: unwrappedFullPlot, imdbID: unwrappedimbdID)
+                        
+//                         self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
                         
                         print("********************************************")
-                        print("Descriptive Movie Title: \(descriptiveMovieWithFullPlot.title)")
-                        print("Descriptive Movie imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
-                        print("Descriptive Movie Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
+                        print("Descriptive Title: \(descriptiveMovieWithFullPlot.title)")
+                        print("Descriptive imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
+                        print("Descriptive Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
                         print("********************************************")
+                        
+                        self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
+
 
                     }
                 }
