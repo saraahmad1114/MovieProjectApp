@@ -12,8 +12,8 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
 
-    @IBOutlet weak var imageInsideCell: UIImageView!
-        
+//    @IBOutlet weak var imageInsideCell: UIImageView!
+    
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
 
@@ -25,13 +25,12 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
    
-        store.getMoviesWithCompletion {_ in
+        store.getMoviesWithCompletion(store.pageNum) { (movieArray) in
             NSOperationQueue.mainQueue().addOperationWithBlock({
-                print("This worked!")
-                self.collectionView?.reloadData()
+            print("This worked!")
+            self.collectionView?.reloadData()
             })
         }
-     
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,23 +65,13 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
-//        cell.backgroundColor = UIColor.redColor()
-        
-        //print("CELLLLLLL STUFFFFFF!!!")
-        
-//        NSOperationQueue.mainQueue().addOperationWithBlock({
-//            print("This worked!")
-//            self.collectionView?.reloadData()
-        //})
-        
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
                 cell.imageInCell.image = UIImage(data: data)
             }        
         }
-        
-//          })
+
         
 //        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
 //        
@@ -107,8 +96,28 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
     //search button works! 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!) { (arrayOfDictonaries) in
-            print(arrayOfDictonaries)
+//        self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
+//
+//        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: store.pageNum) { (arrayOfDictionaries) in
+//            self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
+//            OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum, completion: { (nextArrayOfDictionaries) in
+//                print("*******************************")
+//                print(nextArrayOfDictionaries)
+//                print("*******************************")
+//            })
+        //}
+        //self.store.retrieveNextPageOfMovieInformation()
+//        self.store.movies.removeAll()
+//        self.store.retrieveNextPageOfMovieInformation()
+//        self.store.getMoviesWithCompletion(self.store.pageNum) { (newArrayOfMovies) in
+//            print("This worked!")
+//        }
+        
+        
+        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum) { (arrayOfDictionaries) in
+            print("*********************************")
+            print(arrayOfDictionaries)
+            print("*********************************")
         }
     }
     
@@ -116,9 +125,19 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         searchBar.resignFirstResponder()
     }
     
-    
-    
-    
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == store.movies.count - 1 //&& (searchBar.text?.isEmpty)!
+        {
+            self.store.retrieveNextPageOfMovieInformation()
+            self.store.getMoviesWithCompletion(self.store.pageNum, Completion: { (arrayOfDictionaries) in
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    self.collectionView?.reloadData()
+                })
+                
+                print("This worked!")
+            })
+        }
+    }
 
     // MARK: UICollectionViewDelegate
 

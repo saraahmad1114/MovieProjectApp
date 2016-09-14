@@ -17,15 +17,16 @@ class MovieDataStore
     var movies : [Movie] = []
     var descriptiveMovieArray : [Movie] = []
     var descriptiveMovieFullPlotArray :[Movie] = []
+    var pageNum = 1
     
-    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "batman", "star wars", "superman"]
+    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     
     //First API Call
-    func getMoviesWithCompletion(Completion: (NSArray) -> ())
+    func getMoviesWithCompletion(pageNum: Int, Completion: (NSArray) -> ())
     {
         let randomNumber = arc4random_uniform(UInt32(movieSearchTerms.count))
         
-        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)]) { (arrayOfMovies) in
+        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)], page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
                 let movieTitle = singleMovie["Title"] as? String
@@ -58,7 +59,6 @@ class MovieDataStore
             }
 
             Completion(self.movies)
-            print(self.movies.count)
         }
         
 }
@@ -66,7 +66,6 @@ class MovieDataStore
     func getDescriptiveMovieInformationWith(movieID: String, Completion: (NSArray) -> ())
     {
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movieID) { (descriptiveResponseDictionary) in
-            
             //casting the information from the json dictionary correctly
             let desMovieTitle = descriptiveResponseDictionary["Title"] as? String
             let desMovieYear = descriptiveResponseDictionary["Year"] as? String
@@ -126,35 +125,32 @@ class MovieDataStore
             let movieFullPlotimbdID = fullPlotMovieDictionary["imdbID"] as? String
             let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
-            if let unwrappedTitle = movieFullPlotTitle {
-                
-                //print(unwrappedTitle) - printing out an unwrapped value
-                
-                if let unwrappedimbdID = movieFullPlotimbdID {
-                    
-                   // print(unwrappedimbdID) - printing out an unwrapped value
-                    
-                    if let unwrappedFullPlot = movieFullPlot {
-                        
-                       // print(unwrappedFullPlot) - printing out an unwrapped value 
-                        
-                        let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedTitle, fullPlot: unwrappedFullPlot, imdbID: unwrappedimbdID)
-                        
-                         self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
-                        
-                        print("********************************************")
-                        print("Descriptive Title: \(descriptiveMovieWithFullPlot.title)")
-                        print("Descriptive imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
-                        print("Descriptive Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
-                        print("********************************************")
-                        
-                    }
-                }
-            }
+            guard let
+                unwrappedTitle = movieFullPlotTitle,
+                unwrappedimbdID = movieFullPlotimbdID,
+                unwrappedFullPlot = movieFullPlot
+                else {print("AN ERROR OCCURRED HERE"); return}
             
+                let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedTitle, fullPlot: unwrappedFullPlot, imdbID: unwrappedimbdID)
+                        
+                self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
+                        
+                print("********************************************")
+                print("Descriptive Title: \(descriptiveMovieWithFullPlot.title)")
+                print("Descriptive imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
+                print("Descriptive Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
+                print("********************************************")
+                        
         }
         
         Completion(self.descriptiveMovieFullPlotArray)
+        
+        }
+    
+    //pagination Function
+    func retrieveNextPageOfMovieInformation()
+    {
+        self.pageNum += 1
     }
 
     

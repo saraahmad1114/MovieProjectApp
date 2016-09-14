@@ -10,24 +10,30 @@ import Foundation
 
 class OMDBAPIClient
 {
+    let store = MovieDataStore.sharedInstance
+    
     //first API call to get information for the first View Controller
-    class func getMovieResultsFromSearch(query: String, completion:(NSArray)-> ()) {
+    class func getMovieResultsFromSearch(query: String, page: Int, completion:(NSArray)-> ()) {
         
         var dictionaryArray : [[String: String]] = []
         
+        //&r=json&page=\(store.pageNum)
+        
         var numResults: Int = 0
         
-        var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)"
+        var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         //take the regular database URL
         
         if movieDatabaseURL.containsString(" "){
             
-            movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        
         }
+        
         let nsurl = NSURL(string: movieDatabaseURL)
         //convert the url into an NSURL
         
-        guard let unwrappedMovieDataBaseURL = nsurl else {print("This is wrong"); return}
+        guard let unwrappedMovieDataBaseURL = nsurl else {print("AN ERROR OCCURRED HERE!"); return}
         //unwrapped the NSURL version of the URL
         
         let session = NSURLSession.sharedSession()
@@ -145,9 +151,6 @@ class OMDBAPIClient
                 guard let unwrappedResponseDictionary = castedResponseDictionary else {print("This did not work!"); return}
                 
                 movieDictionary = unwrappedResponseDictionary
-                
-                //print(movieDictionary)
-                //information prints out fine!
                 
             }
             completion(movieDictionary)
