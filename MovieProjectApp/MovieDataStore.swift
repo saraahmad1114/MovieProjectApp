@@ -63,9 +63,9 @@ class MovieDataStore
         
 }
     //Second API Call
-    func getDescriptiveMovieInformationWith(Completion: (NSArray) -> ())
+    func getDescriptiveMovieInformationWith(movieID: String, Completion: (NSArray) -> ())
     {
-        OMDBAPIClient.getDescriptiveMovieResultsFromSearch("tt0088263") { (descriptiveResponseDictionary) in
+        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movieID) { (descriptiveResponseDictionary) in
             
             //casting the information from the json dictionary correctly
             let desMovieTitle = descriptiveResponseDictionary["Title"] as? String
@@ -101,15 +101,15 @@ class MovieDataStore
             
             //print out statements for checks 
             print("********************************************")
-            print("Descriptive Movie Title: \(descriptiveMovieObject.title)")
-            print("Descriptive Movie Year: \(descriptiveMovieObject.year)")
-            print("Descriptive Movie Director: \(descriptiveMovieObject.director)")
-            print("Descriptive Movie Writers: \(descriptiveMovieObject.writers)")
-            print("Descriptive Movie Actors: \(descriptiveMovieObject.actors)")
-            print("Descriptive Movie ShortPlot: \(descriptiveMovieObject.shortPlot)")
-            print("Descriptive Movie imbdID: \(descriptiveMovieObject.imdbID)")
-            print("Descriptive Movie imbdRating: \(descriptiveMovieObject.imdbRating)")
-            print("Descriptive Movie PosterURL: \(descriptiveMovieObject.posterURL)")
+            print("Title: \(descriptiveMovieObject.title)")
+            print("Year: \(descriptiveMovieObject.year)")
+            print("Director: \(descriptiveMovieObject.director)")
+            print("Writers: \(descriptiveMovieObject.writers)")
+            print("Actors: \(descriptiveMovieObject.actors)")
+            print("ShortPlot: \(descriptiveMovieObject.shortPlot)")
+            print("imbdID: \(descriptiveMovieObject.imdbID)")
+            print("imbdRating: \(descriptiveMovieObject.imdbRating)")
+            print("PosterURL: \(descriptiveMovieObject.posterURL)")
             print("********************************************")
             
         }
@@ -118,9 +118,9 @@ class MovieDataStore
     }
     
     //Third API Call
-    func getDescriptiveMovieFullPlotWith(Completion: (NSArray) -> ())
+    func getDescriptiveMovieFullPlotWith(movieID: String, Completion: (NSArray) -> ())
     {
-        OMDBAPIClient.getMovieFullPlotWith("tt0088263") { (fullPlotMovieDictionary) in
+        OMDBAPIClient.getMovieFullPlotWith(movieID) { (fullPlotMovieDictionary) in
             
             let movieFullPlotTitle = fullPlotMovieDictionary["Title"] as? String
             let movieFullPlotimbdID = fullPlotMovieDictionary["imdbID"] as? String
@@ -128,19 +128,19 @@ class MovieDataStore
             
             if let unwrappedTitle = movieFullPlotTitle {
                 
-                print(unwrappedTitle)
+                //print(unwrappedTitle) - printing out an unwrapped value
                 
                 if let unwrappedimbdID = movieFullPlotimbdID {
                     
-                    print(unwrappedimbdID)
+                   // print(unwrappedimbdID) - printing out an unwrapped value
                     
                     if let unwrappedFullPlot = movieFullPlot {
                         
-                        print(unwrappedFullPlot)
+                       // print(unwrappedFullPlot) - printing out an unwrapped value 
                         
                         let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedTitle, fullPlot: unwrappedFullPlot, imdbID: unwrappedimbdID)
                         
-//                         self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
+                         self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
                         
                         print("********************************************")
                         print("Descriptive Title: \(descriptiveMovieWithFullPlot.title)")
@@ -148,33 +148,14 @@ class MovieDataStore
                         print("Descriptive Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
                         print("********************************************")
                         
-                        self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
-
-
                     }
                 }
             }
-//            guard let
-//            unwrappedMovieTitle = movieFullPlotTitle,
-//            unwrappedMovieimbdID = movieFullPlotimbdID,
-//            unwrappedMovieFullPlot = movieFullPlot
-//            
-//            else {print("AN ERROR OCCURRED HERE!"); return}
-//            
-//            let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedMovieTitle, fullPlot: unwrappedMovieFullPlot, imdbID: unwrappedMovieimbdID)
-//            
-//            self.descriptiveMovieFullPlotArray.append(descriptiveMovieWithFullPlot)
-//            
-//            print("********************************************")
-//            print("Descriptive Movie Title: \(descriptiveMovieWithFullPlot.title)")
-//            print("Descriptive Movie imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
-//            print("Descriptive Movie Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
-//            print("********************************************")
             
         }
         
         Completion(self.descriptiveMovieFullPlotArray)
     }
 
-
+    
 }

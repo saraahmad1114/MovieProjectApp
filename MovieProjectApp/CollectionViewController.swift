@@ -24,33 +24,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
-        
-//        The Second API call works fine!
-//        OMDBAPIClient.getDescriptiveMovieResultsFromSearch("tt2488496") { (descriptiveDictionary) in
-//            print("***************************")
-//            print(descriptiveDictionary)
-//            print("***************************\n\n")
-//        }
-//        The Second Function from the DataStore works just fine!
-//        store.getDescriptiveMovieInformationWith { (descriptiveArray) in
-//            print("***************************")
-//            print(descriptiveArray)
-//            print("***************************")
-//        }
-//       The third API Call works fine!
-//        OMDBAPIClient.getMovieFullPlotWith("tt2488496") { (descriptiveDictionary) in
-//            print("***************************")
-//            print(descriptiveDictionary)
-//            print("***************************\n\n")
-//        }
-        
-        store.getDescriptiveMovieFullPlotWith { (descriptiveArray) in
-            print("***************************")
-            print(descriptiveArray)
-            print("***************************")
-        }
-        
-        
+   
         store.getMoviesWithCompletion {_ in
             NSOperationQueue.mainQueue().addOperationWithBlock({
                 print("This worked!")
