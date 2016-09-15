@@ -11,12 +11,14 @@ import UIKit
 //private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
-
-//    @IBOutlet weak var imageInsideCell: UIImageView!
     
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
-
+    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
+    var randomNumber: UInt32 = 0
+    var searchActive : Bool = true
+    
+    //function begins here!!!!!!!!!!!!!!!!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,11 +26,14 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
-   
-        store.getMoviesWithCompletion(store.pageNum) { (movieArray) in
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-            print("This worked!")
-            self.collectionView?.reloadData()
+
+        
+        print("SEARCH BEGINS HERE INITIALLY")
+        randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
+        store.getMoviesWithCompletion(store.pageNum, query: self.movieSearchTerms[Int(randomNumber)]) { (movieArray) in
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                print("This worked")
+                self.collectionView?.reloadData()
             })
         }
     }
@@ -65,6 +70,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
+        guard indexPath.row <= self.store.movies.count else { return cell }
+        
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
@@ -72,30 +79,62 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
             }        
         }
 
-        
-//        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
-//        
-//        var url = self.store.movies[indexPath.row].posterURL
-//        
-//        var urls = NSURL(string: url)
-//        
-//        guard let unwrappedURL = urls else {print("AN ERROR OCCURRED HERE")}
-//        
-//        var data = NSData(contentsOfURL: unwrappedURL)
-//        
-//        self.imageInsideCell.sd.setImageWithURL(data, completed: block)
-//        if let url = NSURL(string: self.store[indexPath.row].posterURL) {
-//            if let data = NSData(contentsOfURL: url){
-//                cell.imageInsideCell.contentMode = UIViewContentMode.ScaleAspectFit
-//                cell.imageInsideCell = UIImage(data: data)
-//            }
-//        }
-//
         return cell
     }
     
-    //search button works! 
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
+    {
+          if indexPath.row == self.store.movies.count - 1
+          {
+                if searchBar.text == ""
+                {
+                    self.store.retrieveNextPageOfMovieInformation()
+                    randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
+                    self.store.getMoviesWithCompletion(self.store.pageNum, query: self.movieSearchTerms[Int(randomNumber)], Completion: { (arrayFromSearchTerm) in
+                        NSOperationQueue.mainQueue().addOperationWithBlock({
+                            self.collectionView?.reloadData()
+                        })
+                    })
+                }
+                else
+                {
+                    self.store.retrieveNextPageOfMovieInformation()
+                    self.store.getMoviesWithCompletion(self.store.pageNum, query: searchBar.text!, Completion: { (array) in
+                        NSOperationQueue.mainQueue().addOperationWithBlock({
+                            self.collectionView?.reloadData()
+                        })
+                        
+                    })
+            }
+            
+          }
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("SEARCH BUTTON WAS TAPPED")
+        self.store.movies.removeAll()
+        self.collectionView?.reloadData()
+        self.store.getMoviesWithCompletion(store.pageNum, query: searchBar.text!) { (movieArray) in
+            print("*********************************")
+            print(movieArray)
+            print("*********************************")
+            NSOperationQueue.mainQueue().addOperationWithBlock({
+                print("the movies are \(self.store.movies.count)")
+                self.collectionView?.reloadData()
+            })
+        }
+    }
+
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    //search button works! 
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 //        self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
 //
 //        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: store.pageNum) { (arrayOfDictionaries) in
@@ -112,32 +151,28 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 //        self.store.getMoviesWithCompletion(self.store.pageNum) { (newArrayOfMovies) in
 //            print("This worked!")
 //        }
-        
-        
-        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum) { (arrayOfDictionaries) in
-            print("*********************************")
-            print(arrayOfDictionaries)
-            print("*********************************")
-        }
-    }
+//        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum) { (arrayOfDictionaries) in
+//            print("*********************************")
+//            print(arrayOfDictionaries)
+//            print("*********************************")
+//self.collectionView!.deleteItemsAtIndexPaths([indexPath])
+//
+//        store.movies.removeAll()
+//        store.getMoviesWithCompletion(store.pageNum, query: searchBar.text!) { (arrayOfDictionaries) in
+//            print("*********************************")
+//            print(arrayOfDictionaries)
+//            print("*********************************")
+////            NSOperationQueue.mainQueue().addOperationWithBlock({
+////                self.collectionView?.reloadData()
+////            })
+//        }
+//        
+//    }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == store.movies.count - 1 //&& (searchBar.text?.isEmpty)!
-        {
-            self.store.retrieveNextPageOfMovieInformation()
-            self.store.getMoviesWithCompletion(self.store.pageNum, Completion: { (arrayOfDictionaries) in
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                    self.collectionView?.reloadData()
-                })
-                
-                print("This worked!")
-            })
-        }
-    }
+
+//
+
+
 
     // MARK: UICollectionViewDelegate
 
@@ -170,5 +205,5 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     }
     */
 
-}
 
+}

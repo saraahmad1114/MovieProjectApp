@@ -22,11 +22,14 @@ class MovieDataStore
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     
     //First API Call
-    func getMoviesWithCompletion(pageNum: Int, Completion: (NSArray) -> ())
+    func getMoviesWithCompletion(pageNum: Int, query: String, Completion: (NSArray) -> ())
     {
-        let randomNumber = arc4random_uniform(UInt32(movieSearchTerms.count))
+
+     //   let randomNumber = arc4random_uniform(UInt32(movieSearchTerms.count))
+
+//        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)], page: self.pageNum) { (arrayOfMovies) in
         
-        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)], page: self.pageNum) { (arrayOfMovies) in
+        OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
                 let movieTitle = singleMovie["Title"] as? String
@@ -129,6 +132,7 @@ class MovieDataStore
                 unwrappedTitle = movieFullPlotTitle,
                 unwrappedimbdID = movieFullPlotimbdID,
                 unwrappedFullPlot = movieFullPlot
+                
                 else {print("AN ERROR OCCURRED HERE"); return}
             
                 let descriptiveMovieWithFullPlot = Movie.init(title: unwrappedTitle, fullPlot: unwrappedFullPlot, imdbID: unwrappedimbdID)
@@ -140,7 +144,6 @@ class MovieDataStore
                 print("Descriptive imbdID: \(descriptiveMovieWithFullPlot.imdbID)")
                 print("Descriptive Full Plot: \(descriptiveMovieWithFullPlot.fullPlot)")
                 print("********************************************")
-                        
         }
         
         Completion(self.descriptiveMovieFullPlotArray)
