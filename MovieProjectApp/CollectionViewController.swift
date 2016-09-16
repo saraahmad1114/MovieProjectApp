@@ -43,16 +43,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -161,45 +151,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 //        }
 //    }
     
-    //search button works! 
-//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//        self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
-//
-//        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: store.pageNum) { (arrayOfDictionaries) in
-//            self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
-//            OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum, completion: { (nextArrayOfDictionaries) in
-//                print("*******************************")
-//                print(nextArrayOfDictionaries)
-//                print("*******************************")
-//            })
-        //}
-        //self.store.retrieveNextPageOfMovieInformation()
-//        self.store.movies.removeAll()
-//        self.store.retrieveNextPageOfMovieInformation()
-//        self.store.getMoviesWithCompletion(self.store.pageNum) { (newArrayOfMovies) in
-//            print("This worked!")
-//        }
-//        OMDBAPIClient.getMovieResultsFromSearch(searchBar.text!, page: self.store.pageNum) { (arrayOfDictionaries) in
-//            print("*********************************")
-//            print(arrayOfDictionaries)
-//            print("*********************************")
-//self.collectionView!.deleteItemsAtIndexPaths([indexPath])
-//
-//        store.movies.removeAll()
-//        store.getMoviesWithCompletion(store.pageNum, query: searchBar.text!) { (arrayOfDictionaries) in
-//            print("*********************************")
-//            print(arrayOfDictionaries)
-//            print("*********************************")
-////            NSOperationQueue.mainQueue().addOperationWithBlock({
-////                self.collectionView?.reloadData()
-////            })
-//        }
-//        
-//    }
     
-
-//
-
 
 
     // MARK: UICollectionViewDelegate
