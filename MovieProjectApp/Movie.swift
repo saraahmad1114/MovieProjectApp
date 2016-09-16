@@ -10,17 +10,17 @@ import Foundation
 
 class Movie
 {
-    let title: String
-    let year: String
-    let director: String?
-    let writers: String?
-    let actors: String?
-    let fullPlot: String?
-    let shortPlot: String?
-    let imdbID: String
-    let type: String
-    let imdbRating: String?
-    let posterURL: String
+    var title: String
+    var year: String
+    var director: String?
+    var writers: String?
+    var actors: String?
+    var fullPlot: String?
+    var shortPlot: String?
+    var imdbID: String
+    var type: String
+    var imdbRating: String?
+    var posterURL: String
     
     //designated initializer
     init(title: String, year: String, director: String, writers: String, actors: String, fullPlot: String, shortPlot: String, imdbID: String, type: String, imdbRating: String, posterURL: String)

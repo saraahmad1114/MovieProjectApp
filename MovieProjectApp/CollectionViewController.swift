@@ -145,21 +145,21 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 //    }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "descriptiveMovieInformation") {
-            
-            let destinationVC = segue.destinationViewController as? DetailViewController
-            let path = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-            
-            for id in self.store.descriptiveMovieArray.imdbID
-            {
-                if self.store.descriptiveMovieArray.imbdID == self.store.movies[(path?.row)!].imdbID
-                {
-                    destinationVC?.movieObject = store.descriptiveMovieArray[(path?.row)!]
-                }
-            }
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if (segue.identifier == "descriptiveMovieInformation") {
+//            
+//            let destinationVC = segue.destinationViewController as? DetailViewController
+//            let path = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
+//            
+//            for id in self.store.descriptiveMovieArray.imdbID
+//            {
+//                if self.store.descriptiveMovieArray.imbdID == self.store.movies[(path?.row)!].imdbID
+//                {
+//                    destinationVC?.movieObject = store.descriptiveMovieArray[(path?.row)!]
+//                }
+//            }
+//        }
+//    }
     
     //search button works! 
 //    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
