@@ -12,6 +12,8 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
+   
+    @IBOutlet var pictureColl: UICollectionView!
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
@@ -135,23 +137,24 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 //    }
     
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if (segue.identifier == "descriptiveMovieInformation") {
-//            
-//            let destinationVC = segue.destinationViewController as? DetailViewController
-//            let path = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-//            
-//            for id in self.store.descriptiveMovieArray.imdbID
-//            {
-//                if self.store.descriptiveMovieArray.imbdID == self.store.movies[(path?.row)!].imdbID
-//                {
-//                    destinationVC?.movieObject = store.descriptiveMovieArray[(path?.row)!]
-//                }
-//            }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "descriptiveMovieInformation" {
+            
+            let destinationVC = segue.destinationViewController as? DetailViewController
+            let path = pictureColl.indexPathForCell(sender as! UICollectionViewCell)
+            destinationVC?.movieObject = store.movies[(path?.row)!]
+            
+                }
+            }
+    
+//
+//    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        print("Going through this function")
+////        let cell = collectionView.cellForItemAtIndexPath(indexPath)!
+////        self.performSegueWithIdentifier("descriptiveMovieInformation", sender: self)
 //        }
-//    }
-    
-    
+//        
+    }
 
 
     // MARK: UICollectionViewDelegate
@@ -186,4 +189,4 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     */
 
 
-}
+
