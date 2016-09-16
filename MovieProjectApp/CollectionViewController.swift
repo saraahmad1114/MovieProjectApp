@@ -125,17 +125,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         searchBar.resignFirstResponder()
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "SendDataSegue" {
-//            if let destination = segue.destinationViewController as? SecondViewController {
-//                
-//                let path = tableView.indexPathForSelectedRow
-//                let cell = tableView.cellForRowAtIndexPath(path!)
-//                destination.viaSegue = (cell?.textLabel?.text!)!
-//            }
-//        }
-//    }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "descriptiveMovieInformation" {
@@ -147,14 +136,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 }
             }
     
-//
-//    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        print("Going through this function")
-////        let cell = collectionView.cellForItemAtIndexPath(indexPath)!
-////        self.performSegueWithIdentifier("descriptiveMovieInformation", sender: self)
-//        }
-//        
-    }
+
 
 
     // MARK: UICollectionViewDelegate
@@ -190,3 +172,4 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
 
 
+}

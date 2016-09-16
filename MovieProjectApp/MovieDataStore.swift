@@ -84,6 +84,14 @@ class MovieDataStore
                 movie.actors = unwrappedDesMovieActors
                 movie.shortPlot = unwrappedDesMovieShortPlot
                 movie.imdbRating = unwrappedDesMovieimbdRating
+            
+                print("******************************************")
+                print("Movie Director: \(movie.director)")
+                print("Movie writers: \(movie.writers)")
+                print("Movie actors: \(movie.actors)")
+                print("Movie shortPlot: \(movie.shortPlot)")
+                print("Movie imdbRating: \(movie.imdbRating)")
+                print("******************************************")
         }
         
         Completion(true)
@@ -98,11 +106,15 @@ class MovieDataStore
             
             guard let
                 
-                unwrappedFullPlot = movieFullPlot
+            unwrappedFullPlot = movieFullPlot
             
-                else {print("AN ERROR OCCURRED HERE"); return}
+            else {print("AN ERROR OCCURRED HERE"); return}
             
-                movie.fullPlot = unwrappedFullPlot
+            movie.fullPlot = unwrappedFullPlot
+            
+            print("******************************************")
+            print("Movie FullPlot: \(movie.fullPlot)")
+            print("******************************************")
     
         }
         
