@@ -22,13 +22,9 @@ class MovieDataStore
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     
     //First API Call
+    // 1
     func getMoviesWithCompletion(pageNum: Int, query: String, Completion: (NSArray) -> ())
     {
-
-     //   let randomNumber = arc4random_uniform(UInt32(movieSearchTerms.count))
-
-//        OMDBAPIClient.getMovieResultsFromSearch(self.movieSearchTerms[Int(randomNumber)], page: self.pageNum) { (arrayOfMovies) in
-        
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
@@ -66,9 +62,10 @@ class MovieDataStore
         
 }
     //Second API Call
-    func getDescriptiveMovieInformationWith(movieID: String, Completion: (NSArray) -> ())
+    func getDescriptiveMovieInformationWith(movie: Movie, Completion: (__Reply__act_get_state_t) -> ())
     {
-        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movieID) { (descriptiveResponseDictionary) in
+        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movie.imdbID) { (descriptiveResponseDictionary) in
+            
             //casting the information from the json dictionary correctly
             let desMovieTitle = descriptiveResponseDictionary["Title"] as? String
             let desMovieYear = descriptiveResponseDictionary["Year"] as? String
@@ -120,9 +117,9 @@ class MovieDataStore
     }
     
     //Third API Call
-    func getDescriptiveMovieFullPlotWith(movieID: String, Completion: (NSArray) -> ())
+    func getDescriptiveMovieFullPlotWith(imdbID: Movie, Completion: (NSArray) -> ())
     {
-        OMDBAPIClient.getMovieFullPlotWith(movieID) { (fullPlotMovieDictionary) in
+        OMDBAPIClient.getMovieFullPlotWith(String(imdbID)) { (fullPlotMovieDictionary) in
             
             let movieFullPlotTitle = fullPlotMovieDictionary["Title"] as? String
             let movieFullPlotimbdID = fullPlotMovieDictionary["imdbID"] as? String

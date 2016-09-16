@@ -133,6 +133,34 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         searchBar.resignFirstResponder()
     }
     
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "SendDataSegue" {
+//            if let destination = segue.destinationViewController as? SecondViewController {
+//                
+//                let path = tableView.indexPathForSelectedRow
+//                let cell = tableView.cellForRowAtIndexPath(path!)
+//                destination.viaSegue = (cell?.textLabel?.text!)!
+//            }
+//        }
+//    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "descriptiveMovieInformation") {
+            
+            let destinationVC = segue.destinationViewController as? DetailViewController
+            let path = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
+            
+            for id in self.store.descriptiveMovieArray.imdbID
+            {
+                if self.store.descriptiveMovieArray.imbdID == self.store.movies[(path?.row)!].imdbID
+                {
+                    destinationVC?.movieObject = store.descriptiveMovieArray[(path?.row)!]
+                }
+            }
+        }
+    }
+    
     //search button works! 
 //    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 //        self.store.retrieveNextPageOfMovieInformation(self.store.pageNum)
