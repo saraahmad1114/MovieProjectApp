@@ -4,6 +4,6 @@
     <entity name="Movie" syncable="YES"/>
     <elements>
         <element name="Movie" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="Favorites" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="Favorites" positionX="-549" positionY="-18" width="128" height="45"/>
     </elements>
 </model>
