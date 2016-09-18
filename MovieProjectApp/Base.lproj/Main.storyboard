@@ -125,7 +125,7 @@
                                 <rect key="frame" x="465" y="504" width="102" height="30"/>
                                 <state key="normal" title="Full Plot"/>
                                 <connections>
-                                    <segue destination="k3x-QG-u9o" kind="show" id="zpe-8G-QD2"/>
+                                    <segue destination="k3x-QG-u9o" kind="show" identifier="fullPlotSegue" id="zpe-8G-QD2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Actors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fK-Oe-fVV">

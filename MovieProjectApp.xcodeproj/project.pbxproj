@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1BD88C331D8C2E2C0026616B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD88C321D8C2E2C0026616B /* DetailViewController.swift */; };
+		1BEC53161D8F1C4400F11D2B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEC53151D8F1C4400F11D2B /* CoreData.framework */; };
+		1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */; };
 		1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E251D830E380093A000 /* AppDelegate.swift */; };
 		1BF41E2D1D830E380093A000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41E2C1D830E380093A000 /* Assets.xcassets */; };
 		1BF41E301D830E380093A000 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41E2E1D830E380093A000 /* LaunchScreen.storyboard */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		1BD88C321D8C2E2C0026616B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1BEC53151D8F1C4400F11D2B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1BEC53181D8F1E0500F11D2B /* MovieProjectApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieProjectApp.xcdatamodel; sourceTree = "<group>"; };
 		1BF41E221D830E380093A000 /* MovieProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF41E251D830E380093A000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BF41E2C1D830E380093A000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BEC53161D8F1C4400F11D2B /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,7 @@
 		1BF41E191D830E380093A000 = {
 			isa = PBXGroup;
 			children = (
+				1BEC53151D8F1C4400F11D2B /* CoreData.framework */,
 				1BF41E241D830E380093A000 /* MovieProjectApp */,
 				1BF41E391D830E380093A000 /* MovieProjectAppTests */,
 				1BF41E441D830E380093A000 /* MovieProjectAppUITests */,
@@ -110,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF41E251D830E380093A000 /* AppDelegate.swift */,
+				1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */,
 				1BF41E531D830E5B0093A000 /* Movie.swift */,
 				1BF41E541D830E5B0093A000 /* MovieDataStore.swift */,
 				1BF41E551D830E5B0093A000 /* OMDBAPIClient.swift */,
@@ -274,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */,
 				1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */,
 				1BF41E5A1D830E5B0093A000 /* ViewController.swift in Sources */,
 				1BF41E571D830E5B0093A000 /* Movie.swift in Sources */,
@@ -527,6 +535,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BEC53181D8F1E0500F11D2B /* MovieProjectApp.xcdatamodel */,
+			);
+			currentVersion = 1BEC53181D8F1E0500F11D2B /* MovieProjectApp.xcdatamodel */;
+			path = MovieProjectApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1BF41E1A1D830E380093A000 /* Project object */;
 }
