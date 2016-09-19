@@ -38,14 +38,46 @@ class DetailViewController: UIViewController {
         
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.blackColor()
+        self.titleLabel.textColor = UIColor.yellowColor()
+        self.yearLabel.textColor = UIColor.yellowColor()
+        self.directorLabel.textColor = UIColor.yellowColor()
+        self.writersLabel.textColor = UIColor.yellowColor()
+        self.actorsLabel.textColor = UIColor.yellowColor()
+        self.shortPlotLabel.textColor = UIColor.yellowColor()
+        self.imdbIDLabel.textColor = UIColor.yellowColor()
+        self.typeLabel.textColor = UIColor.yellowColor()
+        self.imdbRating.textColor = UIColor.yellowColor()
+        
+//        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
+//            if let data = NSData(contentsOfURL: url) {
+//                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
+//                cell.imageInCell.image = UIImage(data: data)
+        
+//        if let url = NSURL(string: unwra.posterURL)
+//        {
+//            if let data = NSData(contentsOfURL: url)
+//            {
+//                
+//            }
+//        }
+        
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
             if isWorking
             {
             NSOperationQueue.mainQueue().addOperationWithBlock({
-                print("This worked")
+                print("THE CORRECT MOVIE IS PRINTINT OUT")
             
+                if let url = NSURL(string: unwrappedMovieObject.posterURL)
+                {
+                    if let data = NSData(contentsOfURL: url)
+                    {
+                        self.topImage.image = UIImage.init(data: data)
+                    }
+                }
+                
                 self.titleLabel.text = unwrappedMovieObject.title
                 self.yearLabel.text = unwrappedMovieObject.year
                 self.imdbIDLabel.text = unwrappedMovieObject.imdbID
@@ -74,14 +106,8 @@ class DetailViewController: UIViewController {
                 print("An Error occured!")
             }
         })
-            
         
     }
-
-        
-     
-
-        
         // Do any additional setup after loading the view.
 
     override func didReceiveMemoryWarning() {
@@ -89,11 +115,31 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func fullPlotButtonTapped(sender: AnyObject) {
+        
+//        if segue.identifier == "fullPlotSegue" {
+////            if let destinationVC = segue.destinationViewController as?
+//        }
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "fullPlotSegue" {
+            if let destinationVC = segue.destinationViewController as? PlotViewController
+            {
+                destinationVC.plotMovieObject = movieObject
+            }
+            
+           }
+    }
 
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

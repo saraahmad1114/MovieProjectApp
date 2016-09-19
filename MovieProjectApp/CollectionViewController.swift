@@ -24,7 +24,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.blackColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
@@ -38,6 +38,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 self.collectionView?.reloadData()
             })
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,7 +77,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
     {
-          if indexPath.row == self.store.movies.count - 1
+         if indexPath.row == self.store.movies.count - 1
+//            if self.store.movies.count >= 10
           {
                 if searchBar.text == ""
                 {
