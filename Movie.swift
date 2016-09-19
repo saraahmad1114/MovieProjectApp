@@ -13,6 +13,13 @@ import CoreData
 class Movie: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+
+//    convenience init(text: String, isCorrect: Bool, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+//        let entity = NSEntityDescription.entityForName("Alternative", inManagedObjectContext: context)!
+//        self.init(entity: entity, insertIntoManagedObjectContext: context)
+//        self.text = text
+//        self.isCorrect = isCorrect
+//    }
     
     convenience init(entity: NSEntityDescription, context: NSManagedObjectContext) {
 
