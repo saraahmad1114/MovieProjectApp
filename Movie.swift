@@ -21,8 +21,25 @@ class Movie: NSManagedObject {
 //        self.isCorrect = isCorrect
 //    }
     
-    convenience init(entity: NSEntityDescription, context: NSManagedObjectContext) {
-
-        self.init(entity: entity, context: context)
+//    convenience init(entity: NSEntityDescription, context: NSManagedObjectContext) {
+//
+//        self.init(entity: entity, context: context)
+//    }
+    
+//    convenience init(title: String, year: String, imdbID: String, type: String, posterURL: String, managedObjectContext: NSManagedObjectContext) {
+//        
+//        self.init(managedObjectContext: managedObjectContext)
+//        
+//        self.title = title
+//        self.year = year
+//        self.imdbID = imdbID
+//        self.type = type
+//        self.posterURL = posterURL
+//    }
+    
+    convenience init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?, title: String, year: String, imdbID: String, type: String, posterURL: String) {
+        
+        self.init(entity: entity, insertIntoManagedObjectContext: context, title: title, year: year, imdbID: imdbID, type: type, posterURL: posterURL)
+        
     }
 }

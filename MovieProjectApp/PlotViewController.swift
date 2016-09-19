@@ -12,7 +12,7 @@ class PlotViewController: UIViewController {
     
     let store = MovieDataStore.sharedInstance
     
-    var plotMovieObject : Movie?
+    var plotMovieObject : NSManagedObject?
 
     @IBOutlet weak var plotLabelUpdated: UILabel!
     

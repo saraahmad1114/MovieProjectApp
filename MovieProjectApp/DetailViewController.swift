@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     
     let store = MovieDataStore.sharedInstance
     
-    var movieObject : Movie?
+    var movieObject : NSManagedObject?
     
     @IBOutlet weak var topImage: UIImageView!
     

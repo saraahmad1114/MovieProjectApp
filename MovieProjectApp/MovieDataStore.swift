@@ -14,7 +14,7 @@ class MovieDataStore
     static let sharedInstance = MovieDataStore()
     private init() {}
     
-    var movies : [Movie] = []
+    var movies : [NSManagedObject] = []
     var pageNum = 1
     
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
@@ -101,7 +101,9 @@ class MovieDataStore
                 
                     else {print("ERROR OCCURRED HERE!"); return}
                 
-                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
+//                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
+                
+                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL, managedObjectContext: NSManagedObjectContext)
                 
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
@@ -120,7 +122,7 @@ class MovieDataStore
         
 }
     //Second API Call
-    func getDescriptiveMovieInformationWith(movie: Movie, Completion: (Bool) -> ())
+    func getDescriptiveMovieInformationWith(movie: NSManagedObject, Completion: (Bool) -> ())
     {
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movie.imdbID) { (descriptiveResponseDictionary) in
             
@@ -159,7 +161,7 @@ class MovieDataStore
     }
     
     //Third API Call
-    func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: (Bool) -> ())
+    func getDescriptiveMovieFullPlotWith(movie: NSManagedObject, Completion: (Bool) -> ())
     {
         OMDBAPIClient.getMovieFullPlotWith(movie.imdbID) { (fullPlotMovieDictionary) in
             
