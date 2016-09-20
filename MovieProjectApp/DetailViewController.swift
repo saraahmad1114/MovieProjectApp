@@ -58,7 +58,6 @@ class DetailViewController: UIViewController {
 //        {
 //            if let data = NSData(contentsOfURL: url)
 //            {
-//                
 //            }
 //        }
         
@@ -70,7 +69,9 @@ class DetailViewController: UIViewController {
             NSOperationQueue.mainQueue().addOperationWithBlock({
                 print("THE CORRECT MOVIE IS PRINTINT OUT")
             
-                if let url = NSURL(string: unwrappedMovieObject.posterURL)
+                guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+                
+                if let url = NSURL(string: unwrappedPosterURL)
                 {
                     if let data = NSData(contentsOfURL: url)
                     {

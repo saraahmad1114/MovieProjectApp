@@ -18,7 +18,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     var searchBar = UISearchBar()
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     var randomNumber: UInt32 = 0
-    var searchActive : Bool = true
+    //var searchActive : Bool = true
     
     //function begins here!!!!!!!!!!!!!!!!
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         guard indexPath.row <= self.store.movies.count else { return cell }
         
-        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
+        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
                 cell.imageInCell.image = UIImage(data: data)
