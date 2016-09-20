@@ -128,7 +128,7 @@ class MovieDataStore
     //Second API Call
     func getDescriptiveMovieInformationWith(movie: Movie, Completion: (Bool) -> ())
     {
-        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movie.imdbID) { (descriptiveResponseDictionary) in
+        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movie.imdbID!) { (descriptiveResponseDictionary) in
             
             let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
             let desMovieWriters = descriptiveResponseDictionary["Writer"] as? String
@@ -167,7 +167,7 @@ class MovieDataStore
     //Third API Call
     func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: (Bool) -> ())
     {
-        OMDBAPIClient.getMovieFullPlotWith(movie.imdbID) { (fullPlotMovieDictionary) in
+        OMDBAPIClient.getMovieFullPlotWith(movie.imdbID!) { (fullPlotMovieDictionary) in
             
             let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
