@@ -117,13 +117,18 @@ class DetailViewController: UIViewController {
     }
     
     
-    @IBAction func fullPlotButtonTapped(sender: AnyObject) {
+//    @IBAction func fullPlotButtonTapped(sender: AnyObject) {
+//        
+////        if segue.identifier == "fullPlotSegue" {
+//////            if let destinationVC = segue.destinationViewController as?
+////        }
+//
+//    }
+    
+    @IBAction func saveMovieTapped(sender: AnyObject) {
         
-//        if segue.identifier == "fullPlotSegue" {
-////            if let destinationVC = segue.destinationViewController as?
-//        }
-
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

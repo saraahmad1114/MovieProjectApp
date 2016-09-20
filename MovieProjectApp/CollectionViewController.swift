@@ -65,6 +65,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         guard indexPath.row <= self.store.movies.count else { return cell }
         
+//        guard self.store.movies[indexPath.row].posterURL != nil else {print("AN ERROR OCCURRED HERE"); return}
+        
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)

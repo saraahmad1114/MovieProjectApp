@@ -145,6 +145,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3Z-CQ-mkt">
+                                <rect key="frame" x="490" y="148" width="78" height="39"/>
+                                <state key="normal" title="Save Movie"/>
+                                <connections>
+                                    <action selector="saveMovieTapped:" destination="bAy-Ih-36r" eventType="touchUpInside" id="kVK-74-dDw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -280,6 +287,38 @@
             </objects>
             <point key="canvasLocation" x="2626" y="-333"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="gmo-dR-Zhk">
+            <objects>
+                <tableViewController id="U4J-KY-7f4" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hhJ-Hr-qcL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5MN-ZA-PWa">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5MN-ZA-PWa" id="oHv-d7-3U2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="U4J-KY-7f4" id="dzZ-PB-ZFj"/>
+                            <outlet property="delegate" destination="U4J-KY-7f4" id="oEe-Bt-T9v"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="XIQ-t9-245"/>
+                    <connections>
+                        <segue destination="bAy-Ih-36r" kind="show" id="ph1-8c-Cme"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXW-GM-Hgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2602" y="454"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2n5-Zq-Z8e">
             <objects>
@@ -291,6 +330,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="qe1-C9-m0w" kind="relationship" relationship="viewControllers" id="50n-MG-fCQ"/>
+                        <segue destination="U4J-KY-7f4" kind="relationship" relationship="viewControllers" id="fR3-hZ-shA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFZ-fu-7qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -298,4 +338,7 @@
             <point key="canvasLocation" x="1814" y="-333"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ph1-8c-Cme"/>
+    </inferredMetricsTieBreakers>
 </document>
