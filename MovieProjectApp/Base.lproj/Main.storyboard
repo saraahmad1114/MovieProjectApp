@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cv5-lY-whu">
-                                <rect key="frame" x="64" y="64" width="291" height="212"/>
+                                <rect key="frame" x="64" y="20" width="291" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="291" id="Uhj-FO-esE"/>
                                 </constraints>
@@ -135,7 +135,6 @@
                                 <rect key="frame" x="242" y="513" width="55" height="30"/>
                                 <state key="normal" title="Full Plot"/>
                                 <connections>
-                                    <action selector="fullPlotButtonTapped:" destination="bAy-Ih-36r" eventType="touchUpInside" id="eb6-MC-2LJ"/>
                                     <segue destination="k3x-QG-u9o" kind="show" identifier="fullPlotSegue" id="zpe-8G-QD2"/>
                                 </connections>
                             </button>
@@ -188,6 +187,7 @@
                             <constraint firstItem="7Fl-Dw-9R1" firstAttribute="leading" secondItem="lCu-bX-ClE" secondAttribute="leading" id="ZgM-i9-bKa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uw7-IF-zBU" secondAttribute="trailing" constant="277" id="a5O-vX-gPu"/>
                             <constraint firstItem="cv5-lY-whu" firstAttribute="centerX" secondItem="BWo-Aa-tcs" secondAttribute="centerX" id="awy-JF-YPf"/>
+                            <constraint firstItem="6g9-Ez-vge" firstAttribute="top" secondItem="BX6-a6-jvr" secondAttribute="bottom" constant="8" id="bOR-aK-dP6"/>
                             <constraint firstItem="6g9-Ez-vge" firstAttribute="top" secondItem="Uw7-IF-zBU" secondAttribute="bottom" constant="36" id="bsr-xq-LeH"/>
                             <constraint firstItem="rlD-8l-Wib" firstAttribute="top" secondItem="API-5E-2GB" secondAttribute="bottom" constant="34" id="c99-C8-QZo"/>
                             <constraint firstItem="lCu-bX-ClE" firstAttribute="top" secondItem="7Fl-Dw-9R1" secondAttribute="bottom" constant="-4" id="dAD-9z-QrV"/>

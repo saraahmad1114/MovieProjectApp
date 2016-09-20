@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
     
@@ -127,6 +128,15 @@ class DetailViewController: UIViewController {
     
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
+//        let employee = NSEntityDescription.insertNewObjectForEntityForName("Employee", inManagedObjectContext: managedObjectContext) as! AAAEmployeeMO
+
+        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
+        
+        guard let unwrappedMovieObject = self.movieObject else{print("AN ERROR OCCURRED HERE"); return}
+        
+        savedMovieObject.movies?.insert(unwrappedMovieObject)
+        
+        store.saveContext()
     }
     
     

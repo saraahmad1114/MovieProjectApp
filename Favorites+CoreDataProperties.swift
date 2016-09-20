@@ -14,6 +14,6 @@ import CoreData
 
 extension Favorites {
 
-    @NSManaged var movies: NSSet?
+    @NSManaged var movies: Set<Movie>?
 
 }

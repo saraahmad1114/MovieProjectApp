@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class MovieDataStore
 {
@@ -17,8 +18,6 @@ class MovieDataStore
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
     var pageNum = 1
-    
-//    let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.first.CoreDataToUSe" in the application's documents Application Support directory.
@@ -120,13 +119,11 @@ class MovieDataStore
                 
 //                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
                 
-//                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL, managedObjectContext: NSManagedObjectContext)
+                let entity = NSEntityDescription.entityForName("Movie", inManagedObjectContext: self.managedObjectContext)
                 
-//                 self.init(entity: entity, insertIntoManagedObjectContext: context, title: title, year: year, imdbID: imdbID, type: type, posterURL: posterURL)
+                guard let unwrappedEntity = entity else {print("AN ERROR OCCURRED HERE"); return}
                 
-//                let singleMovieObject = Movie.init(context: managedObjectContext, title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL)
-                
-                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: entity, managedObjectContext: self.managedObjectContext)
+                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
                 
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
@@ -147,7 +144,9 @@ class MovieDataStore
     //Second API Call
     func getDescriptiveMovieInformationWith(movie: Movie, Completion: (Bool) -> ())
     {
-        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(movie.imdbID!) { (descriptiveResponseDictionary) in
+        guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
+        
+        OMDBAPIClient.getDescriptiveMovieResultsFromSearch(unwrappedimdbID) { (descriptiveResponseDictionary) in
             
             let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
             let desMovieWriters = descriptiveResponseDictionary["Writer"] as? String
@@ -186,7 +185,9 @@ class MovieDataStore
     //Third API Call
     func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: (Bool) -> ())
     {
-        OMDBAPIClient.getMovieFullPlotWith(movie.imdbID!) { (fullPlotMovieDictionary) in
+        guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
+        
+        OMDBAPIClient.getMovieFullPlotWith(unwrappedimdbID) { (fullPlotMovieDictionary) in
             
             let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
