@@ -80,6 +80,22 @@ class MovieDataStore
         }
     }
     
+    func fetchData ()
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Movie")
+        
+        let titleAtSort = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [titleAtSort]
+        
+        do {
+            movies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Movie]
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    }
+    
     //First API Call
     func getMoviesWithCompletion(pageNum: Int, query: String, Completion: (NSArray) -> ())
     {
