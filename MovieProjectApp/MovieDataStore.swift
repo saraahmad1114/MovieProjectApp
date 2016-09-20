@@ -15,6 +15,7 @@ class MovieDataStore
     private init() {}
     
     var movies : [Movie] = []
+    var favoriteMovies : [Favorites] = []
     var pageNum = 1
     
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
@@ -82,13 +83,13 @@ class MovieDataStore
     
     func fetchData ()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Movie")
+        let fetchRequest = NSFetchRequest(entityName: "Favorites")
         
-        let titleAtSort = NSSortDescriptor(key: "title", ascending: true)
+        let titleAtSort = NSSortDescriptor(key: "movies", ascending: true)
         fetchRequest.sortDescriptors = [titleAtSort]
         
         do {
-            movies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Movie]
+            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
             
         } catch {
             let fetchError = error as NSError
