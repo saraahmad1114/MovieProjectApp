@@ -2,7 +2,7 @@
 //  Movie+CoreDataProperties.swift
 //  MovieProjectApp
 //
-//  Created by Flatiron School on 9/19/16.
+//  Created by Flatiron School on 9/20/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -24,5 +24,6 @@ extension Movie {
     @NSManaged var title: String?
     @NSManaged var writers: String?
     @NSManaged var year: String?
+    @NSManaged var type: String?
 
 }

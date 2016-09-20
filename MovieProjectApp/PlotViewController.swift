@@ -55,5 +55,16 @@ class PlotViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+//    convenience init(title: String, year: String, type: String, imdbID: String, posterURL: String, entity: NSEntityDescription, managedObjectContext: NSManagedObjectContext)
+//    {
+//        self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+//        self.title = title
+//        self.year = year
+//        //        self.type = type
+//        self.imdbID = imdbID
+//        self.posterURL = posterURL
+//    }
 
 }

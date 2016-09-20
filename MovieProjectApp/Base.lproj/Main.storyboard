@@ -296,13 +296,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5MN-ZA-PWa">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5MN-ZA-PWa" customClass="FavoritesCellTableViewCell" customModule="MovieProjectApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5MN-ZA-PWa" id="oHv-d7-3U2">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bAy-Ih-36r" kind="show" identifier="savedMovieDetails" id="d5Z-2v-6DJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -311,9 +314,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="XIQ-t9-245"/>
-                    <connections>
-                        <segue destination="bAy-Ih-36r" kind="show" id="ph1-8c-Cme"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXW-GM-Hgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,6 +339,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ph1-8c-Cme"/>
+        <segue reference="d5Z-2v-6DJ"/>
     </inferredMetricsTieBreakers>
 </document>
