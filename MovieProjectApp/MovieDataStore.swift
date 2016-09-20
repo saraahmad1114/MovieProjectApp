@@ -105,7 +105,11 @@ class MovieDataStore
                 
 //                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL, managedObjectContext: NSManagedObjectContext)
                 
-                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, )
+//                 self.init(entity: entity, insertIntoManagedObjectContext: context, title: title, year: year, imdbID: imdbID, type: type, posterURL: posterURL)
+                
+//    let singleMovieObject = Movie.init
+                
+                let singleMovieObject = Movie.init(entity: Movie, insertIntoManagedObjectContext: managedObjectContext, title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
                 
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
