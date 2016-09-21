@@ -147,6 +147,7 @@ class DetailViewController: UIViewController {
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
         store.saveContext()
+        
         print(savedMovieObject.movies)
         print(store.favoriteMovies)
     }

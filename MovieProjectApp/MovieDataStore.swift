@@ -84,8 +84,8 @@ class MovieDataStore
     {
         let fetchRequest = NSFetchRequest(entityName: "Favorites")
         
-        let titleAtSort = NSSortDescriptor(key: "movies", ascending: true)
-        fetchRequest.sortDescriptors = [titleAtSort]
+        //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
+        //fetchRequest.sortDescriptors = [movieAtSort]
         
         do {
             favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]

@@ -14,12 +14,31 @@ class FavoritesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        store.fetchData()
+        NSOperationQueue.mainQueue().addOperationWithBlock { 
+            self.tableView.reloadData()
+        }
 
+        print("table count: \(self.store.favoriteMovies.count)")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        store.fetchData()
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+        self.tableView.reloadData()
+        print("********************************")
+        print(self.store.favoriteMovies.count)
+        print("********************************")
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,17 +56,29 @@ class FavoritesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.store.favoriteMovies.count
+        
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
+    
+        let favoritesIndex = self.store.favoriteMovies[indexPath.row]
+        
+        if let url = NSURL(string: (favoritesIndex.movies!.first?.posterURL)!)
+        {
+            if let data = NSData(contentsOfURL: url)
+            {
+                cell.moviePicture.image = UIImage.init(data: data)
+            }
+        }
+        
+        cell.updateYearLabel.text = favoritesIndex.movies?.first?.year
+        cell.updateTitleLabel.text = favoritesIndex.movies?.first?.title
+        cell.updateimdbRatingLabel.text = favoritesIndex.movies?.first?.imdbRating
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
