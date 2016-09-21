@@ -12,20 +12,18 @@ class FavoritesCellTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var moviePicture: UIImageView!
+    
     @IBOutlet weak var updateTitleLabel: UILabel!
     
     @IBOutlet weak var updateYearLabel: UILabel!
     
     @IBOutlet weak var updateimdbRatingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-//        var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-//        label.center = CGPointMake(160, 284)
-//        label.textAlignment = NSTextAlignment.Center
-////        label.text = "I'am a test label"
-//        self.tableView.addSubview(label)
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

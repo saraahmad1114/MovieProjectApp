@@ -65,6 +65,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         guard indexPath.row <= self.store.movies.count else { return cell }
         
+        
+        
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
@@ -78,7 +80,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
     {
          if indexPath.row == self.store.movies.count - 1
-//            if self.store.movies.count >= 10
           {
                 if searchBar.text == ""
                 {

@@ -78,7 +78,46 @@ class FavoritesTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == UITableViewCellEditingStyle.Delete
+        {
+            let managedObjectContext = store.managedObjectContext
+            managedObjectContext.deleteObject(store.favoriteMovies[indexPath.row])
+            
+            store.favoriteMovies.removeAtIndex(indexPath.row)
+            store.saveContext()
+            
+            self.tableView.reloadData()
+        }
+    }
 
+    //savedMovieDetails
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "savedMovieDetails"
+        {
+            let cell = sender as! UITableViewCell
+            
+            guard let neededCell = self.tableView.indexPathForCell(cell) else {print("ERROR OCCURRED HERE"); return }
+            
+            let indexPath: NSIndexPath = neededCell
+            let destinationVC = segue.destinationViewController as? DetailViewController
+            
+            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies!.first
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

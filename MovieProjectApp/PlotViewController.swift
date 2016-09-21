@@ -12,6 +12,7 @@ class PlotViewController: UIViewController {
     
     let store = MovieDataStore.sharedInstance
     
+    @IBOutlet weak var topLabel: UILabel!
     var plotMovieObject : Movie?
 
     @IBOutlet weak var plotLabelUpdated: UILabel!
@@ -21,6 +22,7 @@ class PlotViewController: UIViewController {
 
         self.view.backgroundColor = UIColor.blackColor()
         self.plotLabelUpdated.textColor = UIColor.yellowColor()
+        self.topLabel.textColor = UIColor.yellowColor()
         
         guard let unwrappedMovieObject = plotMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
@@ -57,14 +59,6 @@ class PlotViewController: UIViewController {
     */
     
     
-//    convenience init(title: String, year: String, type: String, imdbID: String, posterURL: String, entity: NSEntityDescription, managedObjectContext: NSManagedObjectContext)
-//    {
-//        self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
-//        self.title = title
-//        self.year = year
-//        //        self.type = type
-//        self.imdbID = imdbID
-//        self.posterURL = posterURL
-//    }
+
 
 }
