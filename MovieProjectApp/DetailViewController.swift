@@ -35,6 +35,8 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var imdbRating: UILabel!
     
+    @IBOutlet weak var stackViewLabel: UIStackView!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -49,6 +51,13 @@ class DetailViewController: UIViewController {
         self.imdbIDLabel.textColor = UIColor.yellowColor()
         self.typeLabel.textColor = UIColor.yellowColor()
         self.imdbRating.textColor = UIColor.yellowColor()
+       
+        stackViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackViewLabel.topAnchor.constraintEqualToAnchor(self.topImage.bottomAnchor, constant: 5).active = true
+        stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
+        stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
+        stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
+
         
 //        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
 //            if let data = NSData(contentsOfURL: url) {
@@ -129,7 +138,8 @@ class DetailViewController: UIViewController {
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
 //        let employee = NSEntityDescription.insertNewObjectForEntityForName("Employee", inManagedObjectContext: managedObjectContext) as! AAAEmployeeMO
-
+        print("This movie was saved to favorites")
+        //print(store.favoriteMovies)
         let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
         
         guard let unwrappedMovieObject = self.movieObject else{print("AN ERROR OCCURRED HERE"); return}
@@ -137,6 +147,8 @@ class DetailViewController: UIViewController {
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
         store.saveContext()
+        print(savedMovieObject.movies)
+        print(store.favoriteMovies)
     }
     
     
