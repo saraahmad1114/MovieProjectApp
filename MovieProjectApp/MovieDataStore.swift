@@ -177,9 +177,10 @@ class MovieDataStore
                 print("Movie shortPlot: \(movie.shortPlot)")
                 print("Movie imdbRating: \(movie.imdbRating)")
                 print("******************************************")
+            Completion(true)
+
         }
         
-        Completion(true)
     }
     
     //Third API Call
@@ -202,10 +203,10 @@ class MovieDataStore
             print("******************************************")
             print("Movie FullPlot: \(movie.fullPlot)")
             print("******************************************")
-    
+            Completion(true)
         }
         
-        Completion(true)
+//        Completion(true)
         
         }
     

@@ -74,19 +74,22 @@ class DetailViewController: UIViewController {
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
         
-        dispatch_async(dispatch_get_main_queue(),{
+//        dispatch_async(dispatch_get_main_queue(),{
             self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
                 if isWorking
                 {
-                    
-                        print("THE CORRECT MOVIE IS PRINTINT OUT")
+                    print("THE CORRECT MOVIE IS PRINTINT OUT")
                         
-                        guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+                    guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
                         
-                        if let url = NSURL(string: unwrappedPosterURL)
+//                    })
+                        //images are not appearing, look into this problem 
+                    if let url = NSURL(string: unwrappedPosterURL)
                         {
                             if let data = NSData(contentsOfURL: url)
                             {
+                                print("I have an image to display")
                                 self.topImage.image = UIImage.init(data: data)
                             }
                         }
@@ -111,7 +114,8 @@ class DetailViewController: UIViewController {
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
                         self.imdbRating.text = unwrappedRating
-                    
+                        
+                     })
                 }
                 else
                 {
@@ -119,7 +123,7 @@ class DetailViewController: UIViewController {
                 }
             })
         
-        })
+//        })
         
     }
         // Do any additional setup after loading the view.

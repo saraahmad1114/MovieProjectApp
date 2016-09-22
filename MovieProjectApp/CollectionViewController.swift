@@ -40,6 +40,11 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         }
         
     }
+    
+//    func makeItCircle() {
+//        cell.imageView.layer.masksToBounds = true
+//        cell.imageView.layer.cornerRadius  = CGFloat(roundf(Float(self.imageView.frame.size.width/2.0)))
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,6 +75,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
+                
                 cell.imageInCell.image = UIImage(data: data)
             }        
         }
