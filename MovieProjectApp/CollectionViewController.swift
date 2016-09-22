@@ -40,11 +40,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         }
         
     }
-    
-//    func makeItCircle() {
-//        cell.imageView.layer.masksToBounds = true
-//        cell.imageView.layer.cornerRadius  = CGFloat(roundf(Float(self.imageView.frame.size.width/2.0)))
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

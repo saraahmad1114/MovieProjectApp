@@ -19,12 +19,12 @@ class OMDBAPIClient
         
         //&r=json&page=\(store.pageNum)
         
-        //var numResults: Int = 0
+        var numResults: Int = 0
         
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         //take the regular database URL
         
-        if movieDatabaseURL.containsString(" "){
+        if movieDatabaseURL.containsString(" ") {
             
         movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
         
@@ -56,15 +56,9 @@ class OMDBAPIClient
                 
                 let totalResults = unwrappedResponseDictionary["totalResults"] as? String
                 
-                guard let unwrappedTotalResults = totalResults else{print("No total results given"); return}
-                
-                //numResults = Int(unwrappedTotalResults)!
-                
                 let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? NSArray
                 
                 guard let unwrappedSearchArrayOfDictionaries = searchArrayOfDictionaries else {print("Something went wrong"); return}
-                
-                //print(unwrappedSearchArrayOfDictionaries)
                 
                 for singleDictionary in unwrappedSearchArrayOfDictionaries
                 {
@@ -102,6 +96,7 @@ class OMDBAPIClient
         //creation of the request
         
         request.HTTPMethod = "GET"
+        //By Default everythiing is a GET request if you are getting information and you don't need it
         //request has an HTTPMethod of type "GET" to obtain information
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in

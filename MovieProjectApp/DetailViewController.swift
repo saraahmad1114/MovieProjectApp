@@ -59,6 +59,8 @@ class DetailViewController: UIViewController {
                         
                     guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
                     
+                    
+                    
                         if let url = NSURL(string: unwrappedPosterURL)
                         {
                             if let data  = NSData(contentsOfURL: url)
@@ -111,6 +113,8 @@ class DetailViewController: UIViewController {
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
         store.saveContext()
+//        print(savedMovieObject.movies)
+//        print(store.favoriteMovies)
     }
     
     
