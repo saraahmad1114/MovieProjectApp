@@ -59,48 +59,31 @@ class DetailViewController: UIViewController {
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
 
         
-//        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL) {
-//            if let data = NSData(contentsOfURL: url) {
-//                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
-//                cell.imageInCell.image = UIImage(data: data)
-        
-//        if let url = NSURL(string: unwra.posterURL)
-//        {
-//            if let data = NSData(contentsOfURL: url)
-//            {
-//            }
-//        }
-        
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
         
-//        dispatch_async(dispatch_get_main_queue(),{
+                NSOperationQueue.mainQueue().addOperationWithBlock({
             self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
                 if isWorking
                 {
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                         
                     guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                        
-//                    })
-                        //images are not appearing, look into this problem 
-                    if let url = NSURL(string: unwrappedPosterURL)
+                    
+                        if let url = NSURL(string: unwrappedPosterURL)
                         {
-                            if let data = NSData(contentsOfURL: url)
+                            if let data  = NSData(contentsOfURL: url)
                             {
                                 print("I have an image to display")
                                 self.topImage.image = UIImage.init(data: data)
                             }
                         }
-                        
                         self.titleLabel.text = unwrappedMovieObject.title
                         self.yearLabel.text = unwrappedMovieObject.year
                         self.imdbIDLabel.text = unwrappedMovieObject.imdbID
                         self.typeLabel.text = unwrappedMovieObject.type
                         
                         guard let
-                            
                             unwrappedDirector = unwrappedMovieObject.director,
                             unwrappedWriters = unwrappedMovieObject.writers,
                             unwrappedActors = unwrappedMovieObject.actors,
@@ -114,8 +97,6 @@ class DetailViewController: UIViewController {
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
                         self.imdbRating.text = unwrappedRating
-                        
-                     })
                 }
                 else
                 {
@@ -123,7 +104,7 @@ class DetailViewController: UIViewController {
                 }
             })
         
-//        })
+        })
         
     }
         // Do any additional setup after loading the view.
@@ -132,21 +113,9 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-//    @IBAction func fullPlotButtonTapped(sender: AnyObject) {
-//        
-////        if segue.identifier == "fullPlotSegue" {
-//////            if let destinationVC = segue.destinationViewController as?
-////        }
-//
-//    }
-    
+
     @IBAction func saveMovieTapped(sender: AnyObject) {
-        
-//        let employee = NSEntityDescription.insertNewObjectForEntityForName("Employee", inManagedObjectContext: managedObjectContext) as! AAAEmployeeMO
-        print("This movie was saved to favorites")
-        //print(store.favoriteMovies)
+
         let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
         
         guard let unwrappedMovieObject = self.movieObject else{print("AN ERROR OCCURRED HERE"); return}
@@ -154,9 +123,8 @@ class DetailViewController: UIViewController {
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
         store.saveContext()
-        
-        print(savedMovieObject.movies)
-        print(store.favoriteMovies)
+//        print(savedMovieObject.movies)
+//        print(store.favoriteMovies)
     }
     
     
