@@ -19,7 +19,7 @@ class OMDBAPIClient
         
         //&r=json&page=\(store.pageNum)
         
-        var numResults: Int = 0
+        //var numResults: Int = 0
         
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         //take the regular database URL
@@ -58,7 +58,7 @@ class OMDBAPIClient
                 
                 guard let unwrappedTotalResults = totalResults else{print("No total results given"); return}
                 
-                numResults = Int(unwrappedTotalResults)!
+                //numResults = Int(unwrappedTotalResults)!
                 
                 let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? NSArray
                 
