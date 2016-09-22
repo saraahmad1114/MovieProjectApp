@@ -12,29 +12,18 @@ import CoreData
 class DetailViewController: UIViewController {
     
     let store = MovieDataStore.sharedInstance
-    
     var movieObject : Movie?
     
     @IBOutlet weak var topImage: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var yearLabel: UILabel!
-  
     @IBOutlet weak var directorLabel: UILabel!
-   
     @IBOutlet weak var writersLabel: UILabel!
-   
     @IBOutlet weak var actorsLabel: UILabel!
-  
     @IBOutlet weak var shortPlotLabel: UILabel!
-    
     @IBOutlet weak var imdbIDLabel: UILabel!
-    
     @IBOutlet weak var typeLabel: UILabel!
-    
     @IBOutlet weak var imdbRating: UILabel!
-    
     @IBOutlet weak var stackViewLabel: UIStackView!
     
     override func viewDidLoad() {
@@ -57,8 +46,8 @@ class DetailViewController: UIViewController {
         stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
         stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
-
         
+        //unwrapped Movie Object
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
         
@@ -119,24 +108,18 @@ class DetailViewController: UIViewController {
         let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
         
         guard let unwrappedMovieObject = self.movieObject else{print("AN ERROR OCCURRED HERE"); return}
-        
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
         store.saveContext()
-//        print(savedMovieObject.movies)
-//        print(store.favoriteMovies)
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "fullPlotSegue" {
-            if let destinationVC = segue.destinationViewController as? PlotViewController
-            {
+            if let destinationVC = segue.destinationViewController as? PlotViewController {
                 destinationVC.plotMovieObject = movieObject
             }
-            
-           }
+        }
     }
 
     /*
