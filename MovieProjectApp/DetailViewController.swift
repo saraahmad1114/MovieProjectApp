@@ -73,49 +73,52 @@ class DetailViewController: UIViewController {
         
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
-        self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
-            if isWorking
-            {
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                print("THE CORRECT MOVIE IS PRINTINT OUT")
-            
-                guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
-                
-                if let url = NSURL(string: unwrappedPosterURL)
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
+                if isWorking
                 {
-                    if let data = NSData(contentsOfURL: url)
-                    {
-                        self.topImage.image = UIImage.init(data: data)
-                    }
+                    
+                        print("THE CORRECT MOVIE IS PRINTINT OUT")
+                        
+                        guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+                        
+                        if let url = NSURL(string: unwrappedPosterURL)
+                        {
+                            if let data = NSData(contentsOfURL: url)
+                            {
+                                self.topImage.image = UIImage.init(data: data)
+                            }
+                        }
+                        
+                        self.titleLabel.text = unwrappedMovieObject.title
+                        self.yearLabel.text = unwrappedMovieObject.year
+                        self.imdbIDLabel.text = unwrappedMovieObject.imdbID
+                        self.typeLabel.text = unwrappedMovieObject.type
+                        
+                        guard let
+                            
+                            unwrappedDirector = unwrappedMovieObject.director,
+                            unwrappedWriters = unwrappedMovieObject.writers,
+                            unwrappedActors = unwrappedMovieObject.actors,
+                            unwrappedShortPlot = unwrappedMovieObject.shortPlot,
+                            unwrappedRating = unwrappedMovieObject.imdbRating
+                            
+                            else {print("PROPERTIES WERE UNWRAPPED"); return}
+                        
+                        self.directorLabel.text = unwrappedDirector
+                        self.writersLabel.text = unwrappedWriters
+                        self.actorsLabel.text = unwrappedActors
+                        self.shortPlotLabel.text = unwrappedShortPlot
+                        self.imdbRating.text = unwrappedRating
+                    
                 }
-                
-                self.titleLabel.text = unwrappedMovieObject.title
-                self.yearLabel.text = unwrappedMovieObject.year
-                self.imdbIDLabel.text = unwrappedMovieObject.imdbID
-                self.typeLabel.text = unwrappedMovieObject.type
-                
-                guard let
-                    
-                    unwrappedDirector = unwrappedMovieObject.director,
-                    unwrappedWriters = unwrappedMovieObject.writers,
-                    unwrappedActors = unwrappedMovieObject.actors,
-                    unwrappedShortPlot = unwrappedMovieObject.shortPlot,
-                    unwrappedRating = unwrappedMovieObject.imdbRating
-                    
-                    else {print("PROPERTIES WERE UNWRAPPED"); return}
-                
-                self.directorLabel.text = unwrappedDirector
-                self.writersLabel.text = unwrappedWriters
-                self.actorsLabel.text = unwrappedActors
-                self.shortPlotLabel.text = unwrappedShortPlot
-                self.imdbRating.text = unwrappedRating
-
+                else
+                {
+                    print("An Error occured!")
+                }
             })
-            }
-            else
-            {
-                print("An Error occured!")
-            }
+        
         })
         
     }

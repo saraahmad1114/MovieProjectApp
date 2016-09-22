@@ -232,11 +232,11 @@
             </objects>
             <point key="canvasLocation" x="5006" y="-333"/>
         </scene>
-        <!--Item-->
+        <!--Movie-->
         <scene sceneID="plV-xG-Bji">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qe1-C9-m0w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1qx-Fq-N8y"/>
+                    <tabBarItem key="tabBarItem" title="Movie" image="KcjMEdRKi" id="1qx-Fq-N8y"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6gW-y2-rlt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -362,11 +362,11 @@
             </objects>
             <point key="canvasLocation" x="1814" y="-333"/>
         </scene>
-        <!--Item-->
+        <!--Favorite-->
         <scene sceneID="d8K-MS-C4Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sVU-1X-Nfh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XIQ-t9-245"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="Five-pointed_star.svg" id="XIQ-t9-245"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Gd-FE-uhI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -382,6 +382,10 @@
             <point key="canvasLocation" x="2602" y="454"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Five-pointed_star.svg" width="360" height="360"/>
+        <image name="KcjMEdRKi" width="1000" height="1000"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d5Z-2v-6DJ"/>
     </inferredMetricsTieBreakers>
