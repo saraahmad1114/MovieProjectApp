@@ -18,12 +18,15 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     var searchBar = UISearchBar()
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     var randomNumber: UInt32 = 0
-    //var searchActive : Bool = true
+    
     
     //function begins here!!!!!!!!!!!!!!!!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        UITabBar.appearance().tintColor = UIColor.redColor()
+//        UITabBar.appearance().barTintColor = UIColor.blackColor()
+
         collectionView?.backgroundColor = UIColor.blackColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
