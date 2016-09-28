@@ -64,9 +64,12 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
         guard indexPath.row <= self.store.movies.count else { return cell }
-        
-        
-        
+        if self.store.movies[indexPath.row].posterURL == "N/A"
+        {
+            cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
+        }
+        else
+        {
         if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
@@ -74,7 +77,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 cell.imageInCell.image = UIImage(data: data)
             }        
         }
-
+        }
         return cell
     }
     
