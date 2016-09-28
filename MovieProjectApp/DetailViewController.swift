@@ -59,7 +59,11 @@ class DetailViewController: UIViewController {
                         
                     guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
                     
-                    
+                    if unwrappedPosterURL == "N/A"
+                    {
+                        self.topImage.image = UIImage.init(named: "star_PNG1592")
+                    }
+                    else {
                         if let url = NSURL(string: unwrappedPosterURL)
                         {
                             if let data  = NSData(contentsOfURL: url)
@@ -68,6 +72,7 @@ class DetailViewController: UIViewController {
                                 self.topImage.image = UIImage.init(data: data)
                             }
                         }
+                    }
                         self.titleLabel.text = unwrappedMovieObject.title
                         self.yearLabel.text = unwrappedMovieObject.year
                         self.imdbIDLabel.text = unwrappedMovieObject.imdbID
