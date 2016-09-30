@@ -24,11 +24,9 @@ class OMDBAPIClient
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         //take the regular database URL
         
-        if movieDatabaseURL.containsString(" ") {
-            
+//        if movieDatabaseURL.containsString(" ") {
         movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
-        
-        }
+//        }
         
         let nsurl = NSURL(string: movieDatabaseURL)
         //convert the url into an NSURL
@@ -36,7 +34,7 @@ class OMDBAPIClient
         guard let unwrappedMovieDataBaseURL = nsurl else {print("AN ERROR OCCURRED HERE!"); return}
         //unwrapped the NSURL version of the URL
         
-        let session = NSURLSession.sharedSession()
+//        let session = NSURLSession.sharedSession()
         //creation of the session
         
         let request = NSMutableURLRequest(URL: unwrappedMovieDataBaseURL)
@@ -45,7 +43,7 @@ class OMDBAPIClient
         request.HTTPMethod = "GET"
         //request has an HTTPMethod of type "GET" to obtain information
         
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
@@ -89,7 +87,7 @@ class OMDBAPIClient
         guard let unwrappedNSURL = nsurl else {print("ERROR OCCURRED HERE"); return}
         //unwrap the nsurl using guard let
         
-        let session = NSURLSession.sharedSession()
+        //let session = NSURLSession.sharedSession()
         //creation of the session 
         
         let request = NSMutableURLRequest(URL: unwrappedNSURL)
@@ -99,7 +97,7 @@ class OMDBAPIClient
         //By Default everythiing is a GET request if you are getting information and you don't need it
         //request has an HTTPMethod of type "GET" to obtain information
         
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
@@ -131,11 +129,11 @@ class OMDBAPIClient
         
         guard let unwrappedNSURL = nsURL else {print("AN ERROR OCCURRED HERE"); return}
         
-        let session = NSURLSession.sharedSession()
+        //let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: unwrappedNSURL)
         
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
