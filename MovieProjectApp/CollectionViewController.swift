@@ -12,27 +12,21 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-   
     @IBOutlet var pictureColl: UICollectionView!
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     var randomNumber: UInt32 = 0
-    
-    
+
     //function begins here!!!!!!!!!!!!!!!!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        UITabBar.appearance().tintColor = UIColor.redColor()
-//        UITabBar.appearance().barTintColor = UIColor.blackColor()
 
         collectionView?.backgroundColor = UIColor.blackColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
 
-        
         print("SEARCH BEGINS HERE INITIALLY")
         randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
         store.getMoviesWithCompletion(store.pageNum, query: self.movieSearchTerms[Int(randomNumber)]) { (movieArray) in
