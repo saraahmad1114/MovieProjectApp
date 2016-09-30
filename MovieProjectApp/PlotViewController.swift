@@ -31,15 +31,14 @@ class PlotViewController: UIViewController {
             {
                 dispatch_async(dispatch_get_main_queue()){
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
-                    
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
-                    
                     self.plotLabelUpdated.text = unwrappedFullPlot
-                     }
-                 }
+                }
+            }
+            else {
+                print("AN ERROR OCCURRED HERE!")
+            }
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
