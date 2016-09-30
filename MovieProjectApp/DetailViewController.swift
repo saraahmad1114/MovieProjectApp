@@ -46,61 +46,53 @@ class DetailViewController: UIViewController {
         stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
         stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
-        
         //unwrapped Movie Object
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
-        
-                NSOperationQueue.mainQueue().addOperationWithBlock({
-            self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
-                if isWorking
-                {
-                    print("THE CORRECT MOVIE IS PRINTINT OUT")
-                        
-                    guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
-                    
-                    if unwrappedPosterURL == "N/A"
-                    {
-                        self.topImage.image = UIImage.init(named: "star_PNG1592")
-                    }
-                    else {
-                        if let url = NSURL(string: unwrappedPosterURL)
-                        {
-                            if let data  = NSData(contentsOfURL: url)
-                            {
-                                print("I have an image to display")
-                                self.topImage.image = UIImage.init(data: data)
+//                NSOperationQueue.mainQueue().addOperationWithBlock({
+        dispatch_async(dispatch_get_main_queue()){
+//            self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
+//                if isWorking {
+            self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: {
+                   // print("THE CORRECT MOVIE IS PRINTINT OUT")
+                guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+                if unwrappedPosterURL == "N/A"{
+                self.topImage.image = UIImage.init(named: "star_PNG1592")
+                }
+                else {
+                    if let url = NSURL(string: unwrappedPosterURL){
+                        if let data  = NSData(contentsOfURL: url){
+                            //print("I have an image to display")
+                            self.topImage.image = UIImage.init(data: data)
                             }
                         }
                     }
-                        self.titleLabel.text = unwrappedMovieObject.title
-                        self.yearLabel.text = unwrappedMovieObject.year
-                        self.imdbIDLabel.text = unwrappedMovieObject.imdbID
-                        self.typeLabel.text = unwrappedMovieObject.type
-                        
-                        guard let
-                            unwrappedDirector = unwrappedMovieObject.director,
-                            unwrappedWriters = unwrappedMovieObject.writers,
-                            unwrappedActors = unwrappedMovieObject.actors,
-                            unwrappedShortPlot = unwrappedMovieObject.shortPlot,
-                            unwrappedRating = unwrappedMovieObject.imdbRating
+                    self.titleLabel.text = unwrappedMovieObject.title
+                    self.yearLabel.text = unwrappedMovieObject.year
+                    self.imdbIDLabel.text = unwrappedMovieObject.imdbID
+                    self.typeLabel.text = unwrappedMovieObject.type
+                    
+                    guard let
+                        unwrappedDirector = unwrappedMovieObject.director,
+                        unwrappedWriters = unwrappedMovieObject.writers,
+                        unwrappedActors = unwrappedMovieObject.actors,
+                        unwrappedShortPlot = unwrappedMovieObject.shortPlot,
+                        unwrappedRating = unwrappedMovieObject.imdbRating
                             
-                            else {print("PROPERTIES WERE UNWRAPPED"); return}
-                        
+                    else {print("PROPERTIES WERE UNWRAPPED"); return}
+                    
                         self.directorLabel.text = unwrappedDirector
                         self.writersLabel.text = unwrappedWriters
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
                         self.imdbRating.text = unwrappedRating
-                }
-                else
-                {
-                    print("An Error occured!")
-                }
+//                else
+//                {
+//                    print("An Error occured!")
+//                }
+
             })
-        
-        })
-        
+        }
     }
         // Do any additional setup after loading the view.
 

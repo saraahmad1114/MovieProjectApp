@@ -142,7 +142,7 @@ class MovieDataStore
         
 }
     //Second API Call
-    func getDescriptiveMovieInformationWith(movie: Movie, Completion: (Bool) -> ())
+    func getDescriptiveMovieInformationWith(movie: Movie, Completion: () -> ())
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         
@@ -177,8 +177,8 @@ class MovieDataStore
                 print("Movie shortPlot: \(movie.shortPlot)")
                 print("Movie imdbRating: \(movie.imdbRating)")
                 print("******************************************")
-            Completion(true)
-
+            //Completion(true)
+            Completion()
         }
         
     }
