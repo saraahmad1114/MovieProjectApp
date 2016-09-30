@@ -141,10 +141,9 @@ class MovieDataStore
         
 }
     //Second API Call
-    func getDescriptiveMovieInformationWith(movie: Movie, Completion: () -> ())
+    func getDescriptiveMovieInformationWith(movie: Movie, Completion: (Bool) -> ())
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
-        
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(unwrappedimdbID) { (descriptiveResponseDictionary) in
             
             let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
@@ -177,13 +176,13 @@ class MovieDataStore
                 print("Movie imdbRating: \(movie.imdbRating)")
                 print("******************************************")
             //Completion(true)
-            Completion()
+            Completion(true)
         }
         
     }
     
     //Third API Call
-    func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: () -> ())
+    func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: (Bool) -> ())
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         
@@ -192,7 +191,6 @@ class MovieDataStore
             let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
             guard let
-                
             unwrappedFullPlot = movieFullPlot
             
             else {print("AN ERROR OCCURRED HERE"); return}
@@ -202,11 +200,10 @@ class MovieDataStore
             print("******************************************")
             print("Movie FullPlot: \(movie.fullPlot)")
             print("******************************************")
-            Completion()
+            Completion(true)
         }
     }
-//        Completion(true)
-      
+    
      
     
     //pagination Function

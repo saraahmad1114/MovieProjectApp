@@ -46,15 +46,15 @@ class DetailViewController: UIViewController {
         stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
         stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
+        
         //unwrapped Movie Object
         guard let unwrappedMovieObject = movieObject
         else {print("AN ERROR OCCURRED HERE!"); return}
-//                NSOperationQueue.mainQueue().addOperationWithBlock({
-//        dispatch_async(dispatch_get_main_queue()){
-//            self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: { (isWorking) in
-//                if isWorking {
-        self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject, Completion: {
-            NSOperationQueue.mainQueue().addOperationWithBlock({
+
+        self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
+            if isWorking {
+
+            dispatch_async(dispatch_get_main_queue()){
                 guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
                 if unwrappedPosterURL == "N/A"{
                 self.topImage.image = UIImage.init(named: "star_PNG1592")
@@ -86,9 +86,14 @@ class DetailViewController: UIViewController {
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
                         self.imdbRating.text = unwrappedRating
-
-                })
-            })
+                }
+            }
+                
+            else{
+                
+                print("AN ERROR OCCURRED HERE")
+            }
+        }
     }
         // Do any additional setup after loading the view.
 
