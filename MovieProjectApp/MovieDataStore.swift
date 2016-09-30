@@ -86,7 +86,6 @@ class MovieDataStore
         
         //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
         //fetchRequest.sortDescriptors = [movieAtSort]
-        
         do {
             favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
             
@@ -184,7 +183,7 @@ class MovieDataStore
     }
     
     //Third API Call
-    func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: (Bool) -> ())
+    func getDescriptiveMovieFullPlotWith(movie: Movie, Completion: () -> ())
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         
@@ -203,12 +202,12 @@ class MovieDataStore
             print("******************************************")
             print("Movie FullPlot: \(movie.fullPlot)")
             print("******************************************")
-            Completion(true)
+            Completion()
         }
-        
+    }
 //        Completion(true)
-        
-        }
+      
+     
     
     //pagination Function
     func retrieveNextPageOfMovieInformation()

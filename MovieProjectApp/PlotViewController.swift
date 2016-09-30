@@ -27,16 +27,17 @@ class PlotViewController: UIViewController {
         guard let unwrappedMovieObject = plotMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
         self.store.getDescriptiveMovieFullPlotWith(unwrappedMovieObject) { (isWorking) in
-            if isWorking
-            {
-                NSOperationQueue.mainQueue().addOperationWithBlock({
+//            if isWorking
+//            {
+                dispatch_async(dispatch_get_main_queue()){
+//                NSOperationQueue.mainQueue().addOperationWithBlock({
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                     
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
                     
                     self.plotLabelUpdated.text = unwrappedFullPlot
-                     })
-                 }
+                     }
+                 //}
         }
         
         // Do any additional setup after loading the view.
