@@ -10,12 +10,10 @@ import Foundation
 
 class OneMusicAPIClient
 {
-    class func getArtistAndSongsInformationWith(title: String, artist: String, countNum: Int, completion:(NSDictionary, NSArray)-> ())
+    class func getArtistAndSongsInformationWith(title: String, artist: String, countNum: Int, completion:(NSDictionary)-> ())
     {
         var musicDictionary : [String : String] = [:]
         //This dictionary will hold all the information
-        
-        var tracksArray : [[String: String]] = []
         
         var countNum = 1
         //for pagination purposes
@@ -52,16 +50,15 @@ class OneMusicAPIClient
             {
                 guard let unwrappedResponseArray = responseArray else {print("ERROR OCCURRED HERE"); return}
                 
-                let dictionaryInArray = unwrappedResponseArray[0] as? NSDictionary
+                let dictionaryInArray = unwrappedResponseArray[0] as? [String : String]
+                
+                guard let unwrappedDictionaryInArray = dictionaryInArray else {print("AN ERROR OCCURRED HERE!"); return}
 
-                guard let unwrappedDictionaryInArray = dictionaryInArray else {print("ERROR OCCURRED HERE"); return}
-                
-                
-        
+                musicDictionary = unwrappedDictionaryInArray
             }
-        
+        completion(musicDictionary)
         }
-    
+    task.resume()
     }
 
 }
