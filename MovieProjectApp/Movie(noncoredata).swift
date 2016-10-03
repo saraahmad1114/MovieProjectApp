@@ -1,11 +1,11 @@
+//////
+//////  Movie.swift
+//////  OperatingMovieAppProject
+//////
+//////  Created by Flatiron School on 9/9/16.
+//////  Copyright © 2016 Flatiron School. All rights reserved.
+//////
 ////
-////  Movie.swift
-////  OperatingMovieAppProject
-////
-////  Created by Flatiron School on 9/9/16.
-////  Copyright © 2016 Flatiron School. All rights reserved.
-////
-//
 //import Foundation
 //
 //class Movie

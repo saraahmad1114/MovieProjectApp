@@ -110,6 +110,8 @@ class DetailViewController: UIViewController {
         
         savedMovieObject = unwrappedMovieObject
         
+        //store.saveContext()
+        
         savedMovieObject.title = unwrappedMovieObject.title
         savedMovieObject.posterURL = unwrappedMovieObject.posterURL
         savedMovieObject.year = unwrappedMovieObject.year
