@@ -16,7 +16,7 @@ class MovieDataStore
     private init() {}
     
     var movies : [Movie] = []
-    var favoriteMovies : [Favorites] = []
+    var favoriteMovies : [Movie] = []
     var pageNum = 1
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -87,12 +87,13 @@ class MovieDataStore
         //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
         //fetchRequest.sortDescriptors = [movieAtSort]
         do {
-            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
+            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Movie]
             
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
+        
     }
     
     //First API Call

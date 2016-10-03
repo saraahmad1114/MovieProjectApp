@@ -59,6 +59,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
         guard indexPath.row <= self.store.movies.count else { return cell }
+        
         if self.store.movies[indexPath.row].posterURL == "N/A"
         {
             cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
@@ -126,17 +127,17 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "descriptiveMovieInformation" {
             
-            let destinationVC = segue.destinationViewController as? DetailViewController
-            let path = pictureColl.indexPathForCell(sender as! UICollectionViewCell)
-            destinationVC?.movieObject = store.movies[(path?.row)!]
+        let destinationVC = segue.destinationViewController as? DetailViewController
+        let path = pictureColl.indexPathForCell(sender as! UICollectionViewCell)
+        destinationVC?.movieObject = store.movies[(path?.row)!]
             
-                }
-            }
+        }
+    }
     
 
 

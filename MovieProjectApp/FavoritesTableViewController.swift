@@ -37,7 +37,6 @@ class FavoritesTableViewController: UITableViewController {
         print("********************************")
         print(self.store.favoriteMovies.count)
         print("********************************")
-
         }
     }
 
@@ -60,11 +59,13 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print("trying to make a table view")
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
     
         let favoritesIndex = self.store.favoriteMovies[indexPath.row]
+        print("favorites table view count \(self.store.favoriteMovies.count)")
         
-        if let url = NSURL(string: (favoritesIndex.movies!.first?.posterURL)!)
+        if let url = NSURL(string: (favoritesIndex.posterURL)!)
         {
             if let data = NSData(contentsOfURL: url)
             {
@@ -72,9 +73,9 @@ class FavoritesTableViewController: UITableViewController {
             }
         }
         
-        cell.updateYearLabel.text = favoritesIndex.movies?.first?.year
-        cell.updateTitleLabel.text = favoritesIndex.movies?.first?.title
-        cell.updateimdbRatingLabel.text = favoritesIndex.movies?.first?.imdbRating
+        cell.updateYearLabel.text = favoritesIndex.year
+        cell.updateTitleLabel.text = favoritesIndex.title
+        cell.updateimdbRatingLabel.text = favoritesIndex.imdbRating
 
         return cell
     }
@@ -91,10 +92,9 @@ class FavoritesTableViewController: UITableViewController {
         {
             let managedObjectContext = store.managedObjectContext
             managedObjectContext.deleteObject(store.favoriteMovies[indexPath.row])
-            
+        
             store.favoriteMovies.removeAtIndex(indexPath.row)
             store.saveContext()
-            
             self.tableView.reloadData()
         }
     }
@@ -113,8 +113,7 @@ class FavoritesTableViewController: UITableViewController {
             
             let indexPath: NSIndexPath = neededCell
             let destinationVC = segue.destinationViewController as? DetailViewController
-            
-            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies!.first
+            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row]
         }
         
     }

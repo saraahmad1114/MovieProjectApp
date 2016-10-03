@@ -104,17 +104,26 @@ class DetailViewController: UIViewController {
 
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
-//        let savedMovieObject = NSEntityDescription.entityForName("Favorites", inManagedObjectContext: self.store.managedObjectContext)
+        var savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Movie", inManagedObjectContext: store.managedObjectContext) as! Movie
         
-        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
+        guard let unwrappedMovieObject = self.movieObject else { print("AN ERROR OCCURRED HERE"); return}
         
-        guard let unwrappedMovieObject = self.movieObject else{print("AN ERROR OCCURRED HERE"); return}
-        savedMovieObject.movies?.insert(unwrappedMovieObject)
+        savedMovieObject = unwrappedMovieObject
+        
+        savedMovieObject.title = unwrappedMovieObject.title
+        savedMovieObject.posterURL = unwrappedMovieObject.posterURL
+        savedMovieObject.year = unwrappedMovieObject.year
+        savedMovieObject.imdbRating = unwrappedMovieObject.imdbRating
+        
+        print("*********************************")
+        print("savedMovieObject \(savedMovieObject.title)")
+        print("savedMovieObject \(savedMovieObject.posterURL)")
+        print("savedMovieObject \(savedMovieObject.year)")
+        print("savedMovieObject \(savedMovieObject.imdbRating)")
+        print("*********************************")
         
         store.saveContext()
 
-//        print(savedMovieObject.movies)
-//        print(store.favoriteMovies)
     }
     
     
