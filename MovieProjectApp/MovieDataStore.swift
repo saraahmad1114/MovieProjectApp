@@ -124,7 +124,7 @@ class MovieDataStore
                 guard let unwrappedEntity = entity else {print("AN ERROR OCCURRED HERE"); return}
                 
                 let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
-                
+//
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
                 print("Movie Year: \(singleMovieObject.year)")
