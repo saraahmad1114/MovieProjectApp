@@ -82,7 +82,7 @@ class MovieDataStore
     
     func fetchData ()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Favorites")
+        let fetchRequest = NSFetchRequest(entityName: "Movie")
         
         //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
         //fetchRequest.sortDescriptors = [movieAtSort]

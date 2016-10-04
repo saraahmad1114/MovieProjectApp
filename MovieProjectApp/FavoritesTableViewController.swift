@@ -62,6 +62,9 @@ class FavoritesTableViewController: UITableViewController {
         let favoritesIndex = self.store.favoriteMovies[indexPath.row]
         print("favorites table view count \(self.store.favoriteMovies.count)")
         
+        
+//        guard let unwrappedFavoritesIndexPosterURL = favoritesIndex.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+        
         if let url = NSURL(string: (favoritesIndex.posterURL)!)
         {
             if let data = NSData(contentsOfURL: url)
@@ -69,6 +72,16 @@ class FavoritesTableViewController: UITableViewController {
                 cell.moviePicture.image = UIImage.init(data: data)
             }
         }
+        
+//        guard let unwrappedPoster = favoritesIndex.posterURL else {print("ERROR OCCURRED"); return}
+//        
+//        let url = NSURL(string: unwrappedPoster)
+//        
+//        guard let unwrappedURL = url else {print("ERROR OCCURRED"); return}
+//        
+//        let data = NSData(contentsOfURL: unwrappedPoster)
+//        
+//        cell.moviePicture.image
         
         cell.updateYearLabel.text = favoritesIndex.year
         cell.updateTitleLabel.text = favoritesIndex.title
