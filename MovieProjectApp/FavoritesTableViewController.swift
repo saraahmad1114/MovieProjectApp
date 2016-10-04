@@ -64,13 +64,17 @@ class FavoritesTableViewController: UITableViewController {
         
         
 //        guard let unwrappedFavoritesIndexPosterURL = favoritesIndex.posterURL else {print("AN ERROR OCCURRED HERE"); return}
+        if let neededURL = favoritesIndex.posterURL
+        {
         
-        if let url = NSURL(string: (favoritesIndex.posterURL)!)
+        if let url = NSURL(string: (neededURL))
         {
             if let data = NSData(contentsOfURL: url)
             {
                 cell.moviePicture.image = UIImage.init(data: data)
             }
+        }
+            
         }
         
 //        guard let unwrappedPoster = favoritesIndex.posterURL else {print("ERROR OCCURRED"); return}
