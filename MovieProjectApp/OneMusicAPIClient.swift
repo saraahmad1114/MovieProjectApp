@@ -15,16 +15,13 @@ class OneMusicAPIClient
         var musicDictionary : [String : String] = [:]
         //This dictionary will hold all the information
         
-        var countNum = 1
+        let countNum = 1
         //for pagination purposes
         
         var musicURL = "http://api.onemusicapi.com/20150623/release?title=\(title)&artist=\(artist)&user_key=\(Secrets.musicAPIKey)&inc=images&maxResultCount=\(countNum)"
         //music URL
         
-        if musicURL.containsString(" ") {
-            
-            musicURL = musicURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
-        }
+        musicURL = musicURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
         //when searching for the artist or the album if it contains any spaces then add the plus so that the URL works
         
         let nsurl = NSURL(string: musicURL)
