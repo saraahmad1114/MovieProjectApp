@@ -56,41 +56,74 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("trying to make a table view")
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
     
-        let favoritesIndex = self.store.favoriteMovies[indexPath.row]
-        print("favorites table view count \(self.store.favoriteMovies.count)")
         
-        
-//        guard let unwrappedFavoritesIndexPosterURL = favoritesIndex.posterURL else {print("AN ERROR OCCURRED HERE"); return}
-        if let neededURL = favoritesIndex.posterURL
-        {
-        
-        if let url = NSURL(string: (neededURL))
-        {
-            if let data = NSData(contentsOfURL: url)
-            {
-                cell.moviePicture.image = UIImage.init(data: data)
-            }
-        }
+//        NSOperationQueue.mainQueue().addOperationWithBlock { 
+        dispatch_async (dispatch_get_main_queue ()) {
             
+            let favoritesIndex = self.store.favoriteMovies[indexPath.row]
+            print("favorites table view count \(self.store.favoriteMovies.count)")
+            
+            if let neededURL = favoritesIndex.posterURL{
+                
+                if let url = NSURL(string: (neededURL)){
+                    
+                    if let data = NSData(contentsOfURL: url){
+                        
+                        cell.moviePicture.image = UIImage.init(data: data)
+                    }
+                }
+                
+            }
+            if let unwrappedYear = favoritesIndex.year {
+                cell.updateYearLabel.text = unwrappedYear
+            }
+            
+            if let unwrappedTitle = favoritesIndex.title {
+                cell.updateTitleLabel.text = unwrappedTitle
+            }
+            
+            if let unwrappedImdbRating = favoritesIndex.imdbRating {
+                cell.updateimdbRatingLabel.text = unwrappedImdbRating
+            }
+            
+            print("******************************")
+            print(cell.updateimdbRatingLabel.text)
+            print("******************************")
         }
+//        let favoritesIndex = self.store.favoriteMovies[indexPath.row]
+//        print("favorites table view count \(self.store.favoriteMovies.count)")
+//        
+//        if let neededURL = favoritesIndex.posterURL{
+//        
+//            if let url = NSURL(string: (neededURL)){
+//                
+//                if let data = NSData(contentsOfURL: url){
+//                
+//                    cell.moviePicture.image = UIImage.init(data: data)
+//                }
+//            }
+//            
+//        }
+//        //DON'T FORGET TO UNWRAP EVERYTHING GOING FORWARD!!!!!!!!!!!!
+//        
+//        if let unwrappedYear = favoritesIndex.year {
+//            cell.updateYearLabel.text = unwrappedYear
+//        }
+//        
+//            if let unwrappedTitle = favoritesIndex.title {
+//                cell.updateTitleLabel.text = unwrappedTitle
+//            }
+//    
+//                if let unwrappedImdbRating = favoritesIndex.imdbRating {
+//                cell.updateimdbRatingLabel.text = unwrappedImdbRating
+//                }
+//        print("******************************")
+//        print(favoritesIndex.imdbRating)
+//        print("******************************")
         
-//        guard let unwrappedPoster = favoritesIndex.posterURL else {print("ERROR OCCURRED"); return}
-//        
-//        let url = NSURL(string: unwrappedPoster)
-//        
-//        guard let unwrappedURL = url else {print("ERROR OCCURRED"); return}
-//        
-//        let data = NSData(contentsOfURL: unwrappedPoster)
-//        
-//        cell.moviePicture.image
-        
-        cell.updateYearLabel.text = favoritesIndex.year
-        cell.updateTitleLabel.text = favoritesIndex.title
-        cell.updateimdbRatingLabel.text = favoritesIndex.imdbRating
-
         return cell
     }
     
