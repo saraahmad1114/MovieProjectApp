@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,17 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="correctImage (1)" translatesAutoresizingMaskIntoConstraints="NO" id="VPN-Q4-lli">
-                                <rect key="frame" x="48" y="38" width="504" height="524"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="correctImage (1)" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-0V-rUR">
+                                <rect key="frame" x="151" y="74" width="299" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="GIJ-jJ-0ul"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VPN-Q4-lli" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Jyk-0y-jmD"/>
-                            <constraint firstItem="VPN-Q4-lli" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="18" id="fhz-H4-53s"/>
-                            <constraint firstItem="VPN-Q4-lli" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="28" id="xoi-lO-z0M"/>
-                            <constraint firstItem="VPN-Q4-lli" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yJ7-sj-v42"/>
+                            <constraint firstItem="oWd-0V-rUR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="38V-7I-16G"/>
+                            <constraint firstItem="oWd-0V-rUR" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="54" id="blu-ub-7oN"/>
+                            <constraint firstItem="oWd-0V-rUR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qZp-ow-lx3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="38V-7I-16G"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

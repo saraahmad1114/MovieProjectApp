@@ -11,8 +11,6 @@ import CoreData
 
 
 class Movie: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
     
         convenience init(title: String, year: String, type: String, imdbID: String, posterURL: String, entity: NSEntityDescription, managedObjectContext: NSManagedObjectContext)
         {
