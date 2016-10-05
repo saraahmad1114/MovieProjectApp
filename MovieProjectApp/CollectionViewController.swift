@@ -59,23 +59,17 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         guard indexPath.row <= self.store.movies.count else { return cell }
         
         
-        if let unwrappedPosterURL = store.movies[indexPath.row].posterURL
-        {
-        if unwrappedPosterURL == "N/A"
-//        if self.store.movies[indexPath.row].posterURL == "N/A"
-        {
-            cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
-        }
-        else
-        {
-        if let url = NSURL(string: unwrappedPosterURL) {
-            if let data = NSData(contentsOfURL: url) {
-               //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
-                
+        if let unwrappedPosterURL = store.movies[indexPath.row].posterURL {
+            if unwrappedPosterURL == "N/A" {
+                cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
+            }
+            else {
+                if let url = NSURL(string: unwrappedPosterURL) {
+                if let data = NSData(contentsOfURL: url) {
                 cell.imageInCell.image = UIImage(data: data)
-            }        
-        }
-        }
+                    }
+                }
+            }
         }
         return cell
     }

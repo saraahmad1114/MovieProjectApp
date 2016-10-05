@@ -71,8 +71,6 @@ class MovieDataStore
             do {
                 try managedObjectContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
@@ -83,9 +81,6 @@ class MovieDataStore
     func fetchData ()
     {
         let fetchRequest = NSFetchRequest(entityName: "Favorites")
-        
-        //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
-        //fetchRequest.sortDescriptors = [movieAtSort]
         do {
             favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
             
@@ -151,7 +146,6 @@ class MovieDataStore
             let desMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String
             let desMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
             
-            //unwrapping each of the of the json information
             guard let
                 unwrappedDesMovieDirector = desMovieDirector,
                 unwrappedDesMovieWriters = desMovieWriters,
