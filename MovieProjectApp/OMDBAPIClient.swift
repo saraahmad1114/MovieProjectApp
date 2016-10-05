@@ -17,16 +17,12 @@ class OMDBAPIClient
         
         var dictionaryArray : [[String: String]] = []
         
-        //&r=json&page=\(store.pageNum)
-        
         var numResults: Int = 0
         
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         //take the regular database URL
         
-//        if movieDatabaseURL.containsString(" ") {
         movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
-//        }
         
         let nsurl = NSURL(string: movieDatabaseURL)
         //convert the url into an NSURL
@@ -34,8 +30,7 @@ class OMDBAPIClient
         guard let unwrappedMovieDataBaseURL = nsurl else {print("AN ERROR OCCURRED HERE!"); return}
         //unwrapped the NSURL version of the URL
         
-//        let session = NSURLSession.sharedSession()
-        //creation of the session
+        //let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: unwrappedMovieDataBaseURL)
         //creation of the request
@@ -88,7 +83,6 @@ class OMDBAPIClient
         //unwrap the nsurl using guard let
         
         //let session = NSURLSession.sharedSession()
-        //creation of the session 
         
         let request = NSMutableURLRequest(URL: unwrappedNSURL)
         //creation of the request
@@ -108,9 +102,6 @@ class OMDBAPIClient
                 guard let unwrappedResponseDictionary = castedResponseDictionary else {print("This did not work!"); return}
                 
                 descriptiveDictionary = unwrappedResponseDictionary
-                
-               //print(descriptiveDictionary)
-               //information prints out fine! 
                 
             }
             completion(descriptiveDictionary)
