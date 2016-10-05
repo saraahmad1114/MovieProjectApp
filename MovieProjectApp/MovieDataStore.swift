@@ -117,8 +117,6 @@ class MovieDataStore
                 
                     else {print("ERROR OCCURRED HERE!"); return}
                 
-
-                
                 let entity = NSEntityDescription.entityForName("Movie", inManagedObjectContext: self.managedObjectContext)
                 
                 guard let unwrappedEntity = entity else {print("AN ERROR OCCURRED HERE"); return}
