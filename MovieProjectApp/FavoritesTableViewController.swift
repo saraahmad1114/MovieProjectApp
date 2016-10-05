@@ -59,72 +59,30 @@ class FavoritesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
     
+        //cell.moviePicture = self.store.favoriteMovies[indexPath.row].movies.posterURL
         
-//        NSOperationQueue.mainQueue().addOperationWithBlock { 
-        dispatch_async (dispatch_get_main_queue ()) {
+        var neededCell = store.favoriteMovies[indexPath.row]
+        
+        cell.updateYearLabel.text = neededCell.movies!.first!.title
+        cell.updateYearLabel.text = neededCell.movies!.first!.year
+        cell.updateimdbRatingLabel.text = neededCell.movies!.first?.imdbRating
+        
+        if let neededURL = neededCell.movies!.first!.posterURL{
             
-            let favoritesIndex = self.store.favoriteMovies[indexPath.row]
-            print("favorites table view count \(self.store.favoriteMovies.count)")
+            if let url = NSURL(string: (neededURL)){
             
-            if let neededURL = favoritesIndex.posterURL{
-                
-                if let url = NSURL(string: (neededURL)){
-                    
-                    if let data = NSData(contentsOfURL: url){
-                        
-                        cell.moviePicture.image = UIImage.init(data: data)
-                    }
-                }
-                
+            if let data = NSData(contentsOfURL: url){
+            
+            cell.moviePicture.image = UIImage.init(data: data)
             }
-            if let unwrappedYear = favoritesIndex.year {
-                cell.updateYearLabel.text = unwrappedYear
-            }
+       }
             
-            if let unwrappedTitle = favoritesIndex.title {
-                cell.updateTitleLabel.text = unwrappedTitle
-            }
-            
-            if let unwrappedImdbRating = favoritesIndex.imdbRating {
-                cell.updateimdbRatingLabel.text = unwrappedImdbRating
-            }
-            
-            print("******************************")
-            print(cell.updateimdbRatingLabel.text)
-            print("******************************")
-        }
-//        let favoritesIndex = self.store.favoriteMovies[indexPath.row]
-//        print("favorites table view count \(self.store.favoriteMovies.count)")
-//        
-//        if let neededURL = favoritesIndex.posterURL{
-//        
-//            if let url = NSURL(string: (neededURL)){
-//                
-//                if let data = NSData(contentsOfURL: url){
-//                
-//                    cell.moviePicture.image = UIImage.init(data: data)
-//                }
-//            }
-//            
-//        }
-//        //DON'T FORGET TO UNWRAP EVERYTHING GOING FORWARD!!!!!!!!!!!!
-//        
-//        if let unwrappedYear = favoritesIndex.year {
-//            cell.updateYearLabel.text = unwrappedYear
-//        }
-//        
-//            if let unwrappedTitle = favoritesIndex.title {
-//                cell.updateTitleLabel.text = unwrappedTitle
-//            }
-//    
-//                if let unwrappedImdbRating = favoritesIndex.imdbRating {
-//                cell.updateimdbRatingLabel.text = unwrappedImdbRating
-//                }
-//        print("******************************")
-//        print(favoritesIndex.imdbRating)
-//        print("******************************")
+   }
+        
+
         
         return cell
+
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
@@ -159,7 +117,7 @@ class FavoritesTableViewController: UITableViewController {
             
             let indexPath: NSIndexPath = neededCell
             let destinationVC = segue.destinationViewController as? DetailViewController
-            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row]
+            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies!.first
         }
         
     }

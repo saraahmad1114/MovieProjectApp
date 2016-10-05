@@ -104,25 +104,42 @@ class DetailViewController: UIViewController {
 
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
-        var savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Movie", inManagedObjectContext: store.managedObjectContext) as! Movie
+        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
         
         guard let unwrappedMovieObject = self.movieObject else { print("AN ERROR OCCURRED HERE"); return}
         
-        savedMovieObject = unwrappedMovieObject
+        //savedMovieObject = unwrappedMovieObject
         
-        savedMovieObject.title = unwrappedMovieObject.title
-        savedMovieObject.posterURL = unwrappedMovieObject.posterURL
-        savedMovieObject.year = unwrappedMovieObject.year
-        savedMovieObject.imdbRating = unwrappedMovieObject.imdbRating
+//        guard let
+//            unwrappedTitle = unwrappedMovieObject.title,
+//            unwrappedPosterURL = unwrappedMovieObject.posterURL,
+//            unwrappedYear = unwrappedMovieObject.year,
+//            unwrappedimdbRating = unwrappedMovieObject.imdbRating
+//            
+//            else {print("ERROR OCCURRED HERE"); return}
+//        
+//        savedMovieObject.title = unwrappedTitle
+//        savedMovieObject.posterURL = unwrappedPosterURL
+//        savedMovieObject.year = unwrappedYear
+//        savedMovieObject.imdbRating = unwrappedimdbRating
         
-        print("*********************************")
-        print("savedMovieObject \(savedMovieObject.title)")
-        print("savedMovieObject \(savedMovieObject.posterURL)")
-        print("savedMovieObject \(savedMovieObject.year)")
-        print("savedMovieObject \(savedMovieObject.imdbRating)")
-        print("*********************************")
+        savedMovieObject.movies?.insert(unwrappedMovieObject)
+        
+//        savedMovieObject.movies?.first?.title = unwrappedMovieObject.title
+//        savedMovieObject.movies?.first?.year = unwrappedMovieObject.year
+//        savedMovieObject.movies?.first?.imdbRating = unwrappedMovieObject.imdbRating
+//        savedMovieObject.movies?.first?.posterURL = unwrappedMovieObject.posterURL
+        
         
         store.saveContext()
+
+//        print("*********************************")
+//        print("savedMovieObject \(unwrappedTitle)")
+//        print("savedMovieObject \(unwrappedPosterURL)")
+//        print("savedMovieObject \(unwrappedYear)")
+//        print("savedMovieObject \(unwrappedimdbRating)")
+//        print("*********************************")
+       // store.saveContext()
 
     }
     

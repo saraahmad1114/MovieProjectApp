@@ -16,7 +16,7 @@ class MovieDataStore
     private init() {}
     
     var movies : [Movie] = []
-    var favoriteMovies : [Movie] = []
+    var favoriteMovies : [Favorites] = []
     var pageNum = 1
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -82,12 +82,12 @@ class MovieDataStore
     
     func fetchData ()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Movie")
+        let fetchRequest = NSFetchRequest(entityName: "Favorites")
         
         //let movieAtSort = NSSortDescriptor(key: "movies", ascending: true)
         //fetchRequest.sortDescriptors = [movieAtSort]
         do {
-            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Movie]
+            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
             
         } catch {
             let fetchError = error as NSError
