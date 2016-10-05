@@ -10,7 +10,6 @@ import Foundation
 
 class OMDBAPIClient
 {
-    let store = MovieDataStore.sharedInstance
     
     class func getMovieResultsFromSearch(query: String, page: Int, completion:(NSArray)-> ()) {
         
