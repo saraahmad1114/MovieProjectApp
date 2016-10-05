@@ -18,9 +18,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     var randomNumber: UInt32 = 0
 
-    //**********************************************
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.blackColor()
         self.navigationItem.titleView = self.searchBar;
@@ -38,7 +37,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource
@@ -60,18 +58,23 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         guard indexPath.row <= self.store.movies.count else { return cell }
         
-        if self.store.movies[indexPath.row].posterURL == "N/A"
+        
+        if let unwrappedPosterURL = store.movies[indexPath.row].posterURL
+        {
+        if unwrappedPosterURL == "N/A"
+//        if self.store.movies[indexPath.row].posterURL == "N/A"
         {
             cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
         }
         else
         {
-        if let url = NSURL(string: self.store.movies[indexPath.row].posterURL!) {
+        if let url = NSURL(string: unwrappedPosterURL) {
             if let data = NSData(contentsOfURL: url) {
                //ImageCollectionViewCell.imageInCell.image = UIImage(data: data)
                 
                 cell.imageInCell.image = UIImage(data: data)
             }        
+        }
         }
         }
         return cell

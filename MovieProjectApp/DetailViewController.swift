@@ -48,8 +48,7 @@ class DetailViewController: UIViewController {
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
         
         //unwrapped Movie Object
-        guard let unwrappedMovieObject = movieObject
-        else {print("AN ERROR OCCURRED HERE!"); return}
+        guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
 
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
@@ -108,38 +107,9 @@ class DetailViewController: UIViewController {
         
         guard let unwrappedMovieObject = self.movieObject else { print("AN ERROR OCCURRED HERE"); return}
         
-        //savedMovieObject = unwrappedMovieObject
-        
-//        guard let
-//            unwrappedTitle = unwrappedMovieObject.title,
-//            unwrappedPosterURL = unwrappedMovieObject.posterURL,
-//            unwrappedYear = unwrappedMovieObject.year,
-//            unwrappedimdbRating = unwrappedMovieObject.imdbRating
-//            
-//            else {print("ERROR OCCURRED HERE"); return}
-//        
-//        savedMovieObject.title = unwrappedTitle
-//        savedMovieObject.posterURL = unwrappedPosterURL
-//        savedMovieObject.year = unwrappedYear
-//        savedMovieObject.imdbRating = unwrappedimdbRating
-        
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         
-//        savedMovieObject.movies?.first?.title = unwrappedMovieObject.title
-//        savedMovieObject.movies?.first?.year = unwrappedMovieObject.year
-//        savedMovieObject.movies?.first?.imdbRating = unwrappedMovieObject.imdbRating
-//        savedMovieObject.movies?.first?.posterURL = unwrappedMovieObject.posterURL
-        
-        
         store.saveContext()
-
-//        print("*********************************")
-//        print("savedMovieObject \(unwrappedTitle)")
-//        print("savedMovieObject \(unwrappedPosterURL)")
-//        print("savedMovieObject \(unwrappedYear)")
-//        print("savedMovieObject \(unwrappedimdbRating)")
-//        print("*********************************")
-       // store.saveContext()
 
     }
     
