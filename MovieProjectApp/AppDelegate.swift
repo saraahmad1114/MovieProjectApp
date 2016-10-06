@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        iTunesAPIClient.getMovieSoundTrackFromSearch("pulp fiction") { (movieArray) in
 //            print(movieArray)
 //        }
+        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (keyFromAPI) in
+            print("******************************")
+            print(keyFromAPI)
+            print("******************************")
+
+        }
         
         return true
     }

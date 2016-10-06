@@ -10,7 +10,6 @@ import Foundation
 
 class TheDBMovieAPIClient
 {
-    
     class func getMovieTrailerFrom(query: String, completion: (String)->())
     {
         var videoKey: String = ""
