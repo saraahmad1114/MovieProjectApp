@@ -18,17 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="correctImage (1)" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-0V-rUR">
-                                <rect key="frame" x="151" y="74" width="299" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="299" id="GIJ-jJ-0ul"/>
+                                    <constraint firstAttribute="width" constant="600" id="GIJ-jJ-0ul"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oWd-0V-rUR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="38V-7I-16G"/>
-                            <constraint firstItem="oWd-0V-rUR" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="54" id="blu-ub-7oN"/>
+                            <constraint firstItem="oWd-0V-rUR" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="blu-ub-7oN"/>
                             <constraint firstItem="oWd-0V-rUR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qZp-ow-lx3"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="oWd-0V-rUR" secondAttribute="bottom" id="yCW-kd-Dlc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

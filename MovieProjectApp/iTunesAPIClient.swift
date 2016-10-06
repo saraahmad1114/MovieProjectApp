@@ -53,13 +53,10 @@ class iTunesAPIClient
                 
                  completion(resultsArrayOfDictionary)
             }
-        
         }
 
         task.resume()
-    
     }
-    
     
 }
 

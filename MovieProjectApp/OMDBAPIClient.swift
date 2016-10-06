@@ -13,9 +13,7 @@ class OMDBAPIClient
     class func getMovieResultsFromSearch(query: String, page: Int, completion:(NSArray)-> ()) {
         
         var dictionaryArray : [[String: String]] = []
-        
-        //var numResults: Int = 0
-        
+                
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         
         movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
