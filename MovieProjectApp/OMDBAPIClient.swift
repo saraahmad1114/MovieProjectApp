@@ -9,8 +9,7 @@
 import Foundation
 
 class OMDBAPIClient
-{
-    
+{    
     class func getMovieResultsFromSearch(query: String, page: Int, completion:(NSArray)-> ()) {
         
         var dictionaryArray : [[String: String]] = []
