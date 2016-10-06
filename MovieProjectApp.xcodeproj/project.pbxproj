@@ -18,6 +18,7 @@
 		1B452AE51D9EAC2B004481FE /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */; };
 		1BD88C331D8C2E2C0026616B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD88C321D8C2E2C0026616B /* DetailViewController.swift */; };
 		1BE220EA1DA5A95B00603EC8 /* iTunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */; };
+		1BE220EC1DA5D75300603EC8 /* MovieSoundtrackDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220EB1DA5D75300603EC8 /* MovieSoundtrackDataStore.swift */; };
 		1BEC53161D8F1C4400F11D2B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEC53151D8F1C4400F11D2B /* CoreData.framework */; };
 		1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */; };
 		1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E251D830E380093A000 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BD88C321D8C2E2C0026616B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesAPIClient.swift; sourceTree = "<group>"; };
+		1BE220EB1DA5D75300603EC8 /* MovieSoundtrackDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSoundtrackDataStore.swift; sourceTree = "<group>"; };
 		1BEC53151D8F1C4400F11D2B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1BEC53181D8F1E0500F11D2B /* MovieProjectApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieProjectApp.xcdatamodel; sourceTree = "<group>"; };
 		1BF41E221D830E380093A000 /* MovieProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */,
 				1B452ADA1D9D620E004481FE /* Secrets.swift */,
 				1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */,
+				1BE220EB1DA5D75300603EC8 /* MovieSoundtrackDataStore.swift */,
 				1BF41E551D830E5B0093A000 /* OMDBAPIClient.swift */,
 				1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */,
 				1BF41E251D830E380093A000 /* AppDelegate.swift */,
@@ -311,6 +314,7 @@
 				1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */,
 				1B452AE31D9EAC2B004481FE /* Favorites+CoreDataProperties.swift in Sources */,
 				1B452ADB1D9D620E004481FE /* Secrets.swift in Sources */,
+				1BE220EC1DA5D75300603EC8 /* MovieSoundtrackDataStore.swift in Sources */,
 				1BE220EA1DA5A95B00603EC8 /* iTunesAPIClient.swift in Sources */,
 				1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */,
 				1B452ADD1D9D6817004481FE /* OneMusicAPIClient.swift in Sources */,
