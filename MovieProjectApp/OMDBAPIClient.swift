@@ -14,7 +14,7 @@ class OMDBAPIClient
         
         var dictionaryArray : [[String: String]] = []
         
-        var numResults: Int = 0
+        //var numResults: Int = 0
         
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         
@@ -34,10 +34,7 @@ class OMDBAPIClient
             
             if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
             {
-                
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
-                
-                let totalResults = unwrappedResponseDictionary["totalResults"] as? String
                 
                 let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? NSArray
                 

@@ -118,13 +118,13 @@ class MovieDataStore
                 
                 let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
 
-                print("****************************************")
-                print("Movie Title: \(singleMovieObject.title)")
-                print("Movie Year: \(singleMovieObject.year)")
-                print("Movie ImdbID: \(singleMovieObject.imdbID)")
-                print("Movie Type: \(singleMovieObject.type)")
-                print("Movie PosterURL: \(singleMovieObject.posterURL)")
-                print("****************************************")
+//                print("****************************************")
+//                print("Movie Title: \(singleMovieObject.title)")
+//                print("Movie Year: \(singleMovieObject.year)")
+//                print("Movie ImdbID: \(singleMovieObject.imdbID)")
+//                print("Movie Type: \(singleMovieObject.type)")
+//                print("Movie PosterURL: \(singleMovieObject.posterURL)")
+//                print("****************************************")
                 
                 self.movies.append(singleMovieObject)
                 print(self.movies.count)
@@ -161,13 +161,13 @@ class MovieDataStore
                 movie.shortPlot = unwrappedDesMovieShortPlot
                 movie.imdbRating = unwrappedDesMovieimbdRating
             
-                print("******************************************")
-                print("Movie Director: \(movie.director)")
-                print("Movie writers: \(movie.writers)")
-                print("Movie actors: \(movie.actors)")
-                print("Movie shortPlot: \(movie.shortPlot)")
-                print("Movie imdbRating: \(movie.imdbRating)")
-                print("******************************************")
+//                print("******************************************")
+//                print("Movie Director: \(movie.director)")
+//                print("Movie writers: \(movie.writers)")
+//                print("Movie actors: \(movie.actors)")
+//                print("Movie shortPlot: \(movie.shortPlot)")
+//                print("Movie imdbRating: \(movie.imdbRating)")
+//                print("******************************************")
             //Completion(true)
             Completion(true)
         }

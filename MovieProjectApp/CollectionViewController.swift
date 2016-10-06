@@ -28,7 +28,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
         store.getMoviesWithCompletion(store.pageNum, query: self.movieSearchTerms[Int(randomNumber)]) { (movieArray) in
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                print("This worked")
+//                print("This worked")
                 self.collectionView?.reloadData()
             })
         }
@@ -90,6 +90,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 }
                 else
                 {
+//                    print("API being called")
                     self.store.retrieveNextPageOfMovieInformation()
                     self.store.getMoviesWithCompletion(self.store.pageNum, query: searchBar.text!, Completion: { (array) in
                         NSOperationQueue.mainQueue().addOperationWithBlock({
@@ -103,15 +104,15 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("SEARCH BUTTON WAS TAPPED")
+//        print("SEARCH BUTTON WAS TAPPED")
         self.store.movies.removeAll()
         self.collectionView?.reloadData()
         self.store.getMoviesWithCompletion(store.pageNum, query: searchBar.text!) { (movieArray) in
-            print("*********************************")
-            print(movieArray)
-            print("*********************************")
+//            print("*********************************")
+//            print(movieArray)
+//            print("*********************************")
             NSOperationQueue.mainQueue().addOperationWithBlock({
-                print("the movies are \(self.store.movies.count)")
+//                print("the movies are \(self.store.movies.count)")
                 self.collectionView?.reloadData()
             })
         }

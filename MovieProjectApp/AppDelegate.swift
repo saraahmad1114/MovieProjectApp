@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+//        
+//        iTunesAPIClient.getSoundTrackFromSearch("pulp fiction") { (arrayOfDictionaries) in
+//            print(arrayOfDictionaries)
+//        }
+        iTunesAPIClient.getMovieSoundTrackFromSearch("pulp fiction") { (movieArray) in
+            print(movieArray)
+        }
+        
         return true
     }
     

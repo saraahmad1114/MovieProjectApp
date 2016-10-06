@@ -8,11 +8,14 @@
 
 import Foundation
 
+//var itunesURL = "https://itunes.apple.com/search?term=\(query)+soundtrack&limit=30"
+
+
 class iTunesAPIClient
 {
-    func getSoundTrackFromSearch(query: String, completion:(NSArray)-> ())
+    class func getMovieSoundTrackFromSearch(query: String, completion:(NSArray)-> ())
     {
-        var arrayOfDictionary : [[String : String]] = []
+        var resultsArrayOfDictionary : [NSDictionary] = []
         
         var itunesURL = "https://itunes.apple.com/search?term=\(query)+soundtrack&limit=30"
         
@@ -20,38 +23,45 @@ class iTunesAPIClient
         
         let nsURL = NSURL(string: itunesURL)
         
-        guard let unwrappedNSURL = nsURL else {print("AN ERROR OCCURRED HERE"); return}
+        guard let unwrappednsURL = nsURL else {print("ERROR"); return}
         
-        let request = NSMutableURLRequest(URL: unwrappedNSURL)
+        let request = NSMutableURLRequest(URL: unwrappednsURL)
         
         request.HTTPMethod = "GET"
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error)
-            in
-        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            
             guard let unwrappedData = data else {print("Error occurred here"); return}
-
+            
             if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
             {
-                guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
+                guard let unwrappedResponseDictionary = responseDictionary else {print("ERROR"); return}
                 
-                let resultsArray = unwrappedResponseDictionary["results"] as? NSArray
+                let resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
+
+                guard let unwrappedResultsArrayOfDictionaries = resultsArrayOfDictionaries else {
+                    print("ERROR"); return}
                 
-                guard let unwrappedResultsArray = resultsArray else {print("AN ERROR OCCURRED HERE"); return}
-                
-                for singleDictionary in unwrappedResultsArray
+                for singleDictionary in unwrappedResultsArrayOfDictionaries
                 {
-                    let unwrappedSingleDictionary = singleDictionary as? [String: String]
+                    let castedSingleDictionary = singleDictionary as? NSDictionary
                     
-                    guard let unwrappedAgainSingleDictionary = unwrappedSingleDictionary else {print("This works!"); return}
+                    guard let unwrappedSingleDictionary = castedSingleDictionary else{print("ERROR"); return}
                     
-                    arrayOfDictionary.append(unwrappedAgainSingleDictionary)
-                
+                    resultsArrayOfDictionary.append(unwrappedSingleDictionary)
                 }
-                 completion(arrayOfDictionary)
+                
+                 completion(resultsArrayOfDictionary)
             }
-    
+        
         }
-         task.resume()
+
+        task.resume()
+    
     }
+    
+    
 }
+
+        
+        
