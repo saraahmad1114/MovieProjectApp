@@ -30,6 +30,13 @@ class DetailViewController: UIViewController {
         
         super.viewDidLoad()
         
+        guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
+
+        store.getTracksOfMovieWith(unwrappedMovieObject.title) { 
+            <#code#>
+        }
+        
+        
         self.view.backgroundColor = UIColor.blackColor()
         self.titleLabel.textColor = UIColor.yellowColor()
         self.yearLabel.textColor = UIColor.yellowColor()
@@ -46,9 +53,6 @@ class DetailViewController: UIViewController {
         stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
         stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
         stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
-        
-        //unwrapped Movie Object
-        guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
 
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
@@ -95,6 +99,7 @@ class DetailViewController: UIViewController {
                 
                 print("AN ERROR OCCURRED HERE")
             }
+            
         }
     }
         // Do any additional setup after loading the view.

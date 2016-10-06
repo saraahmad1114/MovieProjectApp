@@ -17,6 +17,8 @@ class MovieDataStore
     
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
+    var movieSoundTrack: MovieSoundTrack = []
+    
     var pageNum = 1
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -118,13 +120,13 @@ class MovieDataStore
                 
                 let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
 
-//                print("****************************************")
-//                print("Movie Title: \(singleMovieObject.title)")
-//                print("Movie Year: \(singleMovieObject.year)")
-//                print("Movie ImdbID: \(singleMovieObject.imdbID)")
-//                print("Movie Type: \(singleMovieObject.type)")
-//                print("Movie PosterURL: \(singleMovieObject.posterURL)")
-//                print("****************************************")
+                print("****************************************")
+                print("Movie Title: \(singleMovieObject.title)")
+                print("Movie Year: \(singleMovieObject.year)")
+                print("Movie ImdbID: \(singleMovieObject.imdbID)")
+                print("Movie Type: \(singleMovieObject.type)")
+                print("Movie PosterURL: \(singleMovieObject.posterURL)")
+                print("****************************************")
                 
                 self.movies.append(singleMovieObject)
                 print(self.movies.count)
@@ -161,14 +163,14 @@ class MovieDataStore
                 movie.shortPlot = unwrappedDesMovieShortPlot
                 movie.imdbRating = unwrappedDesMovieimbdRating
             
-//                print("******************************************")
-//                print("Movie Director: \(movie.director)")
-//                print("Movie writers: \(movie.writers)")
-//                print("Movie actors: \(movie.actors)")
-//                print("Movie shortPlot: \(movie.shortPlot)")
-//                print("Movie imdbRating: \(movie.imdbRating)")
-//                print("******************************************")
-            //Completion(true)
+                print("******************************************")
+                print("Movie Director: \(movie.director)")
+                print("Movie writers: \(movie.writers)")
+                print("Movie actors: \(movie.actors)")
+                print("Movie shortPlot: \(movie.shortPlot)")
+                print("Movie imdbRating: \(movie.imdbRating)")
+                print("******************************************")
+  
             Completion(true)
         }
         
@@ -202,6 +204,30 @@ class MovieDataStore
     {
         self.pageNum += 1
     }
+    
+    func getTracksOfMovieWith(movie: Movie, completion:(NSArray)-> ())
+    {
+        guard let unwrappedTitle = movie.title else {print("ERROR"); return}
+        
+        iTunesAPIClient.getMovieSoundTrackFromSearch(unwrappedTitle) { (arrayOfDictionaries) in
+            
+            let firstDictionary = arrayOfDictionaries[0] as? NSDictionary
+            
+            guard let unwrappedFirstDictionary = firstDictionary else {return}
+            
+            let trackCount = unwrappedFirstDictionary["trackCount"] as? Int
+            
+            guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
+            
+            for arrayOfDictionaries in 0...unwrappedTrackCount - 1
+            {
+                
+            }
+        }
+    }
+    
+    
+    
 
     
 }

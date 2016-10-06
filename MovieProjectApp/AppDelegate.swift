@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+//    let store = MovieDataStore.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        iTunesAPIClient.getMovieSoundTrackFromSearch("pulp fiction") { (movieArray) in
 //            print(movieArray)
 //        }
-        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (keyFromAPI) in
-            print("******************************")
-            print(keyFromAPI)
-            print("******************************")
-
-        }
-        
-        return true
+//        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (keyFromAPI) in
+//            print("******************************")
+//            print(keyFromAPI)
+//            print("******************************")
+//
+//        }
+//        store.getTracksOfMovieWith("", completion: <#T##() -> ()#>)
+//        return true
     }
     
     func applicationWillResignActive(application: UIApplication) {
