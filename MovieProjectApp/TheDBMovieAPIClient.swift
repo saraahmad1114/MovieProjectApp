@@ -10,15 +10,15 @@ import Foundation
 
 class TheDBMovieAPIClient
 {
-    class func getMovieTrailerFrom(query: String, completion: (String)->())
+    class func getMovieTrailerFrom(query: String, completion: (NSDictionary)->())
     {
-        var videoKey: String = ""
+        var videoInfoDictionary : [String : String] = [:]
         
-        let url = "https://api.themoviedb.org/3/movie/tt0414993/videos?api_key=\(Secrets.theMovieDBAPIKey)"
+        let movieTrailerURL = "https://api.themoviedb.org/3/movie/\(query)/videos?api_key=\(Secrets.theMovieDBAPIKey)"
         
-        let nsURL = NSURL(string: url)
+        let nsurl = NSURL(string: movieTrailerURL)
         
-        guard let unwrappednsURL = nsURL else {print("ERROR"); return}
+        guard let unwrappednsURL = nsurl else {print("ERROR OCCURRED HERE"); return}
         
         let request = NSMutableURLRequest(URL: unwrappednsURL)
         
@@ -30,28 +30,22 @@ class TheDBMovieAPIClient
             
             if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
             {
-                guard let unwrappedResponseDictionary = responseDictionary else {print("ERROR"); return}
+                guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
                 let resultsArray = unwrappedResponseDictionary["results"] as? NSArray
                 
-                guard let unwrappedResultsArray = resultsArray else {print("ERROR"); return}
+                guard let unwrappedResultsArray = resultsArray else {print("ERROR OCCURRED HERE"); return}
                 
-                let neededDictionary = unwrappedResultsArray[0] as? NSDictionary
+                let firstDictionary = unwrappedResultsArray[0] as? [String : String]
                 
-                guard let unwrappedNeededDictionary = neededDictionary else {print("ERROR"); return}
+                guard let unwrappedFirstDictionary = firstDictionary else {print("ERROR OCCURRED HERE"); return}
                 
-                let neededKey = unwrappedNeededDictionary["key"] as? String
+                videoInfoDictionary = unwrappedFirstDictionary
                 
-                guard let unwrappedNeededKey = neededKey else {print("ERROR"); return}
-                
-                videoKey = unwrappedNeededKey
-            
             }
-            completion(videoKey)
+            
+            completion(videoInfoDictionary)
         }
-        
         task.resume()
-
     }
-
 }
