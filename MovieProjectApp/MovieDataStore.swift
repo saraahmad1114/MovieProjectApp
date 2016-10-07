@@ -253,15 +253,7 @@ class MovieDataStore
         }
     }
     
-//    func getMovieTrailersWith(movie: Movie, completion: (String)-> ())
-//    {
-//        guard let unwrappedMovieImdbID = movie.imdbID else {print("ERROR OCCURRED HERE"); return}
-//        
-//        TheDBMovieAPIClient.getMovieTrailerFrom(unwrappedMovieImdbID) { (partialURLInfo) in
-//            <#code#>
-//        }
-//    
-//    }
+
     
     
     
