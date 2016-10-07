@@ -19,18 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        //this works fine 
-//        iTunesAPIClient.getMovieSoundTrackFromSearch("pulp fiction") { (movieArray) in
-//            print(movieArray)
-//        }
-//        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (keyFromAPI) in
-//            print("******************************")
-//            print(keyFromAPI)
-//            print("******************************")
-//
-//        }
-//        store.getTracksOfMovieWith("", completion: <#T##() -> ()#>)
-//        return true
+        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (neededDictionary) in
+            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
+            print(neededDictionary)
+            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
+        }
+        return true
     }
     
     func applicationWillResignActive(application: UIApplication) {

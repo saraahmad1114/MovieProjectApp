@@ -31,11 +31,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
-
-        store.getTracksOfMovieWith(unwrappedMovieObject.title) { 
-            <#code#>
-        }
-        
         
         self.view.backgroundColor = UIColor.blackColor()
         self.titleLabel.textColor = UIColor.yellowColor()

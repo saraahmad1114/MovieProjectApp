@@ -12,7 +12,7 @@ class TheDBMovieAPIClient
 {
     class func getMovieTrailerFrom(query: String, completion: (NSDictionary)->())
     {
-        var videoInfoDictionary : [String : String] = [:]
+        var videoInfoDictionary : NSDictionary = [:]
         
         let movieTrailerURL = "https://api.themoviedb.org/3/movie/\(query)/videos?api_key=\(Secrets.theMovieDBAPIKey)"
         
@@ -36,7 +36,7 @@ class TheDBMovieAPIClient
                 
                 guard let unwrappedResultsArray = resultsArray else {print("ERROR OCCURRED HERE"); return}
                 
-                let firstDictionary = unwrappedResultsArray[0] as? [String : String]
+                let firstDictionary = unwrappedResultsArray.firstObject as? NSDictionary
                 
                 guard let unwrappedFirstDictionary = firstDictionary else {print("ERROR OCCURRED HERE"); return}
                 
