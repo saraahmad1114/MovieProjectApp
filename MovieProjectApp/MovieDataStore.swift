@@ -19,6 +19,7 @@ class MovieDataStore
     var favoriteMovies : [Favorites] = []
     var movieSoundTrack: [MovieSoundTrack] = []
     
+    
     var pageNum = 1
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -212,18 +213,14 @@ class MovieDataStore
         iTunesAPIClient.getMovieSoundTrackFromSearch(unwrappedTitle) { (arrayOfDictionaries) in
             
             let firstDictionary = arrayOfDictionaries[0] as? NSDictionary
-            
-            guard let unwrappedFirstDictionary = firstDictionary else {return}
-            
+                guard let unwrappedFirstDictionary = firstDictionary else {return}
             let trackCount = unwrappedFirstDictionary["trackCount"] as? Int
+                guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
             
-            guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
-            
-            for i in 0...unwrappedTrackCount - 1
-            {
-                let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
+            for i in 0...unwrappedTrackCount - 1 {
                 
-                guard let unwrappedSingleDictionary = singleDictionary else {print("ERROR"); return}
+                let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
+                    guard let unwrappedSingleDictionary = singleDictionary else {print("ERROR"); return}
                 
                 let collectionName = unwrappedSingleDictionary["collectionName"] as? String
                 let trackName = unwrappedSingleDictionary["trackName"] as? String
@@ -255,6 +252,7 @@ class MovieDataStore
             completion(self.movieSoundTrack)
         }
     }
+    
     
     
     
