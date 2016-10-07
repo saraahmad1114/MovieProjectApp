@@ -17,7 +17,7 @@ class MovieDataStore
     
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
-    var movieSoundTrack: MovieSoundTrack = []
+    var movieSoundTrack: [MovieSoundTrack] = []
     
     var pageNum = 1
     
@@ -219,12 +219,43 @@ class MovieDataStore
             
             guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
             
-            for arrayOfDictionaries in 0...unwrappedTrackCount - 1
+            for i in 0...unwrappedTrackCount - 1
             {
+                let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
                 
+                guard let unwrappedSingleDictionary = singleDictionary else {print("ERROR"); return}
+                
+                let collectionName = unwrappedSingleDictionary["collectionName"] as? String
+                let trackName = unwrappedSingleDictionary["trackName"] as? String
+                let previewURL = unwrappedSingleDictionary["previewURL"] as? String
+                let artworkUrl30 = unwrappedSingleDictionary["artworkUrl30"] as? String
+                let trackCount = unwrappedSingleDictionary["trackCount"] as? Int
+                
+                guard let
+                    unwrappedCollectionName = collectionName,
+                    unwrappedTrackName = trackName,
+                    unwrappedPreviewURL = previewURL,
+                    unwrappedArtworkUrl30 = artworkUrl30,
+                    unwrappedTrackCount = trackCount
+                    
+                else {print("ERROR"); return}
+                
+                let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, artworkURL30: unwrappedArtworkUrl30, trackCount: unwrappedTrackCount)
+                
+                print("*************************************************************")
+                print("CollectionName: \(soundTrackMovieObject.collectionName)")
+                print("TrackName: \(soundTrackMovieObject.trackCount)")
+                print("PreviewURL: \(soundTrackMovieObject.previewURL)")
+                print("ArtworkURL30: \(soundTrackMovieObject.artworkURL30)")
+                print("TrackCount: \(soundTrackMovieObject.trackCount)")
+                print("*************************************************************")
+                
+                self.movieSoundTrack.append(soundTrackMovieObject)
             }
+            completion(self.movieSoundTrack)
         }
     }
+    
     
     
     
