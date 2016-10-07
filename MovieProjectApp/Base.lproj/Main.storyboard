@@ -210,7 +210,7 @@
                                 <rect key="frame" x="409" y="441" width="127" height="30"/>
                                 <state key="normal" title="Movie SoundTrack"/>
                                 <connections>
-                                    <segue destination="fXo-bl-YOh" kind="show" id="wek-Z0-d4b"/>
+                                    <segue destination="fXo-bl-YOh" kind="show" identifier="displayMovieSoundTrack" id="wek-Z0-d4b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -254,6 +254,16 @@
                     <view key="view" contentMode="scaleToFill" id="FpO-gP-Mcc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tlY-4r-uH4">
+                                <rect key="frame" x="161" y="72" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4D-xl-z5K">
+                                <rect key="frame" x="166" y="331" width="263" height="133"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
