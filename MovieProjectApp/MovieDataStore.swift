@@ -18,7 +18,7 @@ class MovieDataStore
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
     var movieSoundTrack: [MovieSoundTrack] = []
-    
+    var movieTrailer : [MovieTrailer] = []
     
     var pageNum = 1
     
@@ -253,7 +253,11 @@ class MovieDataStore
         }
     }
     
+    func getMovieTrailersWith (movie: Movie, completion: ()-> ())
+    {
+        
     
+    }
     
     
     

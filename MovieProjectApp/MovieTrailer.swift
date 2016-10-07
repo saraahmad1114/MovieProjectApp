@@ -10,9 +10,11 @@ import Foundation
 
 class MovieTrailer
 {
+    var movieKey: String?
     
-
-
-
-
+    init(movieKey: String)
+    {
+        self.movieKey = movieKey
+    }
+    
 }
