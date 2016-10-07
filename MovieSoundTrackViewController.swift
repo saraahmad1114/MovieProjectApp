@@ -6,4 +6,13 @@
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class MovieSoundTrackViewController: UIViewController {
+    
+    let store = MovieDataStore.sharedInstance
+    let movieObject: Movie?
+    
+    
+
+}
