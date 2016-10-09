@@ -65,7 +65,7 @@ class FavoritesTableViewController: UITableViewController {
         
         cell.updateYearLabel.text = neededCell.movies!.first!.title
         cell.updateYearLabel.text = neededCell.movies!.first!.year
-        cell.updateimdbRatingLabel.text = neededCell.movies!.first?.imdbRating
+        cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
         
         if let neededURL = neededCell.movies!.first!.posterURL{
             

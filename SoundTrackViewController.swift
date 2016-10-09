@@ -27,8 +27,18 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CustomCell") as! CustomTableViewCell
-        cell.articles = self.articles?[indexPath.row]
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("singleSoundTrack") as! MovieSoundTrackTableViewCellController
+        cell.collectionNameLabel.text = self.store.movieSoundTrack[indexPath.row].collectionName
+        cell.trackNameLabel.text = self.store.movieSoundTrack[indexPath.row].trackName
+        
+//        if let url = NSURL(string: unwrappedPosterURL) {
+//            if let data = NSData(contentsOfURL: url) {
+//                cell.imageInCell.image = UIImage(data: data)
+//            }
+//        }
+//        guard let 
+//        self.soundTrackMovieObject
         return cell
     }
     
