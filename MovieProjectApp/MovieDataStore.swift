@@ -220,7 +220,7 @@ class MovieDataStore
             for i in 0...unwrappedTrackCount - 1 {
                 
                 let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
-                    guard let unwrappedSingleDictionary = singleDictionary else {print("ERROR"); return}
+                    guard let unwrappedSingleDictionary = singleDictionary else {print("THIS DID NOT WORK"); return}
                 
                 let collectionName = unwrappedSingleDictionary["collectionName"] as? String
                 let trackName = unwrappedSingleDictionary["trackName"] as? String
@@ -235,7 +235,7 @@ class MovieDataStore
                     unwrappedArtworkUrl30 = artworkUrl30,
                     unwrappedTrackCount = trackCount
                     
-                else {print("ERROR"); return}
+                else {print("THIS IS NOT WORKING AT ALL"); return}
                 
                 let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, artworkURL30: unwrappedArtworkUrl30, trackCount: unwrappedTrackCount)
                 
