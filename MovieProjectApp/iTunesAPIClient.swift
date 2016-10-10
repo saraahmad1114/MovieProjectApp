@@ -10,7 +10,6 @@ import Foundation
 
 //var itunesURL = "https://itunes.apple.com/search?term=\(query)+soundtrack&limit=30"
 
-
 class iTunesAPIClient
 {
     class func getMovieSoundTrackFromSearch(query: String, completion:(NSArray)-> ())

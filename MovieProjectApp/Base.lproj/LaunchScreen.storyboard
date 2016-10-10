@@ -9,34 +9,10 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO SAra" id="bLP-FW-Zpi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="correctImage (1)" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-0V-rUR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="GIJ-jJ-0ul"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oWd-0V-rUR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="38V-7I-16G"/>
-                            <constraint firstItem="oWd-0V-rUR" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="blu-ub-7oN"/>
-                            <constraint firstItem="oWd-0V-rUR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qZp-ow-lx3"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="oWd-0V-rUR" secondAttribute="bottom" id="yCW-kd-Dlc"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="38V-7I-16G"/>
-                            </mask>
-                        </variation>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,6 +20,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="correctImage (1)" width="800" height="600"/>
+        <image name="LOGO SAra" width="2100" height="1500"/>
     </resources>
 </document>
