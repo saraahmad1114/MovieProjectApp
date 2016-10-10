@@ -13,17 +13,25 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let store = MovieDataStore.sharedInstance
+    var movieObject : Movie?
+    
     
 //    let store = MovieDataStore.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-//        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (neededDictionary) in
-//            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
-//            print(neededDictionary)
-//            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
-//        }
+        
+//        guard let unwrappedMovieObject = movieObject else {print("ERROR OCCURRED HERE"); return}
+        if let unwrappedMovieObject = movieObject
+        {
+            self.store.getTracksOfMovieWith(unwrappedMovieObject) { (SoundTrackArray) in
+            print("***********************")
+            print(SoundTrackArray)
+            print("***********************")
+            }
+        }
+        
         return true
     }
     

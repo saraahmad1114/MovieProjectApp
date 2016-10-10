@@ -18,9 +18,9 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let unwrappedSoundTrackMOvieObject = self.soundTrackMovieObject else {print("ERROR OCCURRED HERE!"); return}
+        guard let unwrappedMovieObject = self.soundTrackMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
-        store.getTracksOfMovieWith(unwrappedSoundTrackMOvieObject) { (SoundTrackArray) in
+        store.getTracksOfMovieWith(unwrappedMovieObject) { (SoundTrackArray) in
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
                 self.soundTrackTableView.reloadData()
                 print("*******************************")
@@ -48,17 +48,25 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("singleSoundTrack") as! MovieSoundTrackTableViewCellController
-        cell.collectionNameLabel.text = self.store.movieSoundTrack[indexPath.row].collectionName
-        cell.trackNameLabel.text = self.store.movieSoundTrack[indexPath.row].trackName
+        let cell = tableView.dequeueReusableCellWithIdentifier("singleSoundTrack") as! MovieSoundTrackTableViewCellController
         
-//        if let url = NSURL(string: unwrappedPosterURL) {
-//            if let data = NSData(contentsOfURL: url) {
-//                cell.imageInCell.image = UIImage(data: data)
-//            }
-//        }
-//        guard let 
-//        self.soundTrackMovieObject
+        if let unwrappedCollectionName = store.movieSoundTrack[indexPath.row].collectionName{
+            cell.collectionNameLabel.text = unwrappedCollectionName
+        }
+            if let unwrappedTracKName = store.movieSoundTrack[indexPath.row].trackName{
+                cell.trackNameLabel.text = unwrappedTracKName
+        }
+                if let unwrappedURL = store.movieSoundTrack[indexPath.row].artworkURL30{
+        
+                    if let url = NSURL(string: unwrappedURL){
+                        
+                        if let data = NSData(contentsOfURL: url){
+                            
+                            cell.artworkURL30Image.image = UIImage(data: data)
+                        }
+                    }
+            
+        }
         return cell
     }
     
