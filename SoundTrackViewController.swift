@@ -27,7 +27,6 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
                 print("*******************************")
                 print(SoundTrackArray)
                 print("*******************************")
-                print("GETTING THE NEEDED INFORMATION")
             })
         }
         
