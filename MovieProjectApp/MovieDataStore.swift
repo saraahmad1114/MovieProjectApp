@@ -208,7 +208,7 @@ class MovieDataStore
     
     func getTracksOfMovieWith(movie: Movie, completion:(NSArray)-> ())
     {
-        guard let unwrappedTitle = movie.title else {print("ERROR"); return}
+        guard let unwrappedTitle = movie.title else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
         
         iTunesAPIClient.getMovieSoundTrackFromSearch(unwrappedTitle) { (arrayOfDictionaries) in
             

@@ -23,6 +23,9 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
         store.getTracksOfMovieWith(unwrappedSoundTrackMOvieObject) { (SoundTrackArray) in
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
                 self.soundTrackTableView.reloadData()
+                print("*******************************")
+                print(SoundTrackArray)
+                print("*******************************")
                 print("GETTING THE NEEDED INFORMATION")
             })
         }
