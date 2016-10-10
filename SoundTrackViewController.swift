@@ -13,6 +13,7 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     let store = MovieDataStore.sharedInstance
     var soundTrackMovieObject: Movie?
     
+    
     @IBOutlet weak var soundTrackTableView: UITableView!
     
     override func viewDidLoad() {
@@ -72,6 +73,8 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        
         
     }
     

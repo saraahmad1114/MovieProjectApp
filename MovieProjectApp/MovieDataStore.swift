@@ -217,6 +217,10 @@ class MovieDataStore
             let trackCount = unwrappedFirstDictionary["trackCount"] as? Int
                 guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
             
+            print("*******************************************")
+            print("unwrappedTrackCount\(unwrappedTrackCount)")
+            print("*******************************************")
+
             for i in 0...unwrappedTrackCount - 1 {
                 
                 let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
@@ -224,7 +228,7 @@ class MovieDataStore
                 
                 let collectionName = unwrappedSingleDictionary["collectionName"] as? String
                 let trackName = unwrappedSingleDictionary["trackName"] as? String
-                let previewURL = unwrappedSingleDictionary["previewURL"] as? String
+                let previewURL = unwrappedSingleDictionary["previewUrl"] as? String
                 let artworkUrl30 = unwrappedSingleDictionary["artworkUrl30"] as? String
                 let trackCount = unwrappedSingleDictionary["trackCount"] as? Int
                 

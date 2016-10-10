@@ -13,8 +13,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let store = MovieDataStore.sharedInstance
-    var movieObject : Movie?
+//    let store = MovieDataStore.sharedInstance
+//    var movieObject : Movie?
     
     
 //    let store = MovieDataStore.sharedInstance
@@ -23,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
 //        guard let unwrappedMovieObject = movieObject else {print("ERROR OCCURRED HERE"); return}
-        if let unwrappedMovieObject = movieObject
-        {
-            self.store.getTracksOfMovieWith(unwrappedMovieObject) { (SoundTrackArray) in
-            print("***********************")
-            print(SoundTrackArray)
-            print("***********************")
-            }
-        }
+//        if let unwrappedMovieObject = movieObject
+//        {
+//            self.store.getTracksOfMovieWith(unwrappedMovieObject) { (SoundTrackArray) in
+//            print("***********************")
+//            print(SoundTrackArray)
+//            print("***********************")
+//            }
+//        }
         
         return true
     }
