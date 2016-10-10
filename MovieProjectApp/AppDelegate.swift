@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (neededDictionary) in
-            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
-            print(neededDictionary)
-            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
-        }
+//        TheDBMovieAPIClient.getMovieTrailerFrom("tt0414993") { (neededDictionary) in
+//            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
+//            print(neededDictionary)
+//            print("This printed out!!!!!!!!!!!!!!!!!!!!!!")
+//        }
         return true
     }
     

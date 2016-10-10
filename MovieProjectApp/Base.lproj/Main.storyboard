@@ -298,6 +298,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="soundTrackTableView" destination="B4D-xl-z5K" id="X44-kd-Q7V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Off-St-DD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
