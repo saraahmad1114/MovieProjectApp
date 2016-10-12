@@ -10,4 +10,15 @@ import UIKit
 
 class MovieTrailerViewController: UIViewController {
 
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var trailerWebView: UIWebView!
+    var movieTrailerObject: Movie? 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }

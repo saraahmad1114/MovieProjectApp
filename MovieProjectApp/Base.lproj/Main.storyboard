@@ -206,7 +206,7 @@
                                 <rect key="frame" x="29" y="434" width="88" height="30"/>
                                 <state key="normal" title="Movie Trailer"/>
                                 <connections>
-                                    <segue destination="rhA-SY-9vs" kind="show" id="FBs-nR-Q2t"/>
+                                    <segue destination="rhA-SY-9vs" kind="show" identifier="movieTrailerSegue" id="FBs-nR-Q2t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCM-2l-qNP">
@@ -246,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="5006" y="-333"/>
         </scene>
-        <!--View Controller-->
+        <!--Movie Trailer View Controller-->
         <scene sceneID="lKZ-JK-Wyy">
             <objects>
-                <viewController id="rhA-SY-9vs" sceneMemberID="viewController">
+                <viewController id="rhA-SY-9vs" customClass="MovieTrailerViewController" customModule="MovieProjectApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JI7-rI-AWq"/>
                         <viewControllerLayoutGuide type="bottom" id="xB7-gG-e4Y"/>
@@ -262,6 +262,12 @@
                                 <rect key="frame" x="119" y="99" width="350" height="262"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahK-FJ-fg3">
+                                <rect key="frame" x="202" y="432" width="238" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -269,6 +275,10 @@
                             <constraint firstItem="AHd-rR-sC6" firstAttribute="centerY" secondItem="TOX-oO-mep" secondAttribute="centerY" id="ber-Is-4UO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieTitleLabel" destination="ahK-FJ-fg3" id="2fz-1P-9We"/>
+                        <outlet property="trailerWebView" destination="AHd-rR-sC6" id="VcF-IT-Gwg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpZ-zf-sUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
