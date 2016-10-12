@@ -258,7 +258,6 @@ class MovieDataStore
                 
                 let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, trackCount: unwrappedTrackCount)
                 
-                
                 print("*************************************************************")
                 print("CollectionName: \(soundTrackMovieObject.collectionName)")
                 print("TrackName: \(soundTrackMovieObject.trackCount)")
