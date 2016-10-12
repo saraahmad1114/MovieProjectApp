@@ -95,12 +95,13 @@ class DetailViewController: UIViewController {
                 print("AN ERROR OCCURRED HERE")
             }
             
-            self.store.getMovieTrailerWith(unwrappedMovieObject, completion: { (movieKey) in
-                
-                print("*************************")
-                print(movieKey)
-                print("*************************")
-            })
+            //Everything works fine
+//            self.store.getMovieTrailerWith(unwrappedMovieObject, completion: { (movieKey) in
+//                
+//                print("*************************")
+//                print(movieKey)
+//                print("*************************")
+//            })
             
         }
     }

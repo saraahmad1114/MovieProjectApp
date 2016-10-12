@@ -257,7 +257,17 @@
                     <view key="view" contentMode="scaleToFill" id="TOX-oO-mep">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
+                                <rect key="frame" x="119" y="99" width="350" height="262"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="centerX" secondItem="TOX-oO-mep" secondAttribute="centerX" id="Z47-Mk-dhq"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="centerY" secondItem="TOX-oO-mep" secondAttribute="centerY" id="ber-Is-4UO"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpZ-zf-sUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
