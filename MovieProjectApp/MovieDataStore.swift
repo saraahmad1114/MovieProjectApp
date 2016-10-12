@@ -240,15 +240,16 @@ class MovieDataStore
                     print("AN ERROR OCCURRED HERE"); return
                 }
                 
-                if unwrappedSingleDictionary[unwrappedCollectionName] == unwrappedSecondSingleDictionary[unwrappedCollectionName]
-                {
+                let collectionNameTwo = unwrappedSecondSingleDictionary["collectionName"] as? String
+                guard let unwrappedCollectionNameTwo = collectionNameTwo else {print("This is did not work"); return}
+                
+                if unwrappedCollectionName == unwrappedCollectionNameTwo {
                 
                 let trackName = unwrappedSingleDictionary["trackName"] as? String
                 let previewURL = unwrappedSingleDictionary["previewUrl"] as? String
                 let trackCount = unwrappedSingleDictionary["trackCount"] as? Int
                 
                 guard let
-//                    unwrappedCollectionName = collectionName,
                     unwrappedTrackName = trackName,
                     unwrappedPreviewURL = previewURL,
                     unwrappedTrackCount = trackCount
