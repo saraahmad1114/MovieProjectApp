@@ -273,10 +273,30 @@ class MovieDataStore
         }
     }
     
-
-    
-    
-    
+    func getMovieTrailerWith (movie: Movie, completion:(NSArray)->())
+    {
+        guard let unwrappedTitle = movie.title else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
+        
+        TheDBMovieAPIClient.getMovieTrailerFrom(unwrappedTitle) { (movieTrailerInformation) in
+            
+            let resultsArray = movieTrailerInformation["results"] as? NSArray
+            
+            guard let unwrappedResultsArray = resultsArray else {print("THE RESULTS ARRAY DID NOT UNWRAP"); return}
+            
+            let firstDictionary = unwrappedResultsArray[0] as? NSDictionary
+            
+            guard let unwrappedFirstDictionary = firstDictionary else {print("THE FIRST DICTIONARY DID NOT UNWRAP"); return}
+            
+            let key = unwrappedFirstDictionary["key"] as? String
+            
+            guard let unwrappedKey = key else {print("THE KEY DID NOT UNWRAP HERE"); return}
+            
+            let movieTrailerKey = MovieTrailer.init(movieKey: unwrappedKey)
+            
+            self.movieTrailer.append(movieTrailerKey)
+        }
+        completion(self.movieTrailer)
+    }
 
     
 }
