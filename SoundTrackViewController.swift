@@ -59,17 +59,17 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
             if let unwrappedTracKName = store.movieSoundTrack[indexPath.row].trackName{
                 cell.trackNameLabel.text = unwrappedTracKName
         }
-                if let unwrappedURL = store.movieSoundTrack[indexPath.row].artworkURL30{
-        
-                    if let url = NSURL(string: unwrappedURL){
-                        
-                        if let data = NSData(contentsOfURL: url){
-                            
-                            cell.artworkURL30Image.image = UIImage(data: data)
-                        }
-                    }
-            
-        }
+//                if let unwrappedURL = store.movieSoundTrack[indexPath.row].artworkURL30{
+//        
+//                    if let url = NSURL(string: unwrappedURL){
+//                        
+//                        if let data = NSData(contentsOfURL: url){
+//                            
+//                            cell.artworkURL30Image.image = UIImage(data: data)
+//                        }
+//                    }
+//            
+//        }
         return cell
     }
     

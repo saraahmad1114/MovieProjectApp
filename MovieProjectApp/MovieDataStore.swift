@@ -235,25 +235,28 @@ class MovieDataStore
                 let collectionName = unwrappedSingleDictionary["collectionName"] as? String
                 let trackName = unwrappedSingleDictionary["trackName"] as? String
                 let previewURL = unwrappedSingleDictionary["previewUrl"] as? String
-                let artworkUrl30 = unwrappedSingleDictionary["artworkUrl30"] as? String
+                //let artworkUrl30 = unwrappedSingleDictionary["artworkUrl30"] as? String
                 let trackCount = unwrappedSingleDictionary["trackCount"] as? Int
                 
                 guard let
                     unwrappedCollectionName = collectionName,
                     unwrappedTrackName = trackName,
                     unwrappedPreviewURL = previewURL,
-                    unwrappedArtworkUrl30 = artworkUrl30,
+//                    unwrappedArtworkUrl30 = artworkUrl30,
                     unwrappedTrackCount = trackCount
                     
                 else {print("THIS IS NOT WORKING AT ALL"); return}
                 
-                let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, artworkURL30: unwrappedArtworkUrl30, trackCount: unwrappedTrackCount)
+//                let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, artworkURL30: unwrappedArtworkUrl30, trackCount: unwrappedTrackCount)
+                
+                let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, trackCount: unwrappedTrackCount)
+                
                 
                 print("*************************************************************")
                 print("CollectionName: \(soundTrackMovieObject.collectionName)")
                 print("TrackName: \(soundTrackMovieObject.trackCount)")
                 print("PreviewURL: \(soundTrackMovieObject.previewURL)")
-                print("ArtworkURL30: \(soundTrackMovieObject.artworkURL30)")
+//                print("ArtworkURL30: \(soundTrackMovieObject.artworkURL30)")
                 print("TrackCount: \(soundTrackMovieObject.trackCount)")
                 print("*************************************************************")
                 
