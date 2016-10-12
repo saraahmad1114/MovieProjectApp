@@ -17,7 +17,7 @@ class MovieSoundTrack
     var trackCount: Int?
     
     //designated Initializer 
-    init(collectionName: String, trackName: String, previewURL: String, artworkURL30: String, trackCount: Int)//take a dictionary instead
+    init(collectionName: String, trackName: String, previewURL: String, artworkURL30: String, trackCount: Int)
         
     {
         self.collectionName = collectionName
