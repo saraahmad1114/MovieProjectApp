@@ -18,7 +18,7 @@ class TheDBMovieAPIClient
         
         let nsurl = NSURL(string: movieTrailerURL)
         
-        guard let unwrappednsURL = nsurl else {print("ERROR OCCURRED HERE"); return}
+        guard let unwrappednsURL = nsurl else {print("URL DID NOT UNWRAP"); return}
         
         let request = NSMutableURLRequest(URL: unwrappednsURL)
         

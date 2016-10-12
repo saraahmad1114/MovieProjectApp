@@ -273,29 +273,24 @@ class MovieDataStore
         }
     }
     
-    func getMovieTrailerWith (movie: Movie, completion:(NSArray)->())
+    func getMovieTrailerWith (movie: Movie, completion:(MovieTrailer)->())
     {
-        guard let unwrappedTitle = movie.title else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
+        guard let unwrappedimdbID = movie.imdbID else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
         
-        TheDBMovieAPIClient.getMovieTrailerFrom(unwrappedTitle) { (movieTrailerInformation) in
+        TheDBMovieAPIClient.getMovieTrailerFrom(unwrappedimdbID) { (movieTrailerDictionary) in
             
-            let resultsArray = movieTrailerInformation["results"] as? NSArray
+          let key = movieTrailerDictionary["key"] as? String
             
-            guard let unwrappedResultsArray = resultsArray else {print("THE RESULTS ARRAY DID NOT UNWRAP"); return}
+            guard let unwrappedKey = key else {print("THE KEY DID NOT UNWRAP"); return}
             
-            let firstDictionary = unwrappedResultsArray[0] as? NSDictionary
+            let movietrailerObject = MovieTrailer.init(movieKey: unwrappedKey)
             
-            guard let unwrappedFirstDictionary = firstDictionary else {print("THE FIRST DICTIONARY DID NOT UNWRAP"); return}
+            print("**************************************")
+            print(movietrailerObject.movieKey)
+            print("**************************************")
             
-            let key = unwrappedFirstDictionary["key"] as? String
-            
-            guard let unwrappedKey = key else {print("THE KEY DID NOT UNWRAP HERE"); return}
-            
-            let movieTrailerKey = MovieTrailer.init(movieKey: unwrappedKey)
-            
-            self.movieTrailer.append(movieTrailerKey)
+            completion(movietrailerObject)
         }
-        completion(self.movieTrailer)
     }
 
     

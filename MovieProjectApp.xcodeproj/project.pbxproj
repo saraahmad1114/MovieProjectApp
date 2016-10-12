@@ -10,6 +10,7 @@
 		1B3E7A431D901DE2006DBEC1 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A421D901DE2006DBEC1 /* PlotViewController.swift */; };
 		1B3E7A571D919FB1006DBEC1 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A561D919FB1006DBEC1 /* FavoritesTableViewController.swift */; };
 		1B3E7A611D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A601D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift */; };
+		1B4339C41DAED593006E97DA /* MovieTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */; };
 		1B452ADB1D9D620E004481FE /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADA1D9D620E004481FE /* Secrets.swift */; };
 		1B452ADD1D9D6817004481FE /* OneMusicAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */; };
 		1B452AE21D9EAC2B004481FE /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADE1D9EAC2B004481FE /* Favorites.swift */; };
@@ -59,6 +60,7 @@
 		1B3E7A421D901DE2006DBEC1 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		1B3E7A561D919FB1006DBEC1 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		1B3E7A601D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCellTableViewCell.swift; sourceTree = "<group>"; };
+		1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailerViewController.swift; sourceTree = "<group>"; };
 		1B452ADA1D9D620E004481FE /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneMusicAPIClient.swift; sourceTree = "<group>"; };
 		1B452ADE1D9EAC2B004481FE /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1BE220EF1DA6DFF500603EC8 /* MovieSoundTrack.swift */,
 				1BF41E2C1D830E380093A000 /* Assets.xcassets */,
 				1BF41E5B1D830E980093A000 /* Main.storyboard */,
+				1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */,
 				1BF41E601D871A450093A000 /* ImageCollectionViewCell.swift */,
 				1BF41E5E1D8313520093A000 /* CollectionViewController.swift */,
 				1BD88C321D8C2E2C0026616B /* DetailViewController.swift */,
@@ -341,6 +344,7 @@
 				1BF41E591D830E5B0093A000 /* OMDBAPIClient.swift in Sources */,
 				1B3E7A611D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift in Sources */,
 				1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */,
+				1B4339C41DAED593006E97DA /* MovieTrailerViewController.swift in Sources */,
 				1BF41E581D830E5B0093A000 /* MovieDataStore.swift in Sources */,
 				1B452AE21D9EAC2B004481FE /* Favorites.swift in Sources */,
 				1BE220FA1DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift in Sources */,
