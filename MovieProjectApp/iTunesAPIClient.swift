@@ -22,7 +22,7 @@ class iTunesAPIClient
         
         let nsURL = NSURL(string: itunesURL)
         
-        guard let unwrappednsURL = nsURL else {print("ERROR"); return}
+        guard let unwrappednsURL = nsURL else {print("url error"); return}
         
         let request = NSMutableURLRequest(URL: unwrappednsURL)
         
@@ -34,9 +34,9 @@ class iTunesAPIClient
             
             if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
             {
-                guard let unwrappedResponseDictionary = responseDictionary else {print("ERROR"); return}
+                guard let unwrappedResponseDictionary = responseDictionary else {print("nothing in response dictionary"); return}
                 
-                let resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
+                var resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
 
                 guard let unwrappedResultsArrayOfDictionaries = resultsArrayOfDictionaries else {
                     print("ERROR"); return}
@@ -48,6 +48,7 @@ class iTunesAPIClient
                     guard let unwrappedSingleDictionary = castedSingleDictionary else{print("ERROR"); return}
                     
                     resultsArrayOfDictionary.append(unwrappedSingleDictionary)
+                    print("susan:\(resultsArrayOfDictionary.count)")
                 }
                 
                  completion(resultsArrayOfDictionary)
@@ -56,7 +57,6 @@ class iTunesAPIClient
 
         task.resume()
     }
-    
 }
 
         

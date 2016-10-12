@@ -120,7 +120,7 @@ class MovieDataStore
                 guard let unwrappedEntity = entity else {print("AN ERROR OCCURRED HERE"); return}
                 
                 let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
-
+            /*
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
                 print("Movie Year: \(singleMovieObject.year)")
@@ -128,7 +128,7 @@ class MovieDataStore
                 print("Movie Type: \(singleMovieObject.type)")
                 print("Movie PosterURL: \(singleMovieObject.posterURL)")
                 print("****************************************")
-                
+            */
                 self.movies.append(singleMovieObject)
                 print(self.movies.count)
             }
@@ -171,7 +171,7 @@ class MovieDataStore
                 print("Movie shortPlot: \(movie.shortPlot)")
                 print("Movie imdbRating: \(movie.imdbRating)")
                 print("******************************************")
-  
+ 
             Completion(true)
         }
         
@@ -212,16 +212,22 @@ class MovieDataStore
         
         iTunesAPIClient.getMovieSoundTrackFromSearch(unwrappedTitle) { (arrayOfDictionaries) in
             
+            if arrayOfDictionaries.count == 0
+            {
+                print("There are no soundtracks for this movie")
+            }
+            else {
+        
             let firstDictionary = arrayOfDictionaries[0] as? NSDictionary
                 guard let unwrappedFirstDictionary = firstDictionary else {return}
             let trackCount = unwrappedFirstDictionary["trackCount"] as? Int
-                guard let unwrappedTrackCount = trackCount else {print("ERROR"); return}
+                guard let unwrappedTrackCount = trackCount else {print("track count error"); return}
             
             print("*******************************************")
             print("unwrappedTrackCount\(unwrappedTrackCount)")
             print("*******************************************")
 
-            for i in 0...unwrappedTrackCount - 1 {
+            for i in 0...unwrappedTrackCount {
                 
                 let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
                     guard let unwrappedSingleDictionary = singleDictionary else {print("THIS DID NOT WORK"); return}
@@ -252,6 +258,7 @@ class MovieDataStore
                 print("*************************************************************")
                 
                 self.movieSoundTrack.append(soundTrackMovieObject)
+                }
             }
             completion(self.movieSoundTrack)
         }

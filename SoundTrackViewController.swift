@@ -12,15 +12,18 @@ class SoundTrackViewController: UIViewController, UITableViewDataSource, UITable
     
     let store = MovieDataStore.sharedInstance
     var soundTrackMovieObject: Movie?
-    
-    
     @IBOutlet weak var soundTrackTableView: UITableView!
+    @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.soundTrackTableView.delegate = self
+        self.soundTrackTableView.dataSource = self
+        
         guard let unwrappedMovieObject = self.soundTrackMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
+        store.movieSoundTrack.removeAll()
         store.getTracksOfMovieWith(unwrappedMovieObject) { (SoundTrackArray) in
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
                 self.soundTrackTableView.reloadData()
