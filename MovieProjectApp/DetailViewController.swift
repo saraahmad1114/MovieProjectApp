@@ -73,6 +73,8 @@ class DetailViewController: UIViewController {
                     self.imdbIDLabel.text = unwrappedMovieObject.imdbID
                     self.typeLabel.text = unwrappedMovieObject.type
                     
+                    self.navigationItem.title = unwrappedMovieObject.title
+                    
                     guard let
                         unwrappedDirector = unwrappedMovieObject.director,
                         unwrappedWriters = unwrappedMovieObject.writers,
