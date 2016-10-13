@@ -22,6 +22,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.blackColor()
+        self.searchBar.backgroundColor = UIColor.blackColor()
+        navigationController!.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"

@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Collection View Controller-->
@@ -259,18 +258,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="leading" secondItem="TOX-oO-mep" secondAttribute="leading" id="54e-Xe-zGT"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="width" secondItem="TOX-oO-mep" secondAttribute="width" id="69S-9V-hoT"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="top" secondItem="TOX-oO-mep" secondAttribute="top" id="H5v-NF-usS"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="height" secondItem="TOX-oO-mep" secondAttribute="height" multiplier="0.5" id="gQB-Z5-qXF"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="trailerWebView" destination="AHd-rR-sC6" id="VcF-IT-Gwg"/>
@@ -508,5 +501,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="MnS-bj-DIx"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="0.61376609469999999" blue="0.2459345818" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
