@@ -24,6 +24,9 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         collectionView?.backgroundColor = UIColor.blackColor()
 //        collectionView?.backgroundView = UIImage(CGImage: Untitled-2)
+        
+//        self.collectionView?.backgroundColor = UIColor(patternImage: UIImage(named: "image.png")!)
+        
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
