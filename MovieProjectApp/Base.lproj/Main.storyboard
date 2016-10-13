@@ -258,12 +258,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
-                                <rect key="frame" x="119" y="99" width="350" height="262"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahK-FJ-fg3">
-                                <rect key="frame" x="202" y="432" width="238" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahK-FJ-fg3">
+                                <rect key="frame" x="0.0" y="0.0" width="238" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="UXJ-AK-4cL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -271,8 +274,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="centerX" secondItem="TOX-oO-mep" secondAttribute="centerX" id="Z47-Mk-dhq"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="centerY" secondItem="TOX-oO-mep" secondAttribute="centerY" id="ber-Is-4UO"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="leading" secondItem="TOX-oO-mep" secondAttribute="leading" id="54e-Xe-zGT"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="width" secondItem="TOX-oO-mep" secondAttribute="width" id="69S-9V-hoT"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="top" secondItem="TOX-oO-mep" secondAttribute="top" id="H5v-NF-usS"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="top" secondItem="ahK-FJ-fg3" secondAttribute="top" id="RDA-A1-Icy"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="height" secondItem="TOX-oO-mep" secondAttribute="height" id="gQB-Z5-qXF"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="leading" secondItem="ahK-FJ-fg3" secondAttribute="leading" id="oLA-qE-X1U"/>
                         </constraints>
                     </view>
                     <connections>

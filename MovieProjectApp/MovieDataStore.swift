@@ -283,7 +283,7 @@ class MovieDataStore
             
             guard let unwrappedKey = key else {print("THE KEY DID NOT UNWRAP"); return}
             
-            let movietrailerObject = MovieTrailer.init(movieKey: unwrappedKey)
+            let movietrailerObject = MovieTrailer(movieKey: unwrappedKey)
             
             print("**************************************")
             print(movietrailerObject.movieKey)
