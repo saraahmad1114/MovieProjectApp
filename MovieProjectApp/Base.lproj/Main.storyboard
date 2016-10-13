@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Collection View Controller-->
@@ -259,31 +260,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-rR-sC6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahK-FJ-fg3">
-                                <rect key="frame" x="0.0" y="0.0" width="238" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="238" id="UXJ-AK-4cL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AHd-rR-sC6" firstAttribute="leading" secondItem="TOX-oO-mep" secondAttribute="leading" id="54e-Xe-zGT"/>
                             <constraint firstItem="AHd-rR-sC6" firstAttribute="width" secondItem="TOX-oO-mep" secondAttribute="width" id="69S-9V-hoT"/>
                             <constraint firstItem="AHd-rR-sC6" firstAttribute="top" secondItem="TOX-oO-mep" secondAttribute="top" id="H5v-NF-usS"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="top" secondItem="ahK-FJ-fg3" secondAttribute="top" id="RDA-A1-Icy"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="height" secondItem="TOX-oO-mep" secondAttribute="height" id="gQB-Z5-qXF"/>
-                            <constraint firstItem="AHd-rR-sC6" firstAttribute="leading" secondItem="ahK-FJ-fg3" secondAttribute="leading" id="oLA-qE-X1U"/>
+                            <constraint firstItem="AHd-rR-sC6" firstAttribute="height" secondItem="TOX-oO-mep" secondAttribute="height" multiplier="0.5" id="gQB-Z5-qXF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="movieTitleLabel" destination="ahK-FJ-fg3" id="2fz-1P-9We"/>
                         <outlet property="trailerWebView" destination="AHd-rR-sC6" id="VcF-IT-Gwg"/>
                     </connections>
                 </viewController>

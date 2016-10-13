@@ -30,6 +30,7 @@ class MovieTrailerViewController: UIViewController {
             let html: String = String(format: videoSizing, self.trailerWebView.frame.size.width, self.trailerWebView.frame.size.height, unwrappedMovieKey)
         
             self.trailerWebView.loadHTMLString(html, baseURL: nil)
+            //self.trailerWebView.mediaPlaybackRequiresUserAction = false
             
         }
     }
