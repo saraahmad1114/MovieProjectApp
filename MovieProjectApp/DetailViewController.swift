@@ -52,10 +52,7 @@ class DetailViewController: UIViewController {
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
 
-//            dispatch_async(dispatch_get_main_queue()){
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                   
-//                })
+                NSOperationQueue.mainQueue().addOperationWithBlock({
                 guard let unwrappedPosterURL = unwrappedMovieObject.posterURL else {print("AN ERROR OCCURRED HERE"); return}
                 if unwrappedPosterURL == "N/A"{
                 self.topImage.image = UIImage.init(named: "star_PNG1592")
@@ -96,14 +93,6 @@ class DetailViewController: UIViewController {
                 
                 print("AN ERROR OCCURRED HERE")
             }
-            
-            //Everything works fine
-//            self.store.getMovieTrailerWith(unwrappedMovieObject, completion: { (movieKey) in
-//                
-//                print("*************************")
-//                print(movieKey)
-//                print("*************************")
-//            })
             
         }
     }
