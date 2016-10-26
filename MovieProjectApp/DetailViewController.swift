@@ -60,7 +60,6 @@ class DetailViewController: UIViewController {
                 else {
                     if let url = NSURL(string: unwrappedPosterURL){
                         if let data  = NSData(contentsOfURL: url){
-                            //print("I have an image to display")
                             self.topImage.image = UIImage.init(data: data)
                             }
                         }
@@ -88,15 +87,12 @@ class DetailViewController: UIViewController {
                         self.imdbRating.text = unwrappedRating
                 })
             }
-                
             else{
                 
                 print("AN ERROR OCCURRED HERE")
             }
-            
         }
     }
-        // Do any additional setup after loading the view.
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -110,7 +106,6 @@ class DetailViewController: UIViewController {
         guard let unwrappedMovieObject = self.movieObject else { print("AN ERROR OCCURRED HERE"); return}
         
         savedMovieObject.movies?.insert(unwrappedMovieObject)
-        
         store.saveContext()
 
     }
@@ -125,16 +120,6 @@ class DetailViewController: UIViewController {
     }
 
     
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -27,14 +27,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="183" height="213"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27q-2j-COD">
-                                            <rect key="frame" x="0.0" y="0.0" width="183" height="213"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="27q-2j-COD">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="184"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhW-eY-3CO">
+                                            <rect key="frame" x="0.0" y="192" width="175" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leadingMargin" constant="-8" id="6dp-D1-Uzf"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="DhW-eY-3CO" secondAttribute="bottom" constant="-8" id="IyH-33-kXg"/>
+                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="trailing" secondItem="1S4-rW-2xV" secondAttribute="trailingMargin" id="dNB-g7-xwe"/>
+                                    <constraint firstItem="27q-2j-COD" firstAttribute="top" secondItem="1S4-rW-2xV" secondAttribute="top" id="fNC-Qe-M7K"/>
+                                    <constraint firstItem="27q-2j-COD" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leading" id="hIo-OT-2em"/>
+                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="top" secondItem="27q-2j-COD" secondAttribute="bottom" constant="8" id="nYT-bx-Snz"/>
+                                    <constraint firstItem="27q-2j-COD" firstAttribute="trailing" secondItem="1S4-rW-2xV" secondAttribute="trailingMargin" id="roI-8z-o7d"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="imageInCell" destination="27q-2j-COD" id="cBu-X9-QnH"/>
+                                    <outlet property="movieTitleLabel" destination="DhW-eY-3CO" id="gbZ-kL-acn"/>
                                     <segue destination="bAy-Ih-36r" kind="show" identifier="descriptiveMovieInformation" id="MnS-bj-DIx"/>
                                 </connections>
                             </collectionViewCell>

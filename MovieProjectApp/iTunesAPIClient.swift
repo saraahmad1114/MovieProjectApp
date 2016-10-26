@@ -48,7 +48,6 @@ class iTunesAPIClient
                     guard let unwrappedSingleDictionary = castedSingleDictionary else{print("ERROR"); return}
                     
                     resultsArrayOfDictionary.append(unwrappedSingleDictionary)
-                    print("susan:\(resultsArrayOfDictionary.count)")
                 }
                 
                  completion(resultsArrayOfDictionary)

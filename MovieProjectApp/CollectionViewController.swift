@@ -73,6 +73,12 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 }
             }
         }
+        
+        if let movieTitle = store.movies[indexPath.row].title{
+            cell.movieTitleLabel.textColor = UIColor.redColor()
+            cell.movieTitleLabel.text = movieTitle
+            
+        }
         return cell
     }
     
