@@ -17,8 +17,7 @@ class MovieDataStore
     
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
-    var movieSoundTrack: [MovieSoundTrack] = []
-    var movieTrailer : [MovieTrailer] = []
+
     
     var pageNum = 1
     
@@ -206,92 +205,8 @@ class MovieDataStore
         self.pageNum += 1
     }
     
-    func getTracksOfMovieWith(movie: Movie, completion:(NSArray)-> ())
-    {
-        guard let unwrappedTitle = movie.title else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
-        
-        iTunesAPIClient.getMovieSoundTrackFromSearch(unwrappedTitle) { (arrayOfDictionaries) in
-            
-            if arrayOfDictionaries.count == 0
-            {
-                print("There are no soundtracks for this movie")
-            }
-            else {
-        
-            let firstDictionary = arrayOfDictionaries[0] as? NSDictionary
-                guard let unwrappedFirstDictionary = firstDictionary else {return}
-            let trackCount = unwrappedFirstDictionary["trackCount"] as? Int
-                guard let unwrappedTrackCount = trackCount else {print("track count error"); return}
-            
-            print("*******************************************")
-            print("unwrappedTrackCount\(unwrappedTrackCount)")
-            print("*******************************************")
-
-            for i in 0...unwrappedTrackCount {
-                
-                let singleDictionary = arrayOfDictionaries[i] as? NSDictionary
-                    guard let unwrappedSingleDictionary = singleDictionary else {print("THIS DID NOT WORK"); return}
-                
-                let collectionName = unwrappedSingleDictionary["collectionName"] as? String
-                guard let unwrappedCollectionName = collectionName else {print("collection Name did not unwrap"); return}
-                
-                let secondSingleDictionary = arrayOfDictionaries[i+1] as? NSDictionary
-                guard let unwrappedSecondSingleDictionary = secondSingleDictionary else{
-                    print("AN ERROR OCCURRED HERE"); return
-                }
-                
-                let collectionNameTwo = unwrappedSecondSingleDictionary["collectionName"] as? String
-                guard let unwrappedCollectionNameTwo = collectionNameTwo else {print("This is did not work"); return}
-                
-                if unwrappedCollectionName == unwrappedCollectionNameTwo {
-                
-                let trackName = unwrappedSingleDictionary["trackName"] as? String
-                let previewURL = unwrappedSingleDictionary["previewUrl"] as? String
-                let trackCount = unwrappedSingleDictionary["trackCount"] as? Int
-                
-                guard let
-                    unwrappedTrackName = trackName,
-                    unwrappedPreviewURL = previewURL,
-                    unwrappedTrackCount = trackCount
-                    
-                else {print("THIS IS NOT WORKING AT ALL"); return}
-                
-                let soundTrackMovieObject = MovieSoundTrack.init(collectionName: unwrappedCollectionName, trackName: unwrappedTrackName, previewURL: unwrappedPreviewURL, trackCount: unwrappedTrackCount)
-                
-                print("*************************************************************")
-                print("CollectionName: \(soundTrackMovieObject.collectionName)")
-                print("TrackName: \(soundTrackMovieObject.trackCount)")
-                print("PreviewURL: \(soundTrackMovieObject.previewURL)")
-                print("TrackCount: \(soundTrackMovieObject.trackCount)")
-                print("*************************************************************")
-                
-                self.movieSoundTrack.append(soundTrackMovieObject)
-                }
-                }
-            }
-            completion(self.movieSoundTrack)
-        }
-    }
     
-    func getMovieTrailerWith (movie: Movie, completion:(MovieTrailer)->())
-    {
-        guard let unwrappedimdbID = movie.imdbID else {print("DID NOT UNWRAP THE MOVIE OBJECT"); return}
-        
-        TheDBMovieAPIClient.getMovieTrailerFrom(unwrappedimdbID) { (movieTrailerDictionary) in
-            
-          let key = movieTrailerDictionary["key"] as? String
-            
-            guard let unwrappedKey = key else {print("THE KEY DID NOT UNWRAP"); return}
-            
-            let movietrailerObject = MovieTrailer(movieKey: unwrappedKey)
-            
-            print("**************************************")
-            print(movietrailerObject.movieKey)
-            print("**************************************")
-            
-            completion(movietrailerObject)
-        }
-    }
+
 
     
 }

@@ -51,19 +51,7 @@ class PlotViewController: UIViewController {
     // MARK: - Navigation]
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "displayMovieSoundTrack"{
-            if let destinationVC = segue.destinationViewController as? SoundTrackViewController {
-                destinationVC.soundTrackMovieObject = plotMovieObject
-            }
-        }
-        if segue.identifier == "movieTrailerSegue"{
-            if let destinationView = segue.destinationViewController as? MovieTrailerViewController{
-                destinationView.movieTrailerObject = plotMovieObject 
-            }
-        
-        }
-    }
+
 
     
     

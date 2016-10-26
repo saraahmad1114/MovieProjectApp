@@ -10,20 +10,12 @@
 		1B3E7A431D901DE2006DBEC1 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A421D901DE2006DBEC1 /* PlotViewController.swift */; };
 		1B3E7A571D919FB1006DBEC1 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A561D919FB1006DBEC1 /* FavoritesTableViewController.swift */; };
 		1B3E7A611D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7A601D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift */; };
-		1B4339C41DAED593006E97DA /* MovieTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */; };
 		1B452ADB1D9D620E004481FE /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADA1D9D620E004481FE /* Secrets.swift */; };
-		1B452ADD1D9D6817004481FE /* OneMusicAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */; };
 		1B452AE21D9EAC2B004481FE /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADE1D9EAC2B004481FE /* Favorites.swift */; };
 		1B452AE31D9EAC2B004481FE /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452ADF1D9EAC2B004481FE /* Favorites+CoreDataProperties.swift */; };
 		1B452AE41D9EAC2B004481FE /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452AE01D9EAC2B004481FE /* Movie.swift */; };
 		1B452AE51D9EAC2B004481FE /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */; };
 		1BD88C331D8C2E2C0026616B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD88C321D8C2E2C0026616B /* DetailViewController.swift */; };
-		1BE220EA1DA5A95B00603EC8 /* iTunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */; };
-		1BE220EE1DA6B62200603EC8 /* TheDBMovieAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220ED1DA6B62200603EC8 /* TheDBMovieAPIClient.swift */; };
-		1BE220F01DA6DFF500603EC8 /* MovieSoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220EF1DA6DFF500603EC8 /* MovieSoundTrack.swift */; };
-		1BE220F21DA7330C00603EC8 /* MovieTrailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220F11DA7330C00603EC8 /* MovieTrailer.swift */; };
-		1BE220F81DA7E6B300603EC8 /* SoundTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220F71DA7E6B300603EC8 /* SoundTrackViewController.swift */; };
-		1BE220FA1DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE220F91DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift */; };
 		1BEC53161D8F1C4400F11D2B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEC53151D8F1C4400F11D2B /* CoreData.framework */; };
 		1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */; };
 		1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E251D830E380093A000 /* AppDelegate.swift */; };
@@ -60,20 +52,12 @@
 		1B3E7A421D901DE2006DBEC1 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		1B3E7A561D919FB1006DBEC1 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		1B3E7A601D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCellTableViewCell.swift; sourceTree = "<group>"; };
-		1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailerViewController.swift; sourceTree = "<group>"; };
 		1B452ADA1D9D620E004481FE /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneMusicAPIClient.swift; sourceTree = "<group>"; };
 		1B452ADE1D9EAC2B004481FE /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		1B452ADF1D9EAC2B004481FE /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1B452AE01D9EAC2B004481FE /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BD88C321D8C2E2C0026616B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesAPIClient.swift; sourceTree = "<group>"; };
-		1BE220ED1DA6B62200603EC8 /* TheDBMovieAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheDBMovieAPIClient.swift; sourceTree = "<group>"; };
-		1BE220EF1DA6DFF500603EC8 /* MovieSoundTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSoundTrack.swift; sourceTree = "<group>"; };
-		1BE220F11DA7330C00603EC8 /* MovieTrailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTrailer.swift; sourceTree = "<group>"; };
-		1BE220F71DA7E6B300603EC8 /* SoundTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundTrackViewController.swift; path = ../SoundTrackViewController.swift; sourceTree = "<group>"; };
-		1BE220F91DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSoundTrackTableViewCellController.swift; sourceTree = "<group>"; };
 		1BEC53151D8F1C4400F11D2B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1BEC53181D8F1E0500F11D2B /* MovieProjectApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieProjectApp.xcdatamodel; sourceTree = "<group>"; };
 		1BF41E221D830E380093A000 /* MovieProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,25 +134,17 @@
 				1B452AE01D9EAC2B004481FE /* Movie.swift */,
 				1B452AE11D9EAC2B004481FE /* Movie+CoreDataProperties.swift */,
 				1B452ADA1D9D620E004481FE /* Secrets.swift */,
-				1BE220E91DA5A95B00603EC8 /* iTunesAPIClient.swift */,
 				1BF41E551D830E5B0093A000 /* OMDBAPIClient.swift */,
-				1BE220ED1DA6B62200603EC8 /* TheDBMovieAPIClient.swift */,
-				1B452ADC1D9D6817004481FE /* OneMusicAPIClient.swift */,
 				1BF41E251D830E380093A000 /* AppDelegate.swift */,
 				1BEC53171D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld */,
 				1BF41E541D830E5B0093A000 /* MovieDataStore.swift */,
-				1BE220F11DA7330C00603EC8 /* MovieTrailer.swift */,
 				1BF41E531D830E5B0093A000 /* Movie(noncoredata).swift */,
-				1BE220EF1DA6DFF500603EC8 /* MovieSoundTrack.swift */,
 				1BF41E2C1D830E380093A000 /* Assets.xcassets */,
 				1BF41E5B1D830E980093A000 /* Main.storyboard */,
-				1B4339C31DAED593006E97DA /* MovieTrailerViewController.swift */,
 				1BF41E601D871A450093A000 /* ImageCollectionViewCell.swift */,
 				1BF41E5E1D8313520093A000 /* CollectionViewController.swift */,
 				1BD88C321D8C2E2C0026616B /* DetailViewController.swift */,
 				1B3E7A421D901DE2006DBEC1 /* PlotViewController.swift */,
-				1BE220F71DA7E6B300603EC8 /* SoundTrackViewController.swift */,
-				1BE220F91DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift */,
 				1B3E7A561D919FB1006DBEC1 /* FavoritesTableViewController.swift */,
 				1B3E7A601D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift */,
 				1BF41E2E1D830E380093A000 /* LaunchScreen.storyboard */,
@@ -329,13 +305,7 @@
 				1BEC53191D8F1E0500F11D2B /* MovieProjectApp.xcdatamodeld in Sources */,
 				1B452AE31D9EAC2B004481FE /* Favorites+CoreDataProperties.swift in Sources */,
 				1B452ADB1D9D620E004481FE /* Secrets.swift in Sources */,
-				1BE220EA1DA5A95B00603EC8 /* iTunesAPIClient.swift in Sources */,
 				1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */,
-				1BE220EE1DA6B62200603EC8 /* TheDBMovieAPIClient.swift in Sources */,
-				1BE220F01DA6DFF500603EC8 /* MovieSoundTrack.swift in Sources */,
-				1B452ADD1D9D6817004481FE /* OneMusicAPIClient.swift in Sources */,
-				1BE220F81DA7E6B300603EC8 /* SoundTrackViewController.swift in Sources */,
-				1BE220F21DA7330C00603EC8 /* MovieTrailer.swift in Sources */,
 				1BF41E571D830E5B0093A000 /* Movie(noncoredata).swift in Sources */,
 				1B452AE51D9EAC2B004481FE /* Movie+CoreDataProperties.swift in Sources */,
 				1B452AE41D9EAC2B004481FE /* Movie.swift in Sources */,
@@ -344,10 +314,8 @@
 				1BF41E591D830E5B0093A000 /* OMDBAPIClient.swift in Sources */,
 				1B3E7A611D91AF4A006DBEC1 /* FavoritesCellTableViewCell.swift in Sources */,
 				1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */,
-				1B4339C41DAED593006E97DA /* MovieTrailerViewController.swift in Sources */,
 				1BF41E581D830E5B0093A000 /* MovieDataStore.swift in Sources */,
 				1B452AE21D9EAC2B004481FE /* Favorites.swift in Sources */,
-				1BE220FA1DA7F67A00603EC8 /* MovieSoundTrackTableViewCellController.swift in Sources */,
 				1BD88C331D8C2E2C0026616B /* DetailViewController.swift in Sources */,
 				1B3E7A431D901DE2006DBEC1 /* PlotViewController.swift in Sources */,
 			);
