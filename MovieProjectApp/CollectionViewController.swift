@@ -12,6 +12,7 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
+    @IBOutlet weak var topView: UIView!
     @IBOutlet var pictureColl: UICollectionView!
     let store = MovieDataStore.sharedInstance
     var searchBar = UISearchBar()
@@ -21,9 +22,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //collectionView?.backgroundColor = UIColor.blackColor()
-        collectionView?.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
+        self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
         UITabBar.appearance().barTintColor = UIColor.blackColor()

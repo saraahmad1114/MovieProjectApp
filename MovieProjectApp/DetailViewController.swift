@@ -21,34 +21,43 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var writersLabel: UILabel!
     @IBOutlet weak var actorsLabel: UILabel!
     @IBOutlet weak var shortPlotLabel: UILabel!
-    @IBOutlet weak var imdbIDLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var imdbRating: UILabel!
-    @IBOutlet weak var stackViewLabel: UIStackView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         
         guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
         
-        self.view.backgroundColor = UIColor.blackColor()
-        self.titleLabel.textColor = UIColor.yellowColor()
-        self.yearLabel.textColor = UIColor.yellowColor()
-        self.directorLabel.textColor = UIColor.yellowColor()
-        self.writersLabel.textColor = UIColor.yellowColor()
-        self.actorsLabel.textColor = UIColor.yellowColor()
-        self.shortPlotLabel.textColor = UIColor.yellowColor()
-        self.imdbIDLabel.textColor = UIColor.yellowColor()
-        self.typeLabel.textColor = UIColor.yellowColor()
-        self.imdbRating.textColor = UIColor.yellowColor()
+        titleLabel.textColor = UIColor.grayColor()
+        yearLabel.textColor = UIColor.grayColor()
+        directorLabel.textColor = UIColor.grayColor()
+        writersLabel.textColor = UIColor.grayColor()
+        actorsLabel.textColor = UIColor.grayColor()
+        shortPlotLabel.textColor = UIColor.grayColor()
+        typeLabel.textColor = UIColor.grayColor()
        
-        stackViewLabel.translatesAutoresizingMaskIntoConstraints = false
-        stackViewLabel.topAnchor.constraintEqualToAnchor(self.topImage.bottomAnchor, constant: 5).active = true
-        stackViewLabel.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.00).active = true
-        stackViewLabel.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.50).active = true
-        stackViewLabel.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
+        titleLabel.font = UIFont (name: "Georgia", size: 15)
+        yearLabel.font = UIFont (name: "Georgia", size: 15)
+        directorLabel.font = UIFont (name: "Georgia", size: 15)
+        writersLabel.font = UIFont (name: "Georgia", size: 15)
+        actorsLabel.font = UIFont (name: "Georgia", size: 15)
+        shortPlotLabel.font = UIFont (name: "Georgia", size: 15)
+        typeLabel.font = UIFont (name: "Georgia", size: 15)
 
+        //Constraints
+        view.removeConstraints(view.constraints)
+        topImage.translatesAutoresizingMaskIntoConstraints = false
+        topImage.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
+        topImage.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        topImage.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 0.40).active = true
+        topImage.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.30).active = true
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraintEqualToAnchor(self.topImage.topAnchor, constant: 240).active = true
+        titleLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor,constant: 50).active = true
+        titleLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true 
+        
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
 
@@ -66,7 +75,6 @@ class DetailViewController: UIViewController {
                     }
                     self.titleLabel.text = unwrappedMovieObject.title
                     self.yearLabel.text = unwrappedMovieObject.year
-                    self.imdbIDLabel.text = unwrappedMovieObject.imdbID
                     self.typeLabel.text = unwrappedMovieObject.type
                     
                     self.navigationItem.title = unwrappedMovieObject.title
@@ -75,16 +83,14 @@ class DetailViewController: UIViewController {
                         unwrappedDirector = unwrappedMovieObject.director,
                         unwrappedWriters = unwrappedMovieObject.writers,
                         unwrappedActors = unwrappedMovieObject.actors,
-                        unwrappedShortPlot = unwrappedMovieObject.shortPlot,
-                        unwrappedRating = unwrappedMovieObject.imdbRating
-                            
+                        unwrappedShortPlot = unwrappedMovieObject.shortPlot
+                        
                     else {print("PROPERTIES WERE UNWRAPPED"); return}
                     
                         self.directorLabel.text = unwrappedDirector
                         self.writersLabel.text = unwrappedWriters
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
-                        self.imdbRating.text = unwrappedRating
                 })
             }
             else{
