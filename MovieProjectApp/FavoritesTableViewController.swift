@@ -61,13 +61,15 @@ class FavoritesTableViewController: UITableViewController {
     
         //cell.moviePicture = self.store.favoriteMovies[indexPath.row].movies.posterURL
         
-        var neededCell = store.favoriteMovies[indexPath.row]
+        let neededCell = store.favoriteMovies[indexPath.row]
         
-        cell.updateYearLabel.text = neededCell.movies!.first!.title
+        if let neededTitle = neededCell.movies?.first {
+        cell.updateYearLabel.text = neededTitle.title
         cell.updateYearLabel.text = neededCell.movies!.first!.year
         cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
+        }
         
-        if let neededURL = neededCell.movies!.first!.posterURL{
+        if let neededURL = neededCell.movies?.first?.posterURL{
             
             if let url = NSURL(string: (neededURL)){
             
@@ -78,9 +80,6 @@ class FavoritesTableViewController: UITableViewController {
        }
             
    }
-        
-
-        
         return cell
 
     }

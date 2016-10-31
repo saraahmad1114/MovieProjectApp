@@ -12,17 +12,21 @@ class PlotViewController: UIViewController {
     
     let store = MovieDataStore.sharedInstance
     
-    @IBOutlet weak var topLabel: UILabel!
+    
     var plotMovieObject : Movie?
 
-    @IBOutlet weak var plotLabelUpdated: UILabel!
+    @IBOutlet weak var fullPlotLabel: UILabel!
+    
+    @IBOutlet weak var actualPlot: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.blackColor()
-        self.plotLabelUpdated.textColor = UIColor.yellowColor()
-        self.topLabel.textColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
+        self.actualPlot.textColor = UIColor.grayColor()
+        self.fullPlotLabel.textColor = UIColor.grayColor()
+        actualPlot.font = UIFont (name: "Georgia", size: 15)
+        fullPlotLabel.font = UIFont (name: "Georgia", size: 15)
         
         guard let unwrappedMovieObject = plotMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
@@ -32,7 +36,7 @@ class PlotViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()){
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
-                    self.plotLabelUpdated.text = unwrappedFullPlot
+                    self.actualPlot.text = unwrappedFullPlot
                 }
             }
             else {

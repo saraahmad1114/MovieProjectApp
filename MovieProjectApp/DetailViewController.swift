@@ -14,6 +14,10 @@ class DetailViewController: UIViewController {
     let store = MovieDataStore.sharedInstance
     var movieObject : Movie?
     
+    
+    @IBOutlet weak var fullPlot: UIButton!
+    @IBOutlet weak var saveMovie: UIButton!
+    
     @IBOutlet weak var topImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -36,6 +40,8 @@ class DetailViewController: UIViewController {
         actorsLabel.textColor = UIColor.grayColor()
         shortPlotLabel.textColor = UIColor.grayColor()
         typeLabel.textColor = UIColor.grayColor()
+        saveMovie.tintColor = UIColor.redColor()
+        fullPlot.tintColor = UIColor.redColor()
        
         titleLabel.font = UIFont (name: "Georgia", size: 15)
         yearLabel.font = UIFont (name: "Georgia", size: 15)
@@ -86,7 +92,15 @@ class DetailViewController: UIViewController {
         shortPlotLabel.translatesAutoresizingMaskIntoConstraints = false
         shortPlotLabel.topAnchor.constraintEqualToAnchor(self.directorLabel.bottomAnchor, constant: 10).active = true
         shortPlotLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
-        shortPlotLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true 
+        shortPlotLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
+        saveMovie.translatesAutoresizingMaskIntoConstraints = false
+        saveMovie.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
+        saveMovie.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
+       
+        fullPlot.translatesAutoresizingMaskIntoConstraints = false
+        fullPlot.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
+        fullPlot.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -20).active = true
         
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
