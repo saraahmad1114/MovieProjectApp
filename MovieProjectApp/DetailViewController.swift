@@ -60,10 +60,24 @@ class DetailViewController: UIViewController {
         
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
         yearLabel.topAnchor.constraintEqualToAnchor(self.titleLabel.bottomAnchor, constant: 10).active = true
-        yearLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 50).active = true
+        yearLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
         yearLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
         
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
+        typeLabel.topAnchor.constraintEqualToAnchor(self.yearLabel.bottomAnchor, constant: 10).active = true
+        typeLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
+        typeLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
+        actorsLabel.translatesAutoresizingMaskIntoConstraints = false
+        actorsLabel.topAnchor.constraintEqualToAnchor(self.typeLabel.bottomAnchor, constant: 10).active = true
+        actorsLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
+        actorsLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
+        writersLabel.translatesAutoresizingMaskIntoConstraints = false
+        writersLabel.topAnchor.constraintEqualToAnchor(self.actorsLabel.bottomAnchor, constant: 10).active = true
+        writersLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
+        writersLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
         
         
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
