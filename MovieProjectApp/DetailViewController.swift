@@ -54,9 +54,17 @@ class DetailViewController: UIViewController {
         topImage.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.30).active = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraintEqualToAnchor(self.topImage.topAnchor, constant: 240).active = true
-        titleLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor,constant: 50).active = true
-        titleLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true 
+        titleLabel.topAnchor.constraintEqualToAnchor(self.topImage.bottomAnchor, constant: 10).active = true
+        titleLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor,constant: 60).active = true
+        titleLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
+        yearLabel.translatesAutoresizingMaskIntoConstraints = false
+        yearLabel.topAnchor.constraintEqualToAnchor(self.titleLabel.bottomAnchor, constant: 10).active = true
+        yearLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 50).active = true
+        yearLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        
+        typeLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
