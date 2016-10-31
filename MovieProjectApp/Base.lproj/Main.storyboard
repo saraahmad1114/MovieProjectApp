@@ -28,10 +28,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="27q-2j-COD">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="161"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="161" id="Vle-Ik-Cxb"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Vle-Ik-Cxb"/>
+                                                </mask>
+                                            </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhW-eY-3CO">
-                                            <rect key="frame" x="0.0" y="192" width="175" height="21"/>
+                                            <rect key="frame" x="0.0" y="177" width="158" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -40,13 +48,14 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leadingMargin" constant="-8" id="6dp-D1-Uzf"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="DhW-eY-3CO" secondAttribute="bottom" constant="-8" id="IyH-33-kXg"/>
-                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="trailing" secondItem="1S4-rW-2xV" secondAttribute="trailingMargin" id="dNB-g7-xwe"/>
-                                    <constraint firstItem="27q-2j-COD" firstAttribute="top" secondItem="1S4-rW-2xV" secondAttribute="top" id="fNC-Qe-M7K"/>
-                                    <constraint firstItem="27q-2j-COD" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leading" id="hIo-OT-2em"/>
-                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="top" secondItem="27q-2j-COD" secondAttribute="bottom" constant="8" id="nYT-bx-Snz"/>
-                                    <constraint firstItem="27q-2j-COD" firstAttribute="trailing" secondItem="1S4-rW-2xV" secondAttribute="trailingMargin" id="roI-8z-o7d"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="27q-2j-COD" secondAttribute="trailing" constant="17" id="7nr-NY-SLA"/>
+                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="top" secondItem="27q-2j-COD" secondAttribute="bottom" constant="16" id="AUI-FM-HN9"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="DhW-eY-3CO" secondAttribute="trailing" constant="17" id="QG4-u8-ahg"/>
+                                    <constraint firstItem="DhW-eY-3CO" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leadingMargin" constant="-8" id="fXd-nP-5Rr"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="DhW-eY-3CO" secondAttribute="bottom" constant="7" id="lm3-rW-Dcc"/>
+                                    <constraint firstItem="27q-2j-COD" firstAttribute="top" secondItem="1S4-rW-2xV" secondAttribute="topMargin" constant="-8" id="m7P-bI-bnC"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="DhW-eY-3CO" secondAttribute="bottom" constant="7" id="rGW-xr-6PY"/>
+                                    <constraint firstItem="27q-2j-COD" firstAttribute="leading" secondItem="1S4-rW-2xV" secondAttribute="leadingMargin" constant="-8" id="zwD-Je-EOE"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageInCell" destination="27q-2j-COD" id="cBu-X9-QnH"/>

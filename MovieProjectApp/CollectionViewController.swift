@@ -21,8 +21,9 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = UIColor.blackColor()
-        
+        //collectionView?.backgroundColor = UIColor.blackColor()
+        collectionView?.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
         UITabBar.appearance().barTintColor = UIColor.blackColor()
@@ -70,6 +71,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 if let url = NSURL(string: unwrappedPosterURL) {
                 if let data = NSData(contentsOfURL: url) {
                 cell.imageInCell.image = UIImage(data: data)
+                //cell.imageInCell.backgroundColor = UIColor.whiteColor()
                     }
                 }
             }
@@ -77,12 +79,28 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         
         if let movieTitle = store.movies[indexPath.row].title{
             cell.movieTitleLabel.textColor = UIColor.grayColor()
-            cell.movieTitleLabel.font = UIFont (name: "Georgia", size: 18)
+            cell.movieTitleLabel.font = UIFont (name: "Georgia", size: 15)
             cell.movieTitleLabel.text = movieTitle
             
         }
         return cell
     }
+    
+//    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+//    {
+//        var itemsCount : CGFloat = 3.0
+////        if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait
+////        {
+//            itemsCount = 3.0
+////        }
+//        return CGSize(width: self.view.frame.width/itemsCount - 30, height: 240/120 * (self.view.frame.width/itemsCount - 30));
+//    }
+    
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        let screenSize: CGRect = UIScreen.mainScreen().bounds
+//        let screenWidth = screenSize.width
+//        return CGSize(width: screenWidth/3, height: screenWidth/3);
+//    }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
     {
