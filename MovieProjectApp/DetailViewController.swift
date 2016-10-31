@@ -78,7 +78,10 @@ class DetailViewController: UIViewController {
         writersLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
         writersLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
         
-        
+        directorLabel.translatesAutoresizingMaskIntoConstraints = false
+        directorLabel.topAnchor.constraintEqualToAnchor(self.writersLabel.bottomAnchor, constant: 10).active = true
+        directorLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
+        directorLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true 
         
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
