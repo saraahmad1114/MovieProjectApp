@@ -22,9 +22,7 @@ class OMDBAPIClient
         
         guard let unwrappedMovieDataBaseURL = nsurl else {print("AN ERROR OCCURRED HERE!"); return}
         
-        let request = NSMutableURLRequest(URL: unwrappedMovieDataBaseURL)
-        
-        request.HTTPMethod = "GET"
+        let request = NSURLRequest(URL: unwrappedMovieDataBaseURL)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             

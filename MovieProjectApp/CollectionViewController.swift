@@ -86,21 +86,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         return cell
     }
     
-//    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-//    {
-//        var itemsCount : CGFloat = 3.0
-////        if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait
-////        {
-//            itemsCount = 3.0
-////        }
-//        return CGSize(width: self.view.frame.width/itemsCount - 30, height: 240/120 * (self.view.frame.width/itemsCount - 30));
-//    }
-    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let screenSize: CGRect = UIScreen.mainScreen().bounds
-//        let screenWidth = screenSize.width
-//        return CGSize(width: screenWidth/3, height: screenWidth/3);
-//    }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
     {
@@ -147,7 +132,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "descriptiveMovieInformation" {
