@@ -22,6 +22,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.blackColor()
+        
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
         UITabBar.appearance().barTintColor = UIColor.blackColor()
@@ -75,7 +76,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         }
         
         if let movieTitle = store.movies[indexPath.row].title{
-            cell.movieTitleLabel.textColor = UIColor.redColor()
+            cell.movieTitleLabel.textColor = UIColor.grayColor()
+            cell.movieTitleLabel.font = UIFont (name: "Georgia", size: 18)
             cell.movieTitleLabel.text = movieTitle
             
         }
