@@ -22,7 +22,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
+        collectionView!.backgroundColor = UIColor.blackColor()
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
         UITabBar.appearance().barTintColor = UIColor.blackColor()
