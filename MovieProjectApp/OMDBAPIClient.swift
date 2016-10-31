@@ -62,9 +62,7 @@ class OMDBAPIClient
         
         guard let unwrappedNSURL = nsurl else {print("ERROR OCCURRED HERE"); return}
         
-        let request = NSMutableURLRequest(URL: unwrappedNSURL)
-        
-        request.HTTPMethod = "GET"
+        let request = NSURLRequest(URL: unwrappedNSURL)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
