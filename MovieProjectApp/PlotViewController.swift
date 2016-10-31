@@ -15,8 +15,9 @@ class PlotViewController: UIViewController {
     
     var plotMovieObject : Movie?
 
-    @IBOutlet weak var fullPlotLabel: UILabel!
+    //@IBOutlet weak var fullPlotLabel: UILabel!
     
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var actualPlot: UILabel!
     
     override func viewDidLoad() {
@@ -24,9 +25,9 @@ class PlotViewController: UIViewController {
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         self.actualPlot.textColor = UIColor.grayColor()
-        self.fullPlotLabel.textColor = UIColor.grayColor()
+        self.topLabel.textColor = UIColor.grayColor()
         actualPlot.font = UIFont (name: "Georgia", size: 15)
-        fullPlotLabel.font = UIFont (name: "Georgia", size: 15)
+        topLabel.font = UIFont (name: "Georgia", size: 15)
         
         guard let unwrappedMovieObject = plotMovieObject else {print("ERROR OCCURRED HERE!"); return}
         

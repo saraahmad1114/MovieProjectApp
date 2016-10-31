@@ -173,14 +173,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Plot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iw7-wY-mD5">
-                                <rect key="frame" x="252" y="119" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actual Plot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAb-c4-9gn">
-                                <rect key="frame" x="241" y="289" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Actual Plot" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAb-c4-9gn">
+                                <rect key="frame" x="81" y="289" width="447" height="210"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -188,16 +182,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iw7-wY-mD5" firstAttribute="top" secondItem="N00-X2-QUZ" secondAttribute="bottom" constant="55" id="40P-bx-x2r"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iw7-wY-mD5" secondAttribute="trailing" constant="267" id="Cy2-jH-bdx"/>
-                            <constraint firstItem="mAb-c4-9gn" firstAttribute="centerX" secondItem="2Iq-B0-nAR" secondAttribute="centerX" constant="-17.5" id="DfI-xU-cLm"/>
-                            <constraint firstItem="iw7-wY-mD5" firstAttribute="leading" secondItem="2Iq-B0-nAR" secondAttribute="leadingMargin" constant="232" id="KXz-4g-ZtZ"/>
-                            <constraint firstItem="mAb-c4-9gn" firstAttribute="centerY" secondItem="2Iq-B0-nAR" secondAttribute="centerY" id="kYh-Ex-niO"/>
+                            <constraint firstItem="mAb-c4-9gn" firstAttribute="leading" secondItem="2Iq-B0-nAR" secondAttribute="leadingMargin" constant="61" id="Tgr-rc-lvP"/>
+                            <constraint firstItem="35S-hY-xQv" firstAttribute="top" secondItem="mAb-c4-9gn" secondAttribute="bottom" constant="52" id="co0-KD-MCK"/>
+                            <constraint firstItem="mAb-c4-9gn" firstAttribute="top" secondItem="N00-X2-QUZ" secondAttribute="bottom" constant="225" id="is1-u2-csf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mAb-c4-9gn" secondAttribute="trailing" constant="52" id="uit-it-dWQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actualPlot" destination="mAb-c4-9gn" id="7AR-H4-0Yk"/>
-                        <outlet property="fullPlotLabel" destination="iw7-wY-mD5" id="etn-AM-2UF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVV-Bb-Ycn" userLabel="First Responder" sceneMemberID="firstResponder"/>
