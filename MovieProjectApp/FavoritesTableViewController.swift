@@ -15,15 +15,13 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.backgroundColor = UIColor.blackColor()
         store.fetchData()
         NSOperationQueue.mainQueue().addOperationWithBlock { 
             self.tableView.reloadData()
         }
-
         print("table count: \(self.store.favoriteMovies.count)")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,7 +57,14 @@ class FavoritesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
     
-        //cell.moviePicture = self.store.favoriteMovies[indexPath.row].movies.posterURL
+       cell.updateTitleLabel.textColor = UIColor.grayColor()
+       cell.updateYearLabel.textColor = UIColor.grayColor()
+       cell.updateimdbRatingLabel.textColor = UIColor.grayColor()
+       // cell.backgroundColor = UIColor.blackColor()
+        
+        cell.updateTitleLabel.font = UIFont (name: "Georgia", size: 15)
+        cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
+        cell.updateimdbRatingLabel.font = UIFont (name: "Georgia", size: 15)
         
         let neededCell = store.favoriteMovies[indexPath.row]
         

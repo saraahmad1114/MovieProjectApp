@@ -173,23 +173,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Actual Plot" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAb-c4-9gn">
-                                <rect key="frame" x="81" y="289" width="447" height="210"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Plot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIy-ZI-70J">
+                                <rect key="frame" x="220" y="90" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="actualPlot" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="20" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmW-Vm-L1w">
+                                <rect key="frame" x="146" y="142" width="352" height="322"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mAb-c4-9gn" firstAttribute="leading" secondItem="2Iq-B0-nAR" secondAttribute="leadingMargin" constant="61" id="Tgr-rc-lvP"/>
-                            <constraint firstItem="35S-hY-xQv" firstAttribute="top" secondItem="mAb-c4-9gn" secondAttribute="bottom" constant="52" id="co0-KD-MCK"/>
-                            <constraint firstItem="mAb-c4-9gn" firstAttribute="top" secondItem="N00-X2-QUZ" secondAttribute="bottom" constant="225" id="is1-u2-csf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mAb-c4-9gn" secondAttribute="trailing" constant="52" id="uit-it-dWQ"/>
+                            <constraint firstItem="oIy-ZI-70J" firstAttribute="top" secondItem="N00-X2-QUZ" secondAttribute="bottom" constant="26" id="D95-m3-acU"/>
+                            <constraint firstItem="oIy-ZI-70J" firstAttribute="leading" secondItem="2Iq-B0-nAR" secondAttribute="leading" constant="220" id="Ipe-sd-NUG"/>
+                            <constraint firstItem="XmW-Vm-L1w" firstAttribute="top" secondItem="oIy-ZI-70J" secondAttribute="bottom" constant="31" id="U8Z-Og-8Nu"/>
+                            <constraint firstItem="35S-hY-xQv" firstAttribute="top" secondItem="XmW-Vm-L1w" secondAttribute="bottom" constant="87" id="Vwn-q8-x7u"/>
+                            <constraint firstItem="XmW-Vm-L1w" firstAttribute="leading" secondItem="2Iq-B0-nAR" secondAttribute="leadingMargin" constant="126" id="hO4-Af-KAo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XmW-Vm-L1w" secondAttribute="trailing" constant="82" id="x0d-IP-Kq9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="actualPlot" destination="mAb-c4-9gn" id="7AR-H4-0Yk"/>
+                        <outlet property="actualPlot" destination="XmW-Vm-L1w" id="LUK-TK-N4c"/>
+                        <outlet property="fullPlotLabel" destination="oIy-ZI-70J" id="DXS-RY-024"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVV-Bb-Ycn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,7 +245,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-Lu-9hZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-Lu-9hZ">
                                             <rect key="frame" x="8" y="-13" width="126" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="126" id="Krc-kQ-ykx"/>

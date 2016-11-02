@@ -17,24 +17,26 @@ class PlotViewController: UIViewController {
 
     //@IBOutlet weak var fullPlotLabel: UILabel!
     
-    @IBOutlet weak var topLabel: UILabel!
+    
     @IBOutlet weak var actualPlot: UILabel!
+    @IBOutlet weak var fullPlotLabel: UILabel!
+//    @IBOutlet weak var actualPlot: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         self.actualPlot.textColor = UIColor.grayColor()
-        self.topLabel.textColor = UIColor.grayColor()
-        actualPlot.font = UIFont (name: "Georgia", size: 15)
-        topLabel.font = UIFont (name: "Georgia", size: 15)
+        self.fullPlotLabel.textColor = UIColor.grayColor()
+        self.actualPlot.font = UIFont (name: "Georgia", size: 15)
+        self.fullPlotLabel.font = UIFont (name: "Georgia", size: 20)
         
         guard let unwrappedMovieObject = plotMovieObject else {print("ERROR OCCURRED HERE!"); return}
         
         self.store.getDescriptiveMovieFullPlotWith(unwrappedMovieObject) { (isWorking) in
             if isWorking
             {
-                dispatch_async(dispatch_get_main_queue()){
+                NSOperationQueue.mainQueue().addOperationWithBlock{
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
                     self.actualPlot.text = unwrappedFullPlot
