@@ -28,7 +28,7 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
+            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
             {
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
@@ -68,7 +68,7 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
+            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
             {
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
@@ -99,7 +99,7 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
+            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
             {
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
