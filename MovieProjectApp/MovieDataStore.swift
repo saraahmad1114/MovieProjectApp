@@ -18,7 +18,6 @@ class MovieDataStore
     var movies : [Movie] = []
     var favoriteMovies : [Favorites] = []
 
-    
     var pageNum = 1
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -119,7 +118,7 @@ class MovieDataStore
                 guard let unwrappedEntity = entity else {print("AN ERROR OCCURRED HERE"); return}
                 
                 let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, type: unwrappedMovieType, imdbID: unwrappedMovieImbdID, posterURL: unwrappedMoviePosterURL, entity: unwrappedEntity, managedObjectContext: self.managedObjectContext)
-            /*
+            
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
                 print("Movie Year: \(singleMovieObject.year)")
@@ -127,7 +126,7 @@ class MovieDataStore
                 print("Movie Type: \(singleMovieObject.type)")
                 print("Movie PosterURL: \(singleMovieObject.posterURL)")
                 print("****************************************")
-            */
+            
                 self.movies.append(singleMovieObject)
                 print(self.movies.count)
             }

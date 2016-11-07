@@ -71,23 +71,21 @@ class FavoritesTableViewController: UITableViewController {
             let neededCell = self.store.favoriteMovies[indexPath.row]
             
             if let neededTitle = neededCell.movies?.first {
-                cell.updateYearLabel.text = neededTitle.title
+                cell.updateTitleLabel.text = neededTitle.title
                 cell.updateYearLabel.text = neededCell.movies!.first!.year
                 cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
             }
             
-//            if let neededURL = neededCell.movies?.first?.posterURL{
-//                
-//                if let url = NSURL(string: (neededURL)){
-//                    
-//                    if let data = NSData(contentsOfURL: url){
-//                        
-//                        cell.moviePicture.image = UIImage.init(data: data)
-//                    }
-//                }
-//            }
-        
-//        }
+            if let neededURL = neededCell.movies?.first?.posterURL{
+                
+                if let url = NSURL(string: (neededURL)){
+                    
+                    if let data = NSData(contentsOfURL: url){
+                        
+                        cell.moviePicture.image = UIImage.init(data: data)
+                    }
+                }
+            }
         return cell
         
     }
