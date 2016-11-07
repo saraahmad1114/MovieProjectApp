@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     let store = MovieDataStore.sharedInstance
     var movieObject : Movie?
-    
+    var scrollView: UIScrollView!
     
     @IBOutlet weak var fullPlot: UIButton!
     @IBOutlet weak var saveMovie: UIButton!
@@ -135,6 +135,13 @@ class DetailViewController: UIViewController {
                         self.writersLabel.text = unwrappedWriters
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
+                    
+                    
+                    self.scrollView = UIScrollView(frame: self.shortPlotLabel.bounds)
+                    self.scrollView.contentSize = self.shortPlotLabel.bounds.size
+                    self.shortPlotLabel.text = unwrappedShortPlot
+                    self.scrollView.addSubview(self.shortPlotLabel)
+                    self.view.addSubview(self.scrollView)
                 })
             }
             else{
