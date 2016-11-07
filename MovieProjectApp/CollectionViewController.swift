@@ -25,7 +25,8 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         collectionView!.backgroundColor = UIColor.blackColor()
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
-        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        //UITabBar.appearance().barTintColor = UIColor.blackColor()
+        //UITabBar.appearance().barTintColor = UIColor.grayColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
