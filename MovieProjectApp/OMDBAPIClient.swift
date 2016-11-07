@@ -28,8 +28,8 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
-            {
+            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
+        
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
                 let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? NSArray
@@ -46,7 +46,7 @@ class OMDBAPIClient
                 }
                 
                 completion(dictionaryArray)
-            }
+            
         }
         
         task.resume()
@@ -68,15 +68,14 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
-            {
+             let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+        
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
                 guard let unwrappedResponseDictionary = castedResponseDictionary else {print("This did not work!"); return}
                 
                 descriptiveDictionary = unwrappedResponseDictionary
-                
-            }
+            
             completion(descriptiveDictionary)
     }
         task.resume()
@@ -99,15 +98,14 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
-            {
+             let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+            
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
                 guard let unwrappedResponseDictionary = castedResponseDictionary else {print("This did not work!"); return}
                 
                 movieDictionary = unwrappedResponseDictionary
-                
-            }
+            
             completion(movieDictionary)
         }
         
