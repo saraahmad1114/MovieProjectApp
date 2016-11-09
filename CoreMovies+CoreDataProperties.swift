@@ -1,5 +1,5 @@
 //
-//  Movie+CoreDataProperties.swift
+//  CoreMovies+CoreDataProperties.swift
 //  MovieProjectApp
 //
 //  Created by Flatiron School on 11/9/16.
@@ -12,11 +12,11 @@
 import Foundation
 import CoreData
 
-extension Movie {
+extension CoreMovies {
 
     @NSManaged var title: String?
     @NSManaged var year: String?
     @NSManaged var imdbRating: String?
-    @NSManaged var newRelationship: NSManagedObject?
+    @NSManaged var newRelationship: Favorite?
 
 }

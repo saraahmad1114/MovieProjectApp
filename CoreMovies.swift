@@ -1,5 +1,5 @@
 //
-//  Movie.swift
+//  CoreMovies.swift
 //  MovieProjectApp
 //
 //  Created by Flatiron School on 11/9/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Movie: NSManagedObject {
+class CoreMovies: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
