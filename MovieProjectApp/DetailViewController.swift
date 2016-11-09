@@ -158,9 +158,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
-        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorites", inManagedObjectContext: store.managedObjectContext) as! Favorites
+        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: store.managedObjectContext) as! Favorite
         
         guard let unwrappedMovieObject = self.movieObject else { print("AN ERROR OCCURRED HERE"); return}
+        
+        
         
         savedMovieObject.movies?.insert(unwrappedMovieObject)
         store.saveContext()
