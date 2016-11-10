@@ -172,8 +172,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             
             else { print("AN ERROR OCCURRED HERE"); return}
         
+        let entity = NSEntityDescription.entityForName("CoreMovies", inManagedObjectContext: self.store.managedObjectContext)
         
-        let coreMovieObject = CoreMovies.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, managedObjectContext: self.store.managedObjectContext)
+        guard let unwrappedEntity = entity else {print("ENTITY DID NOT UNWRAP"); return}
+        
+        let coreMovieObject = CoreMovies(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, entity: unwrappedEntity, managedObjectContext: self.store.managedObjectContext)
+        
+//        let coreMovieObject = CoreMovies.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, managedObjectContext: self.store.managedObjectContext)
         
         savedMovieObject.movies?.insert(coreMovieObject)
         store.saveContext()

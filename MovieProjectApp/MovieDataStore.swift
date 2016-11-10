@@ -17,7 +17,7 @@ class MovieDataStore
     
     var movies : [Movie] = []
     var pageNum = 1
-    var favoriteMovies : [Favorites] = []
+    var favoriteMovies : [Favorite] = []
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.first.CoreDataToUSe" in the application's documents Application Support directory.
@@ -82,7 +82,7 @@ class MovieDataStore
     {
         let fetchRequest = NSFetchRequest(entityName: "Favorites")
         do {
-            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorites]
+            favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Favorite]
             
         } catch {
             let fetchError = error as NSError
