@@ -14,14 +14,13 @@ class CoreMovies: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
-    
-    convenience init(title: String, year: String, imdbRating: String, managedObjectContext: NSManagedObjectContext)
+    convenience init(title: String, year: String, imdbRating: String, entity: NSEntityDescription, managedObjectContext: NSManagedObjectContext)
     {
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
         self.title = title
         self.year = year
         self.imdbRating = imdbRating
-        
+       
     }
 
 }
