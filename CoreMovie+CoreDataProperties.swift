@@ -1,8 +1,8 @@
 //
-//  CoreMovies+CoreDataProperties.swift
+//  CoreMovie+CoreDataProperties.swift
 //  MovieProjectApp
 //
-//  Created by Flatiron School on 11/9/16.
+//  Created by Flatiron School on 11/10/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,11 +12,12 @@
 import Foundation
 import CoreData
 
-extension CoreMovies {
+extension CoreMovie {
 
     @NSManaged var title: String?
     @NSManaged var year: String?
     @NSManaged var imdbRating: String?
+    @NSManaged var posterURL: String?
     @NSManaged var newRelationship: Favorite?
 
 }

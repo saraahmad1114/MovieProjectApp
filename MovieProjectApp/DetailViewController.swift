@@ -168,7 +168,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             unwrappedMovieObject = self.movieObject,
             unwrappedMovieTitle = self.movieObject?.title,
             unwrappedMovieYear = self.movieObject?.year,
-            unwrappedMovieImdbRating = self.movieObject?.imdbRating
+            unwrappedMovieImdbRating = self.movieObject?.imdbRating,
+            unwrappedMoviePosterURL = self.movieObject?.posterURL
             
             else { print("AN ERROR OCCURRED HERE"); return}
         
@@ -176,9 +177,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         
         guard let unwrappedEntity = entity else {print("ENTITY DID NOT UNWRAP"); return}
         
-        let coreMovieObject = CoreMovies(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, entity: unwrappedEntity, managedObjectContext: self.store.managedObjectContext)
-        
-//        let coreMovieObject = CoreMovies.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, managedObjectContext: self.store.managedObjectContext)
+        let coreMovieObject = CoreMovie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbRating, entity: unwrappedEntity, posterURL: unwrappedMoviePosterURL, managedObjectContext: self.store.managedObjectContext)
         
         savedMovieObject.movies?.insert(coreMovieObject)
         store.saveContext()

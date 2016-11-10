@@ -2,7 +2,7 @@
 //  Favorite.swift
 //  MovieProjectApp
 //
-//  Created by Flatiron School on 11/9/16.
+//  Created by Flatiron School on 11/10/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 

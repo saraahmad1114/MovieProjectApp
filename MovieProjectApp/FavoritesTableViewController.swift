@@ -119,7 +119,7 @@ class FavoritesTableViewController: UITableViewController {
             
             let indexPath: NSIndexPath = neededCell
             let destinationVC = segue.destinationViewController as? DetailViewController
-            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies!.first
+            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies.first
         }
         
     }
