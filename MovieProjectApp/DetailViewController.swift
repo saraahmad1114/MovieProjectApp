@@ -165,7 +165,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         
         guard let
             
-            unwrappedMovieObject = self.movieObject,
+         //   unwrappedMovieObject = self.movieObject,
             unwrappedMovieTitle = self.movieObject?.title,
             unwrappedMovieYear = self.movieObject?.year,
             unwrappedMovieImdbRating = self.movieObject?.imdbRating,
