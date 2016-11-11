@@ -36,11 +36,14 @@ class PlotViewController: UIViewController {
         self.store.getDescriptiveMovieFullPlotWith(unwrappedMovieObject) { (isWorking) in
             if isWorking
             {
-                NSOperationQueue.mainQueue().addOperationWithBlock{
+                //NSOperationQueue.mainQueue().addOperationWithBlock{
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
                     self.actualPlot.text = unwrappedFullPlot
-                }
+                })
+                    //self.actualPlot.text = unwrappedFullPlot
+                //}
             }
             else {
                 print("AN ERROR OCCURRED HERE!")

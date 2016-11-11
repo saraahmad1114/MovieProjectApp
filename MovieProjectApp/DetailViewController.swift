@@ -29,8 +29,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
         
         titleLabel.textColor = UIColor.grayColor()
@@ -159,6 +159,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    //all changes occurred here!!!
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
         let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: store.managedObjectContext) as! Favorite
