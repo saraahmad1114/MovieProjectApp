@@ -25,8 +25,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
         collectionView!.backgroundColor = UIColor.blackColor()
         self.searchBar.backgroundColor = UIColor.blackColor()
         navigationController!.navigationBar.barTintColor = UIColor.blackColor()
-        //UITabBar.appearance().barTintColor = UIColor.blackColor()
-        //UITabBar.appearance().barTintColor = UIColor.grayColor()
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
@@ -46,13 +44,11 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return self.store.movies.count
     }
 
@@ -70,13 +66,15 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
             else {
                 if let url = NSURL(string: unwrappedPosterURL) {
                 if let data = NSData(contentsOfURL: url) {
-                cell.imageInCell.image = UIImage(data: data)
-                //cell.imageInCell.backgroundColor = UIColor.whiteColor()
+                    
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    cell.imageInCell.image = UIImage(data: data)
+                })
+                //cell.imageInCell.image = UIImage(data: data)
                     }
                 }
             }
         }
-        
         if let movieTitle = store.movies[indexPath.row].title{
             cell.movieTitleLabel.textColor = UIColor.grayColor()
             cell.movieTitleLabel.font = UIFont (name: "Georgia", size: 15)
