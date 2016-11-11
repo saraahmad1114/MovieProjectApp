@@ -46,7 +46,6 @@ class OMDBAPIClient
                 }
                 
                 completion(dictionaryArray)
-            
         }
         
         task.resume()
@@ -77,7 +76,7 @@ class OMDBAPIClient
                 descriptiveDictionary = unwrappedResponseDictionary
             
             completion(descriptiveDictionary)
-    }
+        }
         task.resume()
     }
     
@@ -110,6 +109,6 @@ class OMDBAPIClient
         }
         
         task.resume()
-}
+    }
 
 }

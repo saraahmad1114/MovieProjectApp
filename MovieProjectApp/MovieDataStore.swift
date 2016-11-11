@@ -97,18 +97,18 @@ class MovieDataStore
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
-                let movieTitle = singleMovie["Title"] as? String
-                let movieYear = singleMovie["Year"] as? String
-                let movieImbdID = singleMovie["imdbID"] as? String
-                let movieType = singleMovie["Type"] as? String
-                let moviePosterURL = singleMovie["Poster"] as? String
+//                let movieTitle = singleMovie["Title"] as? String
+//                let movieYear = singleMovie["Year"] as? String
+//                let movieImbdID = singleMovie["imdbID"] as? String
+//                let movieType = singleMovie["Type"] as? String
+//                let moviePosterURL = singleMovie["Poster"] as? String
                 
                 guard let
-                    unwrappedMovieTitle = movieTitle,
-                    unwrappedMovieYear = movieYear,
-                    unwrappedMovieImbdID = movieImbdID,
-                    unwrappedMovieType = movieType,
-                    unwrappedMoviePosterURL = moviePosterURL
+                    unwrappedMovieTitle = singleMovie["Title"] as? String,
+                    unwrappedMovieYear = singleMovie["Year"] as? String,
+                    unwrappedMovieImbdID = singleMovie["imdbID"] as? String,
+                    unwrappedMovieType = singleMovie["Type"] as? String,
+                    unwrappedMoviePosterURL = singleMovie["Poster"] as? String
                 
                     else {print("ERROR OCCURRED HERE!"); return}
                 
@@ -136,18 +136,18 @@ class MovieDataStore
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(unwrappedimdbID) { (descriptiveResponseDictionary) in
             
-            let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
-            let desMovieWriters = descriptiveResponseDictionary["Writer"] as? String
-            let desMovieActors = descriptiveResponseDictionary["Actors"] as? String
-            let desMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String
-            let desMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
+//            let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
+//            let desMovieWriters = descriptiveResponseDictionary["Writer"] as? String
+//            let desMovieActors = descriptiveResponseDictionary["Actors"] as? String
+//            let desMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String
+//            let desMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
             
             guard let
-                unwrappedDesMovieDirector = desMovieDirector,
-                unwrappedDesMovieWriters = desMovieWriters,
-                unwrappedDesMovieActors = desMovieActors,
-                unwrappedDesMovieShortPlot = desMovieShortPlot,
-                unwrappedDesMovieimbdRating = desMovieimbdRating
+                unwrappedDesMovieDirector = descriptiveResponseDictionary["Director"] as? String,
+                unwrappedDesMovieWriters = descriptiveResponseDictionary["Writer"] as? String,
+                unwrappedDesMovieActors = descriptiveResponseDictionary["Actors"] as? String,
+                unwrappedDesMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String,
+                unwrappedDesMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
             
                 else {print("AN ERROR OCCURRED HERE!"); return}
             
@@ -177,10 +177,10 @@ class MovieDataStore
         
         OMDBAPIClient.getMovieFullPlotWith(unwrappedimdbID) { (fullPlotMovieDictionary) in
             
-            let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
+//            let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
             guard let
-            unwrappedFullPlot = movieFullPlot
+            unwrappedFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
             else {print("AN ERROR OCCURRED HERE"); return}
             
