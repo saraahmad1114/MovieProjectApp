@@ -164,12 +164,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("Favorite", inManagedObjectContext: store.managedObjectContext) as! Favorite
         
         guard let
-            
-         //   unwrappedMovieObject = self.movieObject,
-            unwrappedMovieTitle = self.movieObject?.title,
-            unwrappedMovieYear = self.movieObject?.year,
-            unwrappedMovieImdbRating = self.movieObject?.imdbRating,
-            unwrappedMoviePosterURL = self.movieObject?.posterURL
+            unwrappedMovieObject = self.movieObject else {print("movie object did not unwrap"); return}
+        
+        guard let
+            unwrappedMovieTitle = unwrappedMovieObject.title,
+            unwrappedMovieYear = unwrappedMovieObject.year,
+            unwrappedMovieImdbRating = unwrappedMovieObject.imdbRating,
+            unwrappedMoviePosterURL = unwrappedMovieObject.posterURL
             
             else { print("AN ERROR OCCURRED HERE"); return}
         

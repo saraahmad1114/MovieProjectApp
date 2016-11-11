@@ -62,7 +62,6 @@ class FavoritesTableViewController: UITableViewController {
             cell.updateTitleLabel.textColor = UIColor.grayColor()
             cell.updateYearLabel.textColor = UIColor.grayColor()
             cell.updateimdbRatingLabel.textColor = UIColor.grayColor()
-            // cell.backgroundColor = UIColor.blackColor()
             
             cell.updateTitleLabel.font = UIFont (name: "Georgia", size: 15)
             cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
