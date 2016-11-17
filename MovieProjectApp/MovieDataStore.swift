@@ -80,7 +80,7 @@ class MovieDataStore
    
     func fetchData ()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Favorites")
+        let fetchRequest = NSFetchRequest(entityName: "CoreMovie")
         do {
             favoriteMovies = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [CoreMovie]
             
