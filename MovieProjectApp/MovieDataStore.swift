@@ -97,7 +97,6 @@ class MovieDataStore
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
-            
                 guard let
                     unwrappedMovieTitle = singleMovie["Title"] as? String,
                     unwrappedMovieYear = singleMovie["Year"] as? String,
@@ -130,12 +129,6 @@ class MovieDataStore
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(unwrappedimdbID) { (descriptiveResponseDictionary) in
-            
-//            let desMovieDirector = descriptiveResponseDictionary["Director"] as? String
-//            let desMovieWriters = descriptiveResponseDictionary["Writer"] as? String
-//            let desMovieActors = descriptiveResponseDictionary["Actors"] as? String
-//            let desMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String
-//            let desMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
             
             guard let
                 unwrappedDesMovieDirector = descriptiveResponseDictionary["Director"] as? String,
@@ -171,8 +164,6 @@ class MovieDataStore
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
         
         OMDBAPIClient.getMovieFullPlotWith(unwrappedimdbID) { (fullPlotMovieDictionary) in
-            
-//            let movieFullPlot = fullPlotMovieDictionary["Plot"] as? String
             
             guard let
             unwrappedFullPlot = fullPlotMovieDictionary["Plot"] as? String

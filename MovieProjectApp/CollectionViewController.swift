@@ -70,7 +70,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 NSOperationQueue.mainQueue().addOperationWithBlock({ 
                     cell.imageInCell.image = UIImage(data: data)
                 })
-                //cell.imageInCell.image = UIImage(data: data)
                     }
                 }
             }

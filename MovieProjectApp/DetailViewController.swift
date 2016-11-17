@@ -118,7 +118,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                             }
                         }
                     }
-                
                 NSOperationQueue.mainQueue().addOperationWithBlock({
                     self.titleLabel.text = unwrappedMovieObject.title
                     self.yearLabel.text = unwrappedMovieObject.year
@@ -138,7 +137,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                         self.writersLabel.text = unwrappedWriters
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
-                    
                 })
             }
             else{
