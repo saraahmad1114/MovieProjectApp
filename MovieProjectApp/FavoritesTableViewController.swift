@@ -58,17 +58,24 @@ class FavoritesTableViewController: UITableViewController {
         cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
         cell.updateimdbRatingLabel.font = UIFont (name: "Georgia", size: 15)
         
-        let neededCell = self.store.favoriteMovies[indexPath.row]
+ 
+        if let movieTitle = self.store.favoriteMovies[indexPath.row].title {
             
-        if let neededTitle = neededCell.movies?.first {
-            cell.updateTitleLabel.text = neededTitle.title
-            cell.updateYearLabel.text = neededCell.movies!.first!.year
-            cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
+            cell.updateTitleLabel.text = movieTitle
         }
+            if let movieYear = self.store.favoriteMovies[indexPath.row].year {
+                
+                cell.updateYearLabel.text = movieYear
+            }
         
-        if let neededURL = neededCell.movies?.first?.posterURL{
+                if let movieimdbRating = self.store.favoriteMovies[indexPath.row].imdbRating{
             
-            if let url = NSURL(string: (neededURL)){
+                    cell.updateimdbRatingLabel.text = movieimdbRating
+                }
+        
+        if let neededURL = self.store.favoriteMovies[indexPath.row].posterURL{
+    
+            if let url = NSURL(string: neededURL){
                 
                 if let data = NSData(contentsOfURL: url){
                     
@@ -76,9 +83,7 @@ class FavoritesTableViewController: UITableViewController {
                 }
             }
         }
-        
         return cell
-        
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
