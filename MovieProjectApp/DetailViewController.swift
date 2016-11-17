@@ -154,7 +154,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     //all changes occurred here!!!
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
-        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("CoreMovie", inManagedObjectContext: store.managedObjectContext) as! CoreMovie
+//        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("CoreMovie", inManagedObjectContext: store.managedObjectContext) as! CoreMovie
         
         guard let
             unwrappedMovieObject = self.movieObject else {print("movie object did not unwrap"); return}
@@ -163,11 +163,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             unwrappedMovieTitle = unwrappedMovieObject.title,
             unwrappedMovieYear = unwrappedMovieObject.year,
             unwrappedMovieImdbRating = unwrappedMovieObject.imdbRating,
+     
             unwrappedMoviePosterURL = unwrappedMovieObject.posterURL
             
             else { print("AN ERROR OCCURRED HERE"); return}
         
-        let entity = NSEntityDescription.entityForName("CoreMovies", inManagedObjectContext: self.store.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("CoreMovie", inManagedObjectContext: self.store.managedObjectContext)
         
         guard let unwrappedEntity = entity else {print("ENTITY DID NOT UNWRAP"); return}
         
