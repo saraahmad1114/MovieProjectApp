@@ -139,12 +139,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                         self.actorsLabel.text = unwrappedActors
                         self.shortPlotLabel.text = unwrappedShortPlot
                     
-                    
-                    self.scrollView = UIScrollView(frame: self.shortPlotLabel.bounds)
-                    self.scrollView.contentSize = self.shortPlotLabel.bounds.size
-                    self.shortPlotLabel.text = unwrappedShortPlot
-                    self.scrollView.addSubview(self.shortPlotLabel)
-                    self.view.addSubview(self.scrollView)
                 })
             }
             else{

@@ -97,12 +97,7 @@ class MovieDataStore
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
-//                let movieTitle = singleMovie["Title"] as? String
-//                let movieYear = singleMovie["Year"] as? String
-//                let movieImbdID = singleMovie["imdbID"] as? String
-//                let movieType = singleMovie["Type"] as? String
-//                let moviePosterURL = singleMovie["Poster"] as? String
-                
+            
                 guard let
                     unwrappedMovieTitle = singleMovie["Title"] as? String,
                     unwrappedMovieYear = singleMovie["Year"] as? String,

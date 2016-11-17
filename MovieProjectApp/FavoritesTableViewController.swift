@@ -25,7 +25,7 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         store.fetchData()
         NSOperationQueue.mainQueue().addOperationWithBlock {
             self.tableView.reloadData()
@@ -42,49 +42,41 @@ class FavoritesTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.store.favoriteMovies.count
-        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
-
-//        NSOperationQueue.mainQueue().addOperationWithBlock {
         
-            cell.updateTitleLabel.textColor = UIColor.grayColor()
-            cell.updateYearLabel.textColor = UIColor.grayColor()
-            cell.updateimdbRatingLabel.textColor = UIColor.grayColor()
+        cell.updateTitleLabel.textColor = UIColor.grayColor()
+        cell.updateYearLabel.textColor = UIColor.grayColor()
+        cell.updateimdbRatingLabel.textColor = UIColor.grayColor()
+        
+        cell.updateTitleLabel.font = UIFont (name: "Georgia", size: 15)
+        cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
+        cell.updateimdbRatingLabel.font = UIFont (name: "Georgia", size: 15)
+        
+        let neededCell = self.store.favoriteMovies[indexPath.row]
             
-            cell.updateTitleLabel.font = UIFont (name: "Georgia", size: 15)
-            cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
-            cell.updateimdbRatingLabel.font = UIFont (name: "Georgia", size: 15)
+        if let neededTitle = neededCell.movies?.first {
+            cell.updateTitleLabel.text = neededTitle.title
+            cell.updateYearLabel.text = neededCell.movies!.first!.year
+            cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
+        }
+        
+        if let neededURL = neededCell.movies?.first?.posterURL{
             
-            let neededCell = self.store.favoriteMovies[indexPath.row]
-            
-            if let neededTitle = neededCell.movies?.first {
-                cell.updateTitleLabel.text = neededTitle.title
-                cell.updateYearLabel.text = neededCell.movies!.first!.year
-                cell.updateimdbRatingLabel.text = neededCell.movies!.first!.imdbRating
-            }
-            
-            if let neededURL = neededCell.movies?.first?.posterURL{
+            if let url = NSURL(string: (neededURL)){
                 
-                if let url = NSURL(string: (neededURL)){
+                if let data = NSData(contentsOfURL: url){
                     
-                    if let data = NSData(contentsOfURL: url){
-                        
-                        cell.moviePicture.image = UIImage.init(data: data)
-                    }
+                    cell.moviePicture.image = UIImage(data: data)
                 }
             }
+        }
+        
         return cell
         
     }
@@ -93,79 +85,34 @@ class FavoritesTableViewController: UITableViewController {
     {
         return true
     }
-    
-    
+
+
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
     {
         if editingStyle == UITableViewCellEditingStyle.Delete
         {
             let managedObjectContext = store.managedObjectContext
             managedObjectContext.deleteObject(store.favoriteMovies[indexPath.row])
-            
+
             store.favoriteMovies.removeAtIndex(indexPath.row)
             store.saveContext()
             self.tableView.reloadData()
         }
     }
-    
+
     //savedMovieDetails
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "savedMovieDetails"
         {
             let cell = sender as! UITableViewCell
-            
+
             guard let neededCell = self.tableView.indexPathForCell(cell) else {print("ERROR OCCURRED HERE"); return }
-            
+
             let indexPath: NSIndexPath = neededCell
             let destinationVC = segue.destinationViewController as? DetailViewController
-            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies.first
+//            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies.first
         }
         
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
