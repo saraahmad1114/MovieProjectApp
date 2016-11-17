@@ -19,7 +19,6 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     let movieSearchTerms = ["love", "fantasy", "romance", "mystery", "thriller", "musical", "family", "horror", "sci-fi", "Batman", "Star Wars", "Superman"]
     var randomNumber: UInt32 = 0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.backgroundColor = UIColor.blackColor()

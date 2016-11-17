@@ -5,13 +5,8 @@
         <attribute name="posterURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorite" inverseName="movies" inverseEntity="Favorite" syncable="YES"/>
-    </entity>
-    <entity name="Favorite" representedClassName=".Favorite" syncable="YES">
-        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreMovie" inverseName="newRelationship" inverseEntity="CoreMovie" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorite" positionX="-171" positionY="81" width="128" height="58"/>
-        <element name="CoreMovie" positionX="288" positionY="57" width="128" height="118"/>
+        <element name="CoreMovie" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
