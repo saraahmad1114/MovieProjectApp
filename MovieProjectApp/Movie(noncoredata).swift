@@ -45,4 +45,9 @@ class Movie
         self.init(title: title, year: year, director: "NOT FOUND", writers: "NOT FOUND", actors: "NOT FOUND", fullPlot: "NOT FOUND", shortPlot: "NOT FOUND", imdbID: imdbID, type: type, imdbRating: "NOT FOUND", posterURL: posterURL)
     }
     
+    
+    convenience init (title: String, year: String, imdbRating: String, posterURL: String){
+    
+        self.init(title: title, year: year, director: "NOT FOUND", writers: "NOT FOUND", actors: "NOT FOUND", fullPlot: "NOT FOUND", shortPlot: "NOT FOUND", imdbID: "NOT FOUND", type: "NOT FOUND", imdbRating: imdbRating, posterURL: posterURL)
+    }
 }

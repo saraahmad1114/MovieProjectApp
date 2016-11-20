@@ -307,7 +307,7 @@
                                     <outlet property="updateTitleLabel" destination="lVZ-Ih-f58" id="4BK-7L-gLM"/>
                                     <outlet property="updateYearLabel" destination="kJT-uy-XLn" id="fEd-5G-kQz"/>
                                     <outlet property="updateimdbRatingLabel" destination="ji4-hX-ABo" id="Cc6-6w-8vn"/>
-                                    <segue destination="bAy-Ih-36r" kind="show" identifier="savedMovieDetails" id="d5Z-2v-6DJ"/>
+                                    <segue destination="bAy-Ih-36r" kind="show" identifier="savedMovieDetail" id="d5Z-2v-6DJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

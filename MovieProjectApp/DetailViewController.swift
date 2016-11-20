@@ -154,8 +154,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     //all changes occurred here!!!
     @IBAction func saveMovieTapped(sender: AnyObject) {
         
-//        let savedMovieObject = NSEntityDescription.insertNewObjectForEntityForName("CoreMovie", inManagedObjectContext: store.managedObjectContext) as! CoreMovie
-        
         guard let
             unwrappedMovieObject = self.movieObject else {print("movie object did not unwrap"); return}
         

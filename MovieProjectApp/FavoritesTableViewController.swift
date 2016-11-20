@@ -107,16 +107,31 @@ class FavoritesTableViewController: UITableViewController {
 
     //savedMovieDetails
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "savedMovieDetails"
+        if segue.identifier == "savedMovieDetail"
         {
-            let cell = sender as! UITableViewCell
+//            let cell = sender as! UITableViewCell
+//            guard let neededCell = self.tableView.indexPathForCell(cell) else {print("ERROR OCCURRED HERE"); return }
+            
+            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
 
-            guard let neededCell = self.tableView.indexPathForCell(cell) else {print("ERROR OCCURRED HERE"); return }
+            //let tabCell = self.store.favoriteMovies[neededCell.row]
+            guard let unwrappedIndexPath = indexPath else {print("error occurred here"); return}
+                
+                guard let
+                    neededTitle = self.store.favoriteMovies[unwrappedIndexPath.row].title,
+                    neededyear = self.store.favoriteMovies[unwrappedIndexPath.row].year,
+                    neededImdbRating = self.store.favoriteMovies[unwrappedIndexPath.row].imdbRating,
+                    neededPosterURL = self.store.favoriteMovies[unwrappedIndexPath.row].posterURL
+                    
+                    else {print("error"); return}
+                
+                let regularMovieObject = Movie.init(title: neededTitle, year: neededyear, imdbRating: neededImdbRating, posterURL: neededPosterURL)
 
-            let indexPath: NSIndexPath = neededCell
-            let destinationVC = segue.destinationViewController as? DetailViewController
-//            destinationVC!.movieObject = self.store.favoriteMovies[neededCell.row].movies.first
-        }
+                if let destinationVC = segue.destinationViewController as? DetailViewController{
+                    destinationVC.movieObject = regularMovieObject
+                }
+            
+            }
         
     }
     
