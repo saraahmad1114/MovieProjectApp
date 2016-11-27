@@ -28,8 +28,8 @@ class iTunesAPIClient{
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
-            {
+            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+            
                 guard let unwrappedResponseDictionary = responseDictionary else {print("nothing in response dictionary"); return}
                 
                 var resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
@@ -47,7 +47,6 @@ class iTunesAPIClient{
                 }
                 
                 completion(resultsArrayOfDictionary)
-            }
         }
         
         task.resume()
