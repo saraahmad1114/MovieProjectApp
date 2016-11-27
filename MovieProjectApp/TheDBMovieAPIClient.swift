@@ -20,16 +20,14 @@ class TheDBMovieAPIClient {
         
         guard let unwrappednsURL = nsurl else {print("URL DID NOT UNWRAP"); return}
         
-        let request = NSMutableURLRequest(URL: unwrappednsURL)
-        
-        request.HTTPMethod = "GET"
+        let request = NSURLRequest(URL: unwrappednsURL)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as? NSDictionary
-            {
+            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+        
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
                 let resultsArray = unwrappedResponseDictionary["results"] as? NSArray
@@ -41,12 +39,9 @@ class TheDBMovieAPIClient {
                 guard let unwrappedFirstDictionary = firstDictionary else {print("ERROR OCCURRED HERE"); return}
                 
                 videoInfoDictionary = unwrappedFirstDictionary
-                
-            }
             
             completion(videoInfoDictionary)
         }
         task.resume()
     }
 
-}

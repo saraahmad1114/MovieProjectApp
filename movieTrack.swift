@@ -16,7 +16,7 @@ class movieTrack{
     var previewUrl: String?
     
     
-    //designated initializer 
+    //designated initializer
     init(trackName: String, collectionName: String, collectionNameCensored: String, previewUrl: String){
         
         self.trackName = trackName
