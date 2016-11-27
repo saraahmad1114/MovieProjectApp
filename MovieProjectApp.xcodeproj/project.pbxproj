@@ -15,6 +15,8 @@
 		1B923D511DDE38650016F7C0 /* CoreMovie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B923D4F1DDE38650016F7C0 /* CoreMovie+CoreDataProperties.swift */; };
 		1B923D521DDE38650016F7C0 /* CoreMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B923D501DDE38650016F7C0 /* CoreMovie.swift */; };
 		1B923D541DE17ABB0016F7C0 /* iTunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B923D531DE17ABB0016F7C0 /* iTunesAPIClient.swift */; };
+		1B923D561DE1846E0016F7C0 /* TheDBMovieAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B923D551DE1846E0016F7C0 /* TheDBMovieAPIClient.swift */; };
+		1BC1CDE21DEA927900A83546 /* movieTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1CDE11DEA927900A83546 /* movieTrack.swift */; };
 		1BD88C331D8C2E2C0026616B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD88C321D8C2E2C0026616B /* DetailViewController.swift */; };
 		1BF41E261D830E380093A000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF41E251D830E380093A000 /* AppDelegate.swift */; };
 		1BF41E2D1D830E380093A000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF41E2C1D830E380093A000 /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		1B923D4F1DDE38650016F7C0 /* CoreMovie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CoreMovie+CoreDataProperties.swift"; path = "../CoreMovie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1B923D501DDE38650016F7C0 /* CoreMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreMovie.swift; path = ../CoreMovie.swift; sourceTree = "<group>"; };
 		1B923D531DE17ABB0016F7C0 /* iTunesAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesAPIClient.swift; sourceTree = "<group>"; };
+		1B923D551DE1846E0016F7C0 /* TheDBMovieAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheDBMovieAPIClient.swift; sourceTree = "<group>"; };
+		1BC1CDE11DEA927900A83546 /* movieTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieTrack.swift; path = ../movieTrack.swift; sourceTree = "<group>"; };
 		1BD88C321D8C2E2C0026616B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1BF41E221D830E380093A000 /* MovieProjectApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieProjectApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BF41E251D830E380093A000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,10 +127,12 @@
 		1BF41E241D830E380093A000 /* MovieProjectApp */ = {
 			isa = PBXGroup;
 			children = (
+				1BC1CDE11DEA927900A83546 /* movieTrack.swift */,
 				1B452ADA1D9D620E004481FE /* Secrets.swift */,
 				1BF41E251D830E380093A000 /* AppDelegate.swift */,
 				1BF41E551D830E5B0093A000 /* OMDBAPIClient.swift */,
 				1B923D531DE17ABB0016F7C0 /* iTunesAPIClient.swift */,
+				1B923D551DE1846E0016F7C0 /* TheDBMovieAPIClient.swift */,
 				1BF41E541D830E5B0093A000 /* MovieDataStore.swift */,
 				1BF41E531D830E5B0093A000 /* Movie(noncoredata).swift */,
 				1BF41E2C1D830E380093A000 /* Assets.xcassets */,
@@ -297,8 +303,10 @@
 			files = (
 				1B923D541DE17ABB0016F7C0 /* iTunesAPIClient.swift in Sources */,
 				1B452ADB1D9D620E004481FE /* Secrets.swift in Sources */,
+				1BC1CDE21DEA927900A83546 /* movieTrack.swift in Sources */,
 				1BF41E5F1D8313520093A000 /* CollectionViewController.swift in Sources */,
 				1BF41E571D830E5B0093A000 /* Movie(noncoredata).swift in Sources */,
+				1B923D561DE1846E0016F7C0 /* TheDBMovieAPIClient.swift in Sources */,
 				1B923D521DDE38650016F7C0 /* CoreMovie.swift in Sources */,
 				1B3E7A571D919FB1006DBEC1 /* FavoritesTableViewController.swift in Sources */,
 				1B923D511DDE38650016F7C0 /* CoreMovie+CoreDataProperties.swift in Sources */,
