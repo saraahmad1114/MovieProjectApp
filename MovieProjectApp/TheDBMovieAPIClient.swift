@@ -10,23 +10,23 @@ import Foundation
 
 class TheDBMovieAPIClient {
 
-    class func getMovieTrailerFrom(query: String, completion: (NSDictionary)->())
+    class func getMovieTrailerFrom(_ query: String, completion: @escaping (NSDictionary)->())
     {
         var videoInfoDictionary : NSDictionary = [:]
         
         let movieTrailerURL = "https://api.themoviedb.org/3/movie/\(query)/videos?api_key=\(Secrets.theMovieDBAPIKey)"
         
-        let nsurl = NSURL(string: movieTrailerURL)
+        let nsurl = URL(string: movieTrailerURL)
         
         guard let unwrappednsURL = nsurl else {print("URL DID NOT UNWRAP"); return}
         
-        let request = NSURLRequest(URL: unwrappednsURL)
+        let request = URLRequest(url: unwrappednsURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+            let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
         
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
@@ -41,7 +41,7 @@ class TheDBMovieAPIClient {
                 videoInfoDictionary = unwrappedFirstDictionary
             
             completion(videoInfoDictionary)
-        }
+        }) 
         task.resume()
     }
 

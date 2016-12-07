@@ -10,29 +10,29 @@ import Foundation
 
 class iTunesAPIClient{
 
-    class func getMovieSoundTrackFromSearch(query: String, completion:(NSArray)-> ())
+    class func getMovieSoundTrackFromSearch(_ query: String, completion:@escaping (NSArray)-> ())
     {
         var resultsArrayOfDictionary : [NSDictionary] = []
         
         var itunesURL = "https://itunes.apple.com/search?term=\(query)+soundtrack&limit=30"
         
-        itunesURL = itunesURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        itunesURL = itunesURL.replacingOccurrences(of: " ", with: "+")
         
-        let nsURL = NSURL(string: itunesURL)
+        let nsURL = URL(string: itunesURL)
         
         guard let unwrappednsURL = nsURL else {print("url error"); return}
         
-        let request = NSURLRequest(URL: unwrappednsURL)
+        let request = URLRequest(url: unwrappednsURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+            let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
             
                 guard let unwrappedResponseDictionary = responseDictionary else {print("nothing in response dictionary"); return}
                 
-                var resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
+                let resultsArrayOfDictionaries = unwrappedResponseDictionary["results"] as? NSArray
                 
                 guard let unwrappedResultsArrayOfDictionaries = resultsArrayOfDictionaries else {
                     print("ERROR"); return}
@@ -46,8 +46,8 @@ class iTunesAPIClient{
                     resultsArrayOfDictionary.append(unwrappedSingleDictionary)
                 }
                 
-                completion(resultsArrayOfDictionary)
-        }
+                completion(resultsArrayOfDictionary as NSArray)
+        }) 
         
         task.resume()
     }

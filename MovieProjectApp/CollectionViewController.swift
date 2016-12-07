@@ -21,15 +21,15 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView!.backgroundColor = UIColor.blackColor()
-        self.searchBar.backgroundColor = UIColor.blackColor()
-        navigationController!.navigationBar.barTintColor = UIColor.blackColor()
+        collectionView!.backgroundColor = UIColor.black
+        self.searchBar.backgroundColor = UIColor.black
+        navigationController!.navigationBar.barTintColor = UIColor.black
         self.navigationItem.titleView = self.searchBar;
         self.searchBar.delegate = self
         self.searchBar.placeholder = "BEGIN SEARCH HERE"
         randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
         store.getMoviesWithCompletion(store.pageNum, query: self.movieSearchTerms[Int(randomNumber)]) { (movieArray) in
-            NSOperationQueue.mainQueue().addOperationWithBlock({
+            OperationQueue.main.addOperation({
                 self.collectionView?.reloadData()
             })
         }
@@ -42,18 +42,18 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.store.movies.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCell
         
         guard indexPath.row <= self.store.movies.count else { return cell }
         
@@ -63,10 +63,10 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 cell.imageInCell.image = UIImage.init(named: "star_PNG1592")
             }
             else {
-                if let url = NSURL(string: unwrappedPosterURL) {
-                if let data = NSData(contentsOfURL: url) {
+                if let url = URL(string: unwrappedPosterURL) {
+                if let data = try? Data(contentsOf: url) {
                     
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                OperationQueue.main.addOperation({ 
                     cell.imageInCell.image = UIImage(data: data)
                 })
                     }
@@ -74,7 +74,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
             }
         }
         if let movieTitle = store.movies[indexPath.row].title{
-            cell.movieTitleLabel.textColor = UIColor.grayColor()
+            cell.movieTitleLabel.textColor = UIColor.gray
             cell.movieTitleLabel.font = UIFont (name: "Georgia", size: 15)
             cell.movieTitleLabel.text = movieTitle
             
@@ -83,7 +83,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
     }
     
     
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath)
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
          if indexPath.row == self.store.movies.count - 1
           {
@@ -92,7 +92,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                     self.store.retrieveNextPageOfMovieInformation()
                     randomNumber = arc4random_uniform(UInt32(self.movieSearchTerms.count))
                     self.store.getMoviesWithCompletion(self.store.pageNum, query: self.movieSearchTerms[Int(randomNumber)], Completion: { (arrayFromSearchTerm) in
-                        NSOperationQueue.mainQueue().addOperationWithBlock({
+                        OperationQueue.main.addOperation({
                             self.collectionView?.reloadData()
                         })
                     })
@@ -101,7 +101,7 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
                 {
                     self.store.retrieveNextPageOfMovieInformation()
                     self.store.getMoviesWithCompletion(self.store.pageNum, query: searchBar.text!, Completion: { (array) in
-                        NSOperationQueue.mainQueue().addOperationWithBlock({
+                        OperationQueue.main.addOperation({
                             self.collectionView?.reloadData()
                         })
                         
@@ -111,29 +111,29 @@ class CollectionViewController: UICollectionViewController, UISearchBarDelegate,
           }
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.store.movies.removeAll()
         self.collectionView?.reloadData()
         self.store.getMoviesWithCompletion(store.pageNum, query: searchBar.text!) { (movieArray) in
-            NSOperationQueue.mainQueue().addOperationWithBlock({
+            OperationQueue.main.addOperation({
                 self.collectionView?.reloadData()
             })
         }
     }
 
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "descriptiveMovieInformation" {
             
-        let destinationVC = segue.destinationViewController as? DetailViewController
-        let path = pictureColl.indexPathForCell(sender as! UICollectionViewCell)
+        let destinationVC = segue.destination as? DetailViewController
+        let path = pictureColl.indexPath(for: sender as! UICollectionViewCell)
         destinationVC?.movieObject = store.movies[(path?.row)!]
             
         }

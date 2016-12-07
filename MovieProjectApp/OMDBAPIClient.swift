@@ -10,25 +10,25 @@ import Foundation
 
 class OMDBAPIClient
 {    
-    class func getMovieResultsFromSearch(query: String, page: Int, completion:(NSArray)-> ()) {
+    class func getMovieResultsFromSearch(_ query: String, page: Int, completion:@escaping (NSArray)-> ()) {
         
         var dictionaryArray : [[String: String]] = []
                 
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         
-        movieDatabaseURL = movieDatabaseURL.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        movieDatabaseURL = movieDatabaseURL.replacingOccurrences(of: " ", with: "+")
         
-        let nsurl = NSURL(string: movieDatabaseURL)
+        let nsurl = URL(string: movieDatabaseURL)
         
         guard let unwrappedMovieDataBaseURL = nsurl else {print("AN ERROR OCCURRED HERE!"); return}
         
-        let request = NSURLRequest(URL: unwrappedMovieDataBaseURL)
+        let request = URLRequest(url: unwrappedMovieDataBaseURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+            let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
         
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
@@ -45,29 +45,29 @@ class OMDBAPIClient
                     dictionaryArray.append(unwrappedAgainSingleDictionary)
                 }
                 
-                completion(dictionaryArray)
-        }
+                completion(dictionaryArray as NSArray)
+        }) 
         
         task.resume()
     }
     
-    class func getDescriptiveMovieResultsFromSearch(movieID: String, completion:(NSDictionary)-> ())
+    class func getDescriptiveMovieResultsFromSearch(_ movieID: String, completion:@escaping (NSDictionary)-> ())
     {
         var descriptiveDictionary: [String: String] = [:]
         
         let searchURL = "https://www.omdbapi.com/?i=\(movieID)&?plot=short"
         
-        let nsurl = NSURL(string: searchURL)
+        let nsurl = URL(string: searchURL)
         
         guard let unwrappedNSURL = nsurl else {print("ERROR OCCURRED HERE"); return}
         
-        let request = NSURLRequest(URL: unwrappedNSURL)
+        let request = URLRequest(url: unwrappedNSURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-             let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+             let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
         
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
@@ -75,29 +75,29 @@ class OMDBAPIClient
                 
                 descriptiveDictionary = unwrappedResponseDictionary
             
-            completion(descriptiveDictionary)
-        }
+            completion(descriptiveDictionary as NSDictionary)
+        }) 
         task.resume()
     }
     
     
-    class func getMovieFullPlotWith(movieID: String, completion:(NSDictionary)-> ())
+    class func getMovieFullPlotWith(_ movieID: String, completion:@escaping (NSDictionary)-> ())
     {
         var movieDictionary: [String: String] = [:]
         
         let searchURLForFullPlot = "https://www.omdbapi.com/?i=\(movieID)&?plot=full"
         
-        let nsURL = NSURL(string: searchURLForFullPlot)
+        let nsURL = URL(string: searchURLForFullPlot)
         
         guard let unwrappedNSURL = nsURL else {print("AN ERROR OCCURRED HERE"); return}
                 
-        let request = NSURLRequest(URL: unwrappedNSURL)
+        let request = URLRequest(url: unwrappedNSURL)
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-             let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(unwrappedData, options: []) as! NSDictionary
+             let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
             
                 let castedResponseDictionary = responseDictionary as? [String : String]
                 
@@ -105,8 +105,8 @@ class OMDBAPIClient
                 
                 movieDictionary = unwrappedResponseDictionary
             
-            completion(movieDictionary)
-        }
+            completion(movieDictionary as NSDictionary)
+        }) 
         
         task.resume()
     }

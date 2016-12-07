@@ -26,8 +26,8 @@ class PlotViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
-        self.actualPlot.textColor = UIColor.grayColor()
-        self.fullPlotLabel.textColor = UIColor.grayColor()
+        self.actualPlot.textColor = UIColor.gray
+        self.fullPlotLabel.textColor = UIColor.gray
         self.actualPlot.font = UIFont (name: "Georgia", size: 15)
         self.fullPlotLabel.font = UIFont (name: "Georgia", size: 20)
         
@@ -39,7 +39,7 @@ class PlotViewController: UIViewController {
                 //NSOperationQueue.mainQueue().addOperationWithBlock{
                     print("THE CORRECT MOVIE IS PRINTINT OUT")
                     guard let unwrappedFullPlot = unwrappedMovieObject.fullPlot else {print("AN ERROR OCCURRED HERE!"); return}
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                OperationQueue.main.addOperation({ 
                     self.actualPlot.text = unwrappedFullPlot
                 })
                     //self.actualPlot.text = unwrappedFullPlot

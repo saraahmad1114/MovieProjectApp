@@ -33,15 +33,15 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
         guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
         
-        titleLabel.textColor = UIColor.grayColor()
-        yearLabel.textColor = UIColor.grayColor()
-        directorLabel.textColor = UIColor.grayColor()
-        writersLabel.textColor = UIColor.grayColor()
-        actorsLabel.textColor = UIColor.grayColor()
-        shortPlotLabel.textColor = UIColor.grayColor()
-        typeLabel.textColor = UIColor.grayColor()
-        saveMovie.tintColor = UIColor.redColor()
-        fullPlot.tintColor = UIColor.redColor()
+        titleLabel.textColor = UIColor.gray
+        yearLabel.textColor = UIColor.gray
+        directorLabel.textColor = UIColor.gray
+        writersLabel.textColor = UIColor.gray
+        actorsLabel.textColor = UIColor.gray
+        shortPlotLabel.textColor = UIColor.gray
+        typeLabel.textColor = UIColor.gray
+        saveMovie.tintColor = UIColor.red
+        fullPlot.tintColor = UIColor.red
        
         titleLabel.font = UIFont (name: "Georgia", size: 15)
         yearLabel.font = UIFont (name: "Georgia", size: 15)
@@ -54,53 +54,53 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         //Constraints
         view.removeConstraints(view.constraints)
         topImage.translatesAutoresizingMaskIntoConstraints = false
-        topImage.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
-        topImage.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
-        topImage.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 0.40).active = true
-        topImage.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.30).active = true
+        topImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
+        topImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        topImage.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.40).isActive = true
+        topImage.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.30).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraintEqualToAnchor(self.topImage.bottomAnchor, constant: 10).active = true
-        titleLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor,constant: 60).active = true
-        titleLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        titleLabel.topAnchor.constraint(equalTo: self.topImage.bottomAnchor, constant: 10).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 60).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
-        yearLabel.topAnchor.constraintEqualToAnchor(self.titleLabel.bottomAnchor, constant: 10).active = true
-        yearLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
-        yearLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        yearLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10).isActive = true
+        yearLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60).isActive = true
+        yearLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.topAnchor.constraintEqualToAnchor(self.yearLabel.bottomAnchor, constant: 10).active = true
-        typeLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
-        typeLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        typeLabel.topAnchor.constraint(equalTo: self.yearLabel.bottomAnchor, constant: 10).isActive = true
+        typeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60).isActive = true
+        typeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         actorsLabel.translatesAutoresizingMaskIntoConstraints = false
-        actorsLabel.topAnchor.constraintEqualToAnchor(self.typeLabel.bottomAnchor, constant: 10).active = true
-        actorsLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 60).active = true
-        actorsLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        actorsLabel.topAnchor.constraint(equalTo: self.typeLabel.bottomAnchor, constant: 10).isActive = true
+        actorsLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60).isActive = true
+        actorsLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         writersLabel.translatesAutoresizingMaskIntoConstraints = false
-        writersLabel.topAnchor.constraintEqualToAnchor(self.actorsLabel.bottomAnchor, constant: 10).active = true
-        writersLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
-        writersLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        writersLabel.topAnchor.constraint(equalTo: self.actorsLabel.bottomAnchor, constant: 10).isActive = true
+        writersLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
+        writersLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         directorLabel.translatesAutoresizingMaskIntoConstraints = false
-        directorLabel.topAnchor.constraintEqualToAnchor(self.writersLabel.bottomAnchor, constant: 10).active = true
-        directorLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
-        directorLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        directorLabel.topAnchor.constraint(equalTo: self.writersLabel.bottomAnchor, constant: 10).isActive = true
+        directorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
+        directorLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         shortPlotLabel.translatesAutoresizingMaskIntoConstraints = false
-        shortPlotLabel.topAnchor.constraintEqualToAnchor(self.directorLabel.bottomAnchor, constant: 10).active = true
-        shortPlotLabel.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 70).active = true
-        shortPlotLabel.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
+        shortPlotLabel.topAnchor.constraint(equalTo: self.directorLabel.bottomAnchor, constant: 10).isActive = true
+        shortPlotLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
+        shortPlotLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         saveMovie.translatesAutoresizingMaskIntoConstraints = false
-        saveMovie.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
-        saveMovie.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor, constant: 10).active = true
+        saveMovie.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
+        saveMovie.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
        
         fullPlot.translatesAutoresizingMaskIntoConstraints = false
-        fullPlot.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 80).active = true
-        fullPlot.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -20).active = true
+        fullPlot.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
+        fullPlot.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
         self.store.getDescriptiveMovieInformationWith(unwrappedMovieObject) { (isWorking) in
             if isWorking {
@@ -110,15 +110,15 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                 self.topImage.image = UIImage.init(named: "star_PNG1592")
                 }
                 else {
-                    if let url = NSURL(string: unwrappedPosterURL){
-                        if let data  = NSData(contentsOfURL: url){
-                            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    if let url = URL(string: unwrappedPosterURL){
+                        if let data  = try? Data(contentsOf: url){
+                            OperationQueue.main.addOperation({ 
                                 self.topImage.image = UIImage.init(data: data)
                             })
                             }
                         }
                     }
-                NSOperationQueue.mainQueue().addOperationWithBlock({
+                OperationQueue.main.addOperation({
                     self.titleLabel.text = unwrappedMovieObject.title
                     self.yearLabel.text = unwrappedMovieObject.year
                     self.typeLabel.text = unwrappedMovieObject.type
@@ -127,9 +127,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                     
                     guard let
                         unwrappedDirector = unwrappedMovieObject.director,
-                        unwrappedWriters = unwrappedMovieObject.writers,
-                        unwrappedActors = unwrappedMovieObject.actors,
-                        unwrappedShortPlot = unwrappedMovieObject.shortPlot
+                        let unwrappedWriters = unwrappedMovieObject.writers,
+                        let unwrappedActors = unwrappedMovieObject.actors,
+                        let unwrappedShortPlot = unwrappedMovieObject.shortPlot
                         
                     else {print("PROPERTIES WERE UNWRAPPED"); return}
                     
@@ -152,21 +152,21 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
 
     //all changes occurred here!!!
-    @IBAction func saveMovieTapped(sender: AnyObject) {
+    @IBAction func saveMovieTapped(_ sender: AnyObject) {
         
         guard let
             unwrappedMovieObject = self.movieObject else {print("movie object did not unwrap"); return}
         
         guard let
             unwrappedMovieTitle = unwrappedMovieObject.title,
-            unwrappedMovieYear = unwrappedMovieObject.year,
-            unwrappedMovieImdbRating = unwrappedMovieObject.imdbRating,
+            let unwrappedMovieYear = unwrappedMovieObject.year,
+            let unwrappedMovieImdbRating = unwrappedMovieObject.imdbRating,
      
-            unwrappedMoviePosterURL = unwrappedMovieObject.posterURL
+            let unwrappedMoviePosterURL = unwrappedMovieObject.posterURL
             
             else { print("AN ERROR OCCURRED HERE"); return}
         
-        let entity = NSEntityDescription.entityForName("CoreMovie", inManagedObjectContext: self.store.managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "CoreMovie", in: self.store.managedObjectContext)
         
         guard let unwrappedEntity = entity else {print("ENTITY DID NOT UNWRAP"); return}
         
@@ -177,9 +177,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fullPlotSegue" {
-            if let destinationVC = segue.destinationViewController as? PlotViewController {
+            if let destinationVC = segue.destination as? PlotViewController {
                 destinationVC.plotMovieObject = movieObject
             }
         }

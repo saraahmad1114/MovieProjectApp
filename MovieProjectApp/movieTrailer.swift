@@ -13,6 +13,7 @@ class movieTrailer {
     var key: String?
     
     //designated initializer 
+    
     init(key: String){
         self.key = key
     }

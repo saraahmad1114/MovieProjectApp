@@ -16,7 +16,7 @@ class CoreMovie: NSManagedObject {
 
     convenience init(title: String, year: String, imdbRating: String, entity: NSEntityDescription, posterURL: String, managedObjectContext: NSManagedObjectContext)
     {
-        self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+        self.init(entity: entity, insertInto: managedObjectContext)
         self.title = title
         self.year = year
         self.imdbRating = imdbRating

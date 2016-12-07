@@ -15,19 +15,19 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.backgroundColor = UIColor.blackColor()
+        self.tableView.backgroundColor = UIColor.black
         store.fetchData()
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+        OperationQueue.main.addOperation {
             self.tableView.reloadData()
         }
         print("table count: \(self.store.favoriteMovies.count)")
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.fetchData()
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+        OperationQueue.main.addOperation {
             self.tableView.reloadData()
             print("********************************")
             print(self.store.favoriteMovies.count)
@@ -42,17 +42,17 @@ class FavoritesTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.store.favoriteMovies.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! FavoritesCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! FavoritesCellTableViewCell
         
-        cell.updateTitleLabel.textColor = UIColor.grayColor()
-        cell.updateYearLabel.textColor = UIColor.grayColor()
-        cell.updateimdbRatingLabel.textColor = UIColor.grayColor()
+        cell.updateTitleLabel.textColor = UIColor.gray
+        cell.updateYearLabel.textColor = UIColor.gray
+        cell.updateimdbRatingLabel.textColor = UIColor.gray
         
         cell.updateTitleLabel.font = UIFont (name: "Georgia", size: 15)
         cell.updateYearLabel.font = UIFont (name: "Georgia", size: 15)
@@ -75,9 +75,9 @@ class FavoritesTableViewController: UITableViewController {
         
         if let neededURL = self.store.favoriteMovies[indexPath.row].posterURL{
     
-            if let url = NSURL(string: neededURL){
+            if let url = URL(string: neededURL){
                 
-                if let data = NSData(contentsOfURL: url){
+                if let data = try? Data(contentsOf: url){
                     
                     cell.moviePicture.image = UIImage(data: data)
                 }
@@ -86,27 +86,27 @@ class FavoritesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
 
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == UITableViewCellEditingStyle.Delete
+        if editingStyle == UITableViewCellEditingStyle.delete
         {
             let managedObjectContext = store.managedObjectContext
-            managedObjectContext.deleteObject(store.favoriteMovies[indexPath.row])
+            managedObjectContext.delete(store.favoriteMovies[indexPath.row])
 
-            store.favoriteMovies.removeAtIndex(indexPath.row)
+            store.favoriteMovies.remove(at: indexPath.row)
             store.saveContext()
             self.tableView.reloadData()
         }
     }
 
     //savedMovieDetails
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "savedMovieDetail"
         {
 //            let cell = sender as! UITableViewCell
@@ -120,15 +120,15 @@ class FavoritesTableViewController: UITableViewController {
                 
                 guard let
                     neededTitle = self.store.favoriteMovies[unwrappedIndexPath].title,
-                    neededyear = self.store.favoriteMovies[unwrappedIndexPath].year,
-                    neededImdbRating = self.store.favoriteMovies[unwrappedIndexPath].imdbRating,
-                    neededPosterURL = self.store.favoriteMovies[unwrappedIndexPath].posterURL
+                    let neededyear = self.store.favoriteMovies[unwrappedIndexPath].year,
+                    let neededImdbRating = self.store.favoriteMovies[unwrappedIndexPath].imdbRating,
+                    let neededPosterURL = self.store.favoriteMovies[unwrappedIndexPath].posterURL
                     
                     else {print("error"); return}
                 
                 let regularMovieObject = Movie.init(title: neededTitle, year: neededyear, imdbRating: neededImdbRating, posterURL: neededPosterURL)
 
-                if let destinationVC = segue.destinationViewController as? DetailViewController{
+                if let destinationVC = segue.destination as? DetailViewController{
                     destinationVC.movieObject = regularMovieObject
                 }
             
