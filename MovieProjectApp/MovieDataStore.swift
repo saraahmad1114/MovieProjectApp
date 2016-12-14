@@ -97,16 +97,30 @@ class MovieDataStore
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
-                guard let
-                    unwrappedMovieTitle = singleMovie["Title"] as? String,
-                    let unwrappedMovieYear = singleMovie["Year"] as? String,
-                    let unwrappedMovieImbdID = singleMovie["imdbID"] as? String,
-                    let unwrappedMovieType = singleMovie["Type"] as? String,
-                    let unwrappedMoviePosterURL = singleMovie["Poster"] as? String
+                guard let unwrappedSingleMovie = singleMovie as? [String: String]
+                    else {print("singleMovie did not unwrap"); return}
                 
-                    else {print("ERROR OCCURRED HERE!"); return}
+                guard
+                    let unwrappedMovieTitle = unwrappedSingleMovie["Title"],
+                    let unwrappedMovieYear = unwrappedSingleMovie["Year"],
+                    let unwrappedMovieImdbID = unwrappedSingleMovie["imdbID"],
+                    let unwrappedMovieType = unwrappedSingleMovie["Type"],
+                    let unwrappedMoviePosterURL = unwrappedSingleMovie["Poster"]
+                else {print("ERROR OCCURRED HERE!"); return}
                 
-                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
+                    
+//                guard let
+//                    unwrappedMovieTitle = singleMovie["Title"] as? String,
+//                    let unwrappedMovieYear = singleMovie["Year"] as? String,
+//                    let unwrappedMovieImbdID = singleMovie["imdbID"] as? String,
+//                    let unwrappedMovieType = singleMovie["Type"] as? String,
+//                    let unwrappedMoviePosterURL = singleMovie["Poster"] as? String
+//                
+//                    else {print("ERROR OCCURRED HERE!"); return}
+                
+//                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
+                
+                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbID, posterURL: unwrappedMoviePosterURL)
             
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
