@@ -13,7 +13,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     let store = MovieDataStore.sharedInstance
     var movieObject : Movie?
-    var scrollView: UIScrollView!
     
     @IBOutlet weak var fullPlot: UIButton!
     @IBOutlet weak var saveMovie: UIButton!
@@ -161,7 +160,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             unwrappedMovieTitle = unwrappedMovieObject.title,
             let unwrappedMovieYear = unwrappedMovieObject.year,
             let unwrappedMovieImdbRating = unwrappedMovieObject.imdbRating,
-     
             let unwrappedMoviePosterURL = unwrappedMovieObject.posterURL
             
             else { print("AN ERROR OCCURRED HERE"); return}
@@ -175,6 +173,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         store.saveContext()
 
     }
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -184,8 +183,5 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
-    
-
 
 }

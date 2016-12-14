@@ -198,9 +198,5 @@ class MovieDataStore
     {
         self.pageNum += 1
     }
-    
-    
-
-
-    
+ 
 }
