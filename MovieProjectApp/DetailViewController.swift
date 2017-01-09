@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Untitled-2.jpg")!)
-        guard let unwrappedMovieObject = movieObject else {print("AN ERROR OCCURRED HERE!"); return}
+        guard let unwrappedMovieObject = movieObject else {print("MOVIE OBJECT DID NOT UNWRAP HERE"); return}
         
         titleLabel.textColor = UIColor.gray
         yearLabel.textColor = UIColor.gray

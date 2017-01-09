@@ -10,9 +10,9 @@ import Foundation
 
 class OMDBAPIClient
 {    
-    class func getMovieResultsFromSearch(_ query: String, page: Int, completion:@escaping (NSArray)-> ()) {
+    class func getMovieResultsFromSearch(_ query: String, page: Int, completion:@escaping (Array<Any>)-> ()) {
         
-        var dictionaryArray : [[String: String]] = []
+        var dictionaryArray : [[String: Any]] = []
                 
         var movieDatabaseURL = "https://www.omdbapi.com/?s=\(query)&r=json&page=\(page)"
         
@@ -28,57 +28,57 @@ class OMDBAPIClient
             
             guard let unwrappedData = data else {print("Error occurred here"); return}
             
-            let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
+            let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
         
                 guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
-                let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? NSArray
+                let searchArrayOfDictionaries = unwrappedResponseDictionary["Search"] as? Array<Any>
                 
                 guard let unwrappedSearchArrayOfDictionaries = searchArrayOfDictionaries else {print("Something went wrong"); return}
                 
                 for singleDictionary in unwrappedSearchArrayOfDictionaries
                 {
-                    let unwrappedSingleDictionary = singleDictionary as? [String: String]
+                    let unwrappedSingleDictionary = singleDictionary as? [String:Any]
                     
                     guard let unwrappedAgainSingleDictionary = unwrappedSingleDictionary else {print("This works!"); return}
                     
                     dictionaryArray.append(unwrappedAgainSingleDictionary)
                 }
                 
-                completion(dictionaryArray as NSArray)
+                completion(dictionaryArray)
         }) 
         
         task.resume()
     }
     
-    class func getDescriptiveMovieResultsFromSearch(_ movieID: String, completion:@escaping (NSDictionary)-> ())
+    class func getDescriptiveMovieResultsFromSearch(_ movieID: String, completion:@escaping ([String: Any])-> ())
     {
-        var descriptiveDictionary: [String: String] = [:]
+        var descriptiveDictionary: [String: Any] = [:]
         
         let searchURL = "https://www.omdbapi.com/?i=\(movieID)&?plot=short"
         
-        let nsurl = URL(string: searchURL)
+        let url = URL(string: searchURL)
         
-        guard let unwrappedNSURL = nsurl else {print("ERROR OCCURRED HERE"); return}
-        
-        let request = URLRequest(url: unwrappedNSURL)
+        guard let unwrappedURL = url else {print("URL DID NOT UNWRAP"); return}
+            
+        let request = URLRequest(url: unwrappedURL)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
-            guard let unwrappedData = data else {print("Error occurred here"); return}
+            guard let unwrappedData = data else {print("JSON DATA DID NOT UPWRAP"); return}
             
-             let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! NSDictionary
-        
-                let castedResponseDictionary = responseDictionary as? [String : String]
+             let responseDictionary = try? JSONSerialization.jsonObject(with: unwrappedData, options: []) as! [String: Any]
                 
-                guard let unwrappedResponseDictionary = castedResponseDictionary else {print("This did not work!"); return}
+                guard let unwrappedResponseDictionary = responseDictionary else {print("This did not work!"); return}
                 
                 descriptiveDictionary = unwrappedResponseDictionary
             
-            completion(descriptiveDictionary as NSDictionary)
-        }) 
+            completion(descriptiveDictionary)
+        })
+        
         task.resume()
     }
+    
     
     
     class func getMovieFullPlotWith(_ movieID: String, completion:@escaping (NSDictionary)-> ())

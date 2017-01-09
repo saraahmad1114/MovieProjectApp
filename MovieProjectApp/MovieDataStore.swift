@@ -97,30 +97,19 @@ class MovieDataStore
         OMDBAPIClient.getMovieResultsFromSearch(query, page: self.pageNum) { (arrayOfMovies) in
             for singleMovie in arrayOfMovies
             {
-                guard let unwrappedSingleMovie = singleMovie as? [String: String]
+                guard let unwrappedSingleMovie = singleMovie as? [String: Any]
                     else {print("singleMovie did not unwrap"); return}
                 
                 guard
-                    let unwrappedMovieTitle = unwrappedSingleMovie["Title"],
-                    let unwrappedMovieYear = unwrappedSingleMovie["Year"],
-                    let unwrappedMovieImdbID = unwrappedSingleMovie["imdbID"],
-                    let unwrappedMovieType = unwrappedSingleMovie["Type"],
-                    let unwrappedMoviePosterURL = unwrappedSingleMovie["Poster"]
+                    let unwrappedMovieTitle = unwrappedSingleMovie["Title"] as? String,
+                    let unwrappedMovieYear = unwrappedSingleMovie["Year"] as? String,
+                    let unwrappedMovieImdbID = unwrappedSingleMovie["imdbID"] as? String,
+                    let unwrappedMovieType = unwrappedSingleMovie["Type"] as? String,
+                    let unwrappedMoviePosterURL = unwrappedSingleMovie["Poster"] as? String
+                    
                 else {print("ERROR OCCURRED HERE!"); return}
                 
-                    
-//                guard let
-//                    unwrappedMovieTitle = singleMovie["Title"] as? String,
-//                    let unwrappedMovieYear = singleMovie["Year"] as? String,
-//                    let unwrappedMovieImbdID = singleMovie["imdbID"] as? String,
-//                    let unwrappedMovieType = singleMovie["Type"] as? String,
-//                    let unwrappedMoviePosterURL = singleMovie["Poster"] as? String
-//                
-//                    else {print("ERROR OCCURRED HERE!"); return}
-                
-//                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImbdID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
-                
-                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbRating: unwrappedMovieImdbID, posterURL: unwrappedMoviePosterURL)
+                let singleMovieObject = Movie.init(title: unwrappedMovieTitle, year: unwrappedMovieYear, imdbID: unwrappedMovieImdbID, type: unwrappedMovieType, posterURL: unwrappedMoviePosterURL)
             
                 print("****************************************")
                 print("Movie Title: \(singleMovieObject.title)")
@@ -142,16 +131,19 @@ class MovieDataStore
     func getDescriptiveMovieInformationWith(_ movie: Movie, Completion: @escaping (Bool) -> ())
     {
         guard let unwrappedimdbID = movie.imdbID else {print("AN ERROR OCCURRED HERE"); return}
+        
         OMDBAPIClient.getDescriptiveMovieResultsFromSearch(unwrappedimdbID) { (descriptiveResponseDictionary) in
             
-            guard let
-                unwrappedDesMovieDirector = descriptiveResponseDictionary["Director"] as? String,
-                let unwrappedDesMovieWriters = descriptiveResponseDictionary["Writer"] as? String,
-                let unwrappedDesMovieActors = descriptiveResponseDictionary["Actors"] as? String,
-                let unwrappedDesMovieShortPlot = descriptiveResponseDictionary["Plot"] as? String,
-                let unwrappedDesMovieimbdRating = descriptiveResponseDictionary["imdbRating"] as? String
+            guard let unwrappedDescriptiveResponseDictionary = descriptiveResponseDictionary as? [String: Any] else {print("descriptiveResponseDictionary did not unwrap"); return}
             
-                else {print("AN ERROR OCCURRED HERE!"); return}
+            guard let
+                unwrappedDesMovieDirector = unwrappedDescriptiveResponseDictionary["Director"] as? String,
+                let unwrappedDesMovieWriters = unwrappedDescriptiveResponseDictionary["Writer"] as? String,
+                let unwrappedDesMovieActors = unwrappedDescriptiveResponseDictionary["Actors"] as? String,
+                let unwrappedDesMovieShortPlot = unwrappedDescriptiveResponseDictionary["Plot"] as? String,
+                let unwrappedDesMovieimbdRating = unwrappedDescriptiveResponseDictionary["imdbRating"] as? String
+            
+                else {print("DESCRIPTIVE RESPONSE DICTIONARY did not "); return}
             
                 movie.director = unwrappedDesMovieDirector
                 movie.writers = unwrappedDesMovieWriters
