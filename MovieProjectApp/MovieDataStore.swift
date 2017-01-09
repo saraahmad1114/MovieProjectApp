@@ -143,7 +143,7 @@ class MovieDataStore
                 let unwrappedDesMovieShortPlot = unwrappedDescriptiveResponseDictionary["Plot"] as? String,
                 let unwrappedDesMovieimbdRating = unwrappedDescriptiveResponseDictionary["imdbRating"] as? String
             
-                else {print("DESCRIPTIVE RESPONSE DICTIONARY did not "); return}
+                else {print("DESCRIPTIVE RESPONSE DICTIONARY did not unwrap"); return}
             
                 movie.director = unwrappedDesMovieDirector
                 movie.writers = unwrappedDesMovieWriters

@@ -114,15 +114,15 @@ class FavoritesTableViewController: UITableViewController {
             
             //let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
             
-            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
 
-            guard let unwrappedIndexPath = indexPath else {print("error occurred here"); return}
+            if let unwrappedIndexPath = indexPath {
                 
                 guard let
-                    neededTitle = self.store.favoriteMovies[unwrappedIndexPath].title,
-                    let neededyear = self.store.favoriteMovies[unwrappedIndexPath].year,
-                    let neededImdbRating = self.store.favoriteMovies[unwrappedIndexPath].imdbRating,
-                    let neededPosterURL = self.store.favoriteMovies[unwrappedIndexPath].posterURL
+                    neededTitle = self.store.favoriteMovies[unwrappedIndexPath.row].title,
+                    let neededyear = self.store.favoriteMovies[unwrappedIndexPath.row].year,
+                    let neededImdbRating = self.store.favoriteMovies[unwrappedIndexPath.row].imdbRating,
+                    let neededPosterURL = self.store.favoriteMovies[unwrappedIndexPath.row].posterURL
                     
                     else {print("error"); return}
                 
@@ -133,5 +133,6 @@ class FavoritesTableViewController: UITableViewController {
                 }
             
             }
+        }
     }
 }

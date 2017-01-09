@@ -241,15 +241,18 @@
 				TargetAttributes = {
 					1BF41E211D830E380093A000 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = HLKHFWAG55;
 						LastSwiftMigration = 0810;
 					};
 					1BF41E351D830E380093A000 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = HLKHFWAG55;
 						LastSwiftMigration = 0810;
 						TestTargetID = 1BF41E211D830E380093A000;
 					};
 					1BF41E401D830E380093A000 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = HLKHFWAG55;
 						LastSwiftMigration = 0810;
 						TestTargetID = 1BF41E211D830E380093A000;
 					};
@@ -466,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectApp;
@@ -478,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectApp;
@@ -492,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectAppTests;
@@ -505,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectAppTests;
@@ -517,6 +524,7 @@
 		1BF41E511D830E380093A000 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectAppUITests;
@@ -529,6 +537,7 @@
 		1BF41E521D830E380093A000 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = HLKHFWAG55;
 				INFOPLIST_FILE = MovieProjectAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.first.MovieProjectAppUITests;
