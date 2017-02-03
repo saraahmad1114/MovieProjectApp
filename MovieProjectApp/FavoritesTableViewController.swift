@@ -48,8 +48,9 @@ class FavoritesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! FavoritesCellTableViewCell
+//       let cell = tableView.dequeueReusableCell(withIdentifier: "meetupEventCell", for: indexPath) as! MeetupEventsDisplayTableViewCell
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! FavoritesCellTableViewCell
         cell.updateTitleLabel.textColor = UIColor.gray
         cell.updateYearLabel.textColor = UIColor.gray
         cell.updateimdbRatingLabel.textColor = UIColor.gray
